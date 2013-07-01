@@ -213,3 +213,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/nbproject/private/
+
+
+
+#smarty cache
+cache/*
+template_c/*
+public/template_c/*
