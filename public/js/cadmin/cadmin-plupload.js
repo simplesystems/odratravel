@@ -1,14 +1,14 @@
 var pluploadcustom = {
     image: function(obj) {
         var uploader = new plupload.Uploader({
-// General settings
-            runtimes: 'html5,gears,silverlight,browserplus,html4',
-            url: 'upload.php',
+            // General settings
+            runtimes: 'html5,gears,flash,silverlight,browserplus,html4',
+            url: '/cadmin/upload',
             max_file_size: '10mb',
-            chunk_size: '10mb',
+            chunk_size: '2mb',
             unique_names: true,
-            drop_element: 'container',
-            container: 'dropimagebox',
+            drop_element: 'dropimagebox',
+            //container: 'container',
             browse_button: 'browse_files',
             // Specify what files to browse for
             filters: [
@@ -17,7 +17,7 @@ var pluploadcustom = {
             // Flash settings
             flash_swf_url: '/plupload/js/plupload.flash.swf',
             // Silverlight settings
-            silverlight_xap_url: '/plupload/js/plupload.silverlight.xap',
+            silverlight_xap_url: '/plupload/js/plupload.silverlight.xap'
         });
         uploader.init();
         uploader.bind('FilesAdded', function(up, files) {
@@ -39,14 +39,14 @@ var pluploadcustom = {
                     size['x'] = x;
                     size['y'] = y;
                 }
-
-
-                $('#container').attr({'src': ifile.path + '/' + size['x'] + '/' + size['y'] + '/' + ifile.filename + '.' + ifile.extension, 'data-md5': ifile.md5});
+                
+                var path = url.newUrl(ifile.id , size['x'],size['y']);
+                $('#container').attr({'src': path, 'data-md5': ifile.md5});
 
             }
 
             else {
-                draw.popupWindow('Too small image!')
+                draw.popupWindow('Too small image!');
             }
 
 
@@ -66,18 +66,17 @@ var pluploadcustom = {
 //
 //                   
 
-        uploader.refresh();
     },
     gallery: function(obj) {
         var uploader = new plupload.Uploader({
 // General settings
-            runtimes: 'html5,gears,silverlight,browserplus,html4',
-            url: 'upload.php',
+            runtimes: 'html5,gears,flash,silverlight,browserplus,html4',
+            url: '/cadmin/upload',
             max_file_size: '10mb',
-            chunk_size: '10mb',
+            chunk_size: '2mb',
             unique_names: true,
             drop_element: 'sortable2',
-            container: 'sortable2',
+            //container: 'cadmin_add',
             browse_button: 'browse_files',
             // Specify what files to browse for
             filters: [
@@ -86,12 +85,11 @@ var pluploadcustom = {
             // Flash settings
             flash_swf_url: '/plupload/js/plupload.flash.swf',
             // Silverlight settings
-            silverlight_xap_url: '/plupload/js/plupload.silverlight.xap',
+            silverlight_xap_url: '/plupload/js/plupload.silverlight.xap'
         });
         uploader.init();
-
         uploader.bind('FilesAdded', function(up, files) {
-            uploader.start();
+        uploader.start();
         });
         uploader.bind('FileUploaded', function(up, file, info) {
 
@@ -110,18 +108,15 @@ var pluploadcustom = {
             var y = obj.data('imagey');
             if (file.x >= x && file.y >= y) {
 
-
-
                 var size = url.calculate(x, y, 200, 200);
-                var newUrl = url.newUrl(file.path + '/' + file.filename + '.' + file.extension, size['x'], size['y']);
-
-                var imagesrc = $('<img>').attr({'src': newUrl, 'data-pos': '0', 'data-md5': file.md5}).appendTo(li);
+                var path = url.newUrl(file.id , size['x'],size['y']);
+                var imagesrc = $('<img>').attr({'src': path, 'data-pos': '0', 'data-md5': file.md5}).appendTo(li);
 
 
 
             }
             else {
-                draw.popupWindow('Too small image!')
+                draw.popupWindow('Too small image!');
             }
 
 
@@ -143,6 +138,6 @@ var pluploadcustom = {
 //
 //                   
 
-        uploader.refresh();
+
     }
 };

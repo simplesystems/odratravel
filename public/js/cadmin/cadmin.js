@@ -3,22 +3,19 @@ var key;
 var selected;
 var Object;
 
-
 var cadmin = {
     init: function() {
         var bar = draw.bar();
         bar.appendTo('body');
         draw.editlink();
-        input.MouseStart();
         $('body').addClass('baractive');
-        scale.calculate()
-
-        //draw.popupWindow('text');
-
+        scale.calculate();
+        input.MouseStart();
 
     },
     start: function(obj, fadeTime) {
 
+        $('body').css('overflow', 'hidden');
         session.clearHistory();
         this.Object = obj;
         var main = draw.main();
@@ -82,11 +79,11 @@ var cadmin = {
             scale.setSizes();
         }
         input.trackButtons();
-        
+
     },
     cancel: function() {
 
-        history.revertLast();
+        history.revertLast(this.Object);
         save.destroySession(this.Object);
     },
     save: function() {
@@ -100,6 +97,55 @@ var cadmin = {
     },
     getObject: function() {
         return this.Object;
+    },
+    settings: function() {
+        if ($('.cadmin_content').length > 0) {
+            //cadmin.save();
+        }
+        $('body').css('overflow', 'hidden');
+        $('.cadmin_content').remove();
+        $('.cadmin_content_settings').remove();
+        var main = draw.settings();
+        main.appendTo('.cadmin_panel');
+        main.fadeIn(1000, function() {
+            //// Animation complete
+        });
+        var general = draw.general();
+        general.appendTo('.cadmin_leftcol_sub_settings');
+        input.SettingsMenu();
+        input.SettingsTrack();
+        this.selected = 'general';
+        scale.setSizes();
+        settings.insert(this.selected);
+    },
+    settingsmenu: function(obj) {
+        //alert($(location).attr('pathname'));
+        $('.cadmin_rightcol_settings li').removeClass('active');
+        obj.addClass('active');
+        var child = obj.children().attr('href');
+        var newcontent = session.switchtabs(this.selected, child);
+
+        if (child !== 'exit') {
+            this.selected = child;
+            newcontent.appendTo('.cadmin_leftcol_sub');
+            scale.setSizes();
+            this.selected = obj.children().attr('href');
+            newcontent.appendTo('.cadmin_leftcol_sub_settings');
+            input.SettingsMenu();
+            input.SettingsTrack();
+            scale.setSizes();
+            settings.insert(this.selected);
+        }
+
+        if (child === 'pages') {
+            settings.pagesTree();
+            input.jsTreeInput();
+        }
+        if (child === 'exit') {
+            $('body').css('overflow', 'auto');
+        }
+
+
     }
 
 };

@@ -65,13 +65,17 @@ a.import {background:url('/img/cadmin/m-import.png') 140px center no-repeat}
 a.export {background:url('/img/cadmin/m-export.png') 148px center no-repeat}
 a.help {background:url('/img/cadmin/m-help.png') 148px center no-repeat}
 a.exit {background:url('/img/cadmin/m-exit.png') 148px center no-repeat}
+a.general {background:url('/img/cadmin/m-settings.png') 148px center no-repeat}
+a.current {background:url('/img/cadmin/m-settings.png') 148px center no-repeat}
+a.summary {background:url('/img/cadmin/m-export.png') 148px center no-repeat}
+a.pages {background:url('/img/cadmin/m-import.png') 148px center no-repeat}
 a.link:hover {text-decoration:none}
 
 
 div.cadmin_upload {clear:both;float:left;margin:20px 0}
 a.button {font-size:16px;font-weight:bold;padding:8px 15px;margin-right:10px;text-decoration:none;display:block;float:left}
 a.add {background:#b2b2b2;color:#fff;border:2px solid #a4a4a4}
-a.add:hover {background:#646464;border:2px solid #646464}
+a.add:hover {cursor: pointer;background:#646464;border:2px solid #646464}
 a.upload {color:#646464;background:url('/img/cadmin/upload.gif') 15px center no-repeat #fff;padding-left:40px;border:2px solid #a4a4a4}
 
 div.cadmin_buttons {border-top:1px solid #dadada;width:728px;float:left;padding-top:20px}
@@ -109,7 +113,6 @@ a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat,
 a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, linear-gradient(to bottom, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent} /* W3C */
 a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -moz-linear-gradient(center top , #6a9f13 0%, #94b81a 100%) repeat scroll 0 0 transparent}
 a.public:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a9f13', endColorstr='#94b81a',GradientType=0 )}/* IE6-9 */
-
 a.customButton {float:left;border:2px solid #000;color:#fff;padding:8px 30px;}
 a.customButton {background: #070707} /* Old browsers */
 a.customButton {background:-moz-linear-gradient(center top , #3e3e3e 0%, #070707 100%) repeat scroll 0 0 transparent;} /* FF3.6+ */
@@ -130,7 +133,7 @@ a.customButton:hover {filter: progid:DXImageTransform.Microsoft.gradient( startC
 
 div.cadmin_img p {margin-bottom:15px}
 div.cadmin_history ol {list-style-type:decimal;margin-left:25px;margin-right:25px}
-div.cadmin_history ol li {border-bottom:1px solid #ebebeb;padding:12px 0}
+div.cadmin_history ol li {float:left;width:100%;border-bottom:1px solid #ebebeb;padding:12px 0}
 a.li {float:right;margin-left:10px;color:#82AE17}
 a.li:hover {text-decoration:none}
 a.active {font-weight:bold;text-decoration:none}
@@ -154,12 +157,12 @@ div.cadmin_editor {background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;
 div.cadmin_boxheader_editor {padding: 4px;border-bottom:1px solid #dadada;width:980px;float:left;margin-bottom:12px}
 .baractive{padding-top: 40px}
 .imgrow{widht: 100%; float:left}
-.imgbox{float:left;width: 280px;padding: 10px;width: 280px;text-align: center}
+.imgbox{float:left;width: 280px;padding: 10px;width: 280px;text-align: center;position: relative}
 .close {z-index: 300;cursor: pointer;position:absolute;right: 1px; top: 1px; width:20px; color: black; padding-left: 3px; padding-top: 1px;font-size:16px; font-weight:bold;}
 .filemanagerfiles{ }
 .selected{border: 5px solid red;Opacity:0.4;filter:alpha(opacity=40)}
 .unselected{border:  5px solid white;}
-.toosmall{Opacity:0.4;filter:alpha(opacity=40);border:  5px solid blue;}
+.toosmall{Opacity:0.6;filter:alpha(opacity=40); position: relative}
 div.inputdiv {border: 1px solid #CCCCCC;margin: 0 !important;padding: 5px !important;overflow: auto !important; min-height: 36px}
 div.inputdiv span.tag {float:left;background: #22C0CB !important;color: #fff !important; border: 0 !important; padding: 0px 6px !important;margin-bottom: 4px !important;margin: 1px 1px 1px 1px;}
 div.inputdiv input {padding: 3px 6px !important;width: 80px;border: 0px}
@@ -182,9 +185,9 @@ li.maxlist-li:hover {color:#FF0084;cursor: pointer;}
 .historywrapper{widows: 200px;padding: 5px ;}
 div.cadmin_history{overflow-y: auto;overflow-x: hidden}
 div.cadmin_text_edit{overflow-y: auto;overflow-x: hidden}
-div.cadmin_img{cadmin_img: auto;overflow-x: hidden}
-div.cadmin_video_edit{cadmin_img: auto;overflow-x: hidden}
-div.cadmin_help{cadmin_img: auto;overflow-x: hidden}
+div.cadmin_img{overflow-y: auto;overflow: hidden}
+div.cadmin_video_edit{overflow-y: auto;overflow-x: hidden}
+div.cadmin_help{overflow-y: auto;overflow-x: hidden}
 div.cadmin_add {margin-top:30px;width:720px}
 div.cadmin_add2 {margin-top:30px;width:720px}
 .dropable{border: 5px dashed lightblue;z-index: 9999;}
@@ -211,3 +214,38 @@ li.simple-pagination-li:hover {color:#FF0084;cursor: pointer;}
 .ui-front {z-index:100000000 !important;}
 div.cadmin_add2 .tinymce{padding: 70px}
 div.cadmin_add{overflow-y: auto;overflow-x: hidden}
+.filemanagertosmall{position: absolute;color: red;top:40%;left:40%;font-weight: bold}
+.activemax{color:#000;cursor: not-allowed}
+/*settings*/
+div.cadmin_content_settings {width:980px;margin:40px auto 40px;overflow:hidden}
+div.cadmin_top_settings  {height:131px}
+div.cadmin_top_settings  img {margin-top:12px;float:left;margin-left:10px}
+div.cadmin_top_settings  h2 {font-size:26px;color:#a8a8a8;float:left;padding-left:33px;margin:38px 0 0 32px;height:52px;line-height:52px;border-left:1px solid #d3d3d3;font-weight:normal}
+div.cadmin_form_settings  {width:980px}
+div.cadmin_leftcol_settings  {width:780px;background:#fff;float:left;box-shadow:0 2px 4px rgba(0, 0, 0, 0.15)}
+div.cadmin_leftcol_sub_settings  {padding:26px;border-color:#d3d3d3 #fff #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;overflow:hidden}
+div.cadmin_rightcol_settings  {width:200px;float:right}
+div.cadmin_rightcol_settings  li {border-bottom:1px solid #cdcdcd}
+div.cadmin_rightcol_settings  li  small {font-size:12px}
+div.cadmin_rightcol_settings  li a {color:#646464;text-decoration:none;font-size:16px;height:65px;display:block;padding:25px 0 0 20px}
+div.cadmin_rightcol_settings  li span {font-weight:bold;display:block}
+div.cadmin_rightcol_settings  li.last {border-bottom:0 !important}
+div.cadmin_rightcol_settings  li.active {box-shadow:2px 2px 4px rgba(0, 0, 0, 0.15);background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #fff;border-style:solid;border-width:1px;position:relative;top:-1px}
+div.cadmin_rightcol_settings  li.active a.menu {opacity:1 !important;filter: alpha(opacity=100) !important}
+div.cadmin_set{width:100%;float:left;overflow-y: auto}
+div.cadmin_sum{width: 100%;overflow-y: auto;float:left}
+div.cadmin_tree{float:left}
+div.pageedit{float:left}
+textarea{display: none}
+.popup{padding: 30px 50px ;font-weight: bold;font-size: 30px;z-index: 999999;position: absolute; left: 45% ;top: 300px;background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px }
+.fileContainer{width: 100%}
+.backgroundbtn{text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray; cursor: pointer;padding-left: 50%;font-weight: bolder}
+.backgroundbtn:hover{color: red;cursor: pointer;padding-left: 50%;font-weight: bolder}
+.pageedit{width: 100px}
+.pageedit2{width: 100px; float:left}
+#menu-top li{min-width: 15px}
+#menu-front li{min-width: 20px}
+#menu-info li{min-width: 20px}
+#menu-help li{min-width: 20px}
+div .editable{ margin-bottom: 0; }
+.editable p{margin: 0px;}

@@ -5,8 +5,8 @@ var url = {
         }
 
         newUrl = newUrl.split('/');
-        newUrl[4] = x;
-        newUrl[5] = y;
+        newUrl[5] = x;
+        newUrl[6] = y;
         newUrl = newUrl.join('/');
 
         return newUrl;
@@ -14,15 +14,7 @@ var url = {
     },
     newUrl: function(newUrl, x, y) {
 
-        if (newUrl.indexOf('?')) {
-            newUrl = newUrl.split('?')[0];
-        }
-        newUrl = newUrl.split('/');
-        newUrl[6] = newUrl[4];
-        newUrl[4] = x;
-        newUrl[5] = y;
-        newUrl = newUrl.join('/');
-
+        newUrl = '/files/image/resized/' + newUrl + '/' + x + '/' + y + '/image.png';
         return newUrl;
 
     },
@@ -37,7 +29,34 @@ var url = {
             size['y'] = ty;
             size['x'] = Math.round((size['y'] / y) * x);
         }
+        if (y === x) {
+            size['y'] = ty;
+            size['x'] = tx;
+        }
 
-        return(size)
+        return size;
+    },
+    getSize: function(newUrl) {
+
+        var size = {};
+        if (newUrl.indexOf('?')) {
+            newUrl = newUrl.split('?')[0];
+        }
+
+        newUrl = newUrl.split('/');
+        size['x'] = newUrl[4];
+        size['y'] = newUrl[5];
+        newUrl = newUrl.join('/');
+
+        return size;
+    },
+    getId: function(newUrl) {
+        if (newUrl.indexOf('?')) {
+            newUrl = newUrl.split('?')[0];
+        }
+
+        newUrl = newUrl.split('/');
+        return[newUrl[4]];
     }
-}
+
+};

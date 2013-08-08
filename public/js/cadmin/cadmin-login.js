@@ -1,8 +1,9 @@
+demo = 'no';
 $(document).ready(function() {
     $.ajax
             ({
                 type: "POST",
-                url: "/cadmin.php?check=1",
+                url: "/cadmin/check",
                 data: '',
                 cache: false,
                 async: false,
@@ -11,6 +12,11 @@ $(document).ready(function() {
                     var answer = JSON.parse(data);
                     if (answer === "success")
                     {
+                        cadmin.init();
+                    }
+                    if (answer === "demo")
+                    {
+                        demo = 'yes';
                         cadmin.init();
                     }
 

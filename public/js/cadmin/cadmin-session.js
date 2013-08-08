@@ -6,8 +6,12 @@ var session = {
         var gallerycontent;
         var videocontent;
         var imagecontent;
+        var generalcontent;
+        var currentcontent;
+        var settingsCon;
 
         var content = $('.cadmin_leftcol_sub').children();
+        var content2 = $('.cadmin_leftcol_sub_settings').children();
         var obj = cadmin.getObject();
         switch (selected) {
             case 'text':
@@ -24,6 +28,16 @@ var session = {
             case 'video':
                 this.videocontent = content;
                 break;
+            case 'general':
+                this.generalcontent = content2;
+                break;
+            case 'current':
+                this.currentcontent = content2;
+                break;
+            case 'summary':
+                break;
+            case 'pages':
+                break;
             case 'history':
                 break;
             case 'help':
@@ -33,6 +47,7 @@ var session = {
         }
         if (target != 'exit') {
             $('.cadmin_leftcol_sub').empty();
+            $('.cadmin_leftcol_sub_settings').empty();
         }
         switch (target) {
             case 'text':
@@ -67,6 +82,33 @@ var session = {
                 else {
                     return draw.video(obj);
                 }
+                break;
+            case 'general':
+                if (this.generalcontent !== undefined) {
+                    return this.generalcontent;
+                }
+                else {
+                    return draw.general(obj);
+                }
+                break;
+            case 'current':
+                if (this.currentcontent !== undefined) {
+                    return this.currentcontent;
+                }
+                else {
+                    return draw.current(obj);
+                }
+                break;
+            case 'summary':
+
+                settings.getSession();
+                return draw.summary(obj);
+
+                break;
+            case 'pages':
+
+                //settings.getSession();
+                return draw.pages(obj);
 
                 break;
 
@@ -75,7 +117,7 @@ var session = {
                 return draw.history();
                 break;
             case 'help':
-                    return draw.help();
+                return draw.help();
                 break;
 //            case 'import':
 //                if (this.importcontent !== undefined) {
@@ -96,6 +138,10 @@ var session = {
             case 'exit':
                 $('.cadmin_content').fadeOut(1000, function() {
                     $('.cadmin_content').remove();
+                    $('body').css('overflow', 'auto');
+                });
+                $('.cadmin_content_settings').fadeOut(1000, function() {
+                    $('.cadmin_content_settings').remove();
                 });
                 break;
         }
@@ -113,7 +159,7 @@ var session = {
         this.historycontent = undefined;
         this.helpcontent = undefined;
         this.images = undefined;
-    }
+    },
 //    getImages: function() {
 //        if (this.images !== undefined) {
 //            getupload.getimages();
@@ -125,6 +171,12 @@ var session = {
 //    setImages: function(data) {
 //        this.images = data;
 //    }
+    setSettings: function(data) {
+        this.settingsCon = data;
+    },
+    getSettings: function(data) {
+        return this.settingsCon;
+    }
 };
 
 

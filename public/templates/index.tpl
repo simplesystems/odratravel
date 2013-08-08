@@ -1,22 +1,21 @@
-{config_load file="config.conf"}
-{include file="header.tpl" title={#title#}}
+{include file="header.tpl"}
 
 
         <div class="banner-container">
         <ul class="bxslider" id="bxslider">
                 <li>
                      <a href="#">
-                    <img src="pictures/banner_1.jpg" alt="" />
+                    <img src="/pictures/banner_1.jpg" alt="" />
                    </a>
                 </li>
                 <li>
                     <a href="#">
-                    <img src="pictures/banner_2.jpg" alt="" />
+                    <img src="/pictures/banner_2.jpg" alt="" />
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                    <img src="pictures/banner_1.jpg" alt="" />
+                    <img src="/pictures/banner_1.jpg" alt="" />
                     </a>
                 </li>
 
@@ -181,7 +180,7 @@
                 <ul class="offer">
                     <li>
                         <a class="icon" href="#">
-                            <img src="pictures/offer1.png" alt="Nasze wycieczki" />
+                            <img src="/pictures/offer1.png" alt="Nasze wycieczki" />
                             <span>Nasze wycieczki</span>
                         </a>
                         <div class="offer_item">
@@ -220,7 +219,7 @@
                     </li>
                      <li>
                         <a class="icon" href="#">
-                            <img src="pictures/offer2.png" alt="Last minute" />
+                            <img src="/pictures/offer2.png" alt="Last minute" />
                             <span>Last minute</span>
                         </a>
                         <div class="offer_item">
@@ -259,7 +258,7 @@
                     </li>
                      <li>
                         <a class="icon" href="#">
-                            <img src="pictures/offer3.png" alt="All inclusive" />
+                            <img src="/pictures/offer3.png" alt="All inclusive" />
                             <span>All inclusive</span>
                         </a>
                         <div class="offer_item">
@@ -301,7 +300,7 @@
 
                     <li>
                         <a class="icon" href="#">
-                            <img src="pictures/offer4.png" alt="Autokarem" />
+                            <img src="/pictures/offer4.png" alt="Autokarem" />
                             <span>Autokarem</span>
                         </a>
                         <div class="offer_item">
@@ -340,7 +339,7 @@
                     </li>
                      <li>
                         <a class="icon" href="#">
-                            <img src="pictures/offer5.png" alt="Objazdówki" />
+                            <img src="/pictures/offer5.png" alt="Objazdówki" />
                             <span>Objazdówki</span>
                         </a>
                         <div class="offer_item">
@@ -379,7 +378,7 @@
                     </li>
                      <li>
                         <a class="icon" href="#">
-                            <img src="pictures/offer6.png" alt="Dla aktywnych" />
+                            <img src="/pictures/offer6.png" alt="Dla aktywnych" />
                             <span>Dla aktywnych</span>
                         </a>
                         <div class="offer_item">
@@ -420,7 +419,7 @@
 
                 <div class="main_banner">
                     <a class="icon" href="#">
-                            <img src="pictures/banner.jpg" alt="banner" />
+                            <img src="/pictures/banner.jpg" alt="banner" />
                     </a>
                 </div>    
             </div>

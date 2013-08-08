@@ -56,7 +56,7 @@
 
 .bx-wrapper .bx-loading {
 	min-height: 50px;
-	background: url(images/bx_loader.gif) center center no-repeat #fff;
+	background: url(../img/bx_loader.gif) center center no-repeat #fff;
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -106,13 +106,22 @@
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
 .bx-wrapper .bx-prev {
-	left: 10px;
-	background: url(images/controls.png) no-repeat 0 -32px;
+	left: -5px;
+	background: url(../img/controls.png) no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
-	right: 10px;
-	background: url(images/controls.png) no-repeat -43px -32px;
+	right: -5px;
+	background: url(../img/controls.png) no-repeat -43px -32px;
+}
+
+
+.banner-container .bx-prev {
+	display: none !important;
+}
+
+.banner-container  .bx-next {
+	display: none !important;
 }
 
 .bx-wrapper .bx-prev:hover {
@@ -150,7 +159,7 @@
 	width: 10px;
 	height: 11px;
 	outline: 0;
-	background: url(images/controls.png) -86px -11px no-repeat;
+	background: url(../img/controls.png) -86px -11px no-repeat;
 	margin: 0 3px;
 }
 
@@ -165,7 +174,7 @@
 	width: 9px;
 	height: 11px;
 	outline: 0;
-	background: url(images/controls.png) -86px -44px no-repeat;
+	background: url(../img/controls.png) -86px -44px no-repeat;
 	margin: 0 3px;
 }
 
@@ -203,4 +212,31 @@
 	display: block;
 	font-size: .85em;
 	padding: 10px;
+}
+
+#bxslider_p{
+	margin: 0;
+	padding: 0;
+}
+#bxslider_p img{
+	width: auto;
+opacity: 0.6;
+min-width: 0;
+}
+
+#bxslider_p img:hover, #bxslider_p .active img{
+	
+opacity: 1;
+
+}
+
+.product_galery .bx-pager{
+	display: none;
+}
+
+
+.product_galery .bx-wrapper {
+    margin: 0;
+    padding: 0 25px;
+    position: relative;
 }

@@ -70,7 +70,7 @@
 
         </ul> 
 
-        <img src="img/payment.png" alt="płatności">
+        <img src="/img/payment.png" alt="płatności">
 
         <p>
             Strona korzysta z plików cookie w celu realizacji usług zgodnie z polityką prywatności. Możesz określić warunki przechowywania lub dostępu do cookie w Twojej przeglądarce.
@@ -83,16 +83,15 @@
 <script>window.jQuery || document.write('<script src="{$__jsDir}vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
 
-<script src="{$__jsDir}jquery.bxslider.min.js"></script>
-<script src="{$__jsDir}jquery.fitvids.js"></script>
-<script src="{$__jsDir}jquery.easing.1.3.js"></script>
-<script src="{$__jsDir}main.js"></script>
-{foreach from=$cadminCss item=css}
-    <link rel="stylesheet" href="{$__cssDir}{$css}">
-{/foreach}
 {foreach from=$cadminJs item=js}
     <script src="{$__jsDir}{$js}"></script>
 {/foreach}
+<script src="{$__jsDir}jquery.bxslider.min.js"></script>
+<script src="{$__jsDir}jquery.fitvids.js"></script>
+<script src="{$__jsDir}jquery.easing.1.3.js"></script>
+<script src="{$__jsDir}fancybox/jquery.fancybox-1.3.1.js"></script>
+<script src="{$__jsDir}main.js"></script>
+
 
 {*        <script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

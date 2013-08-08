@@ -4,7 +4,7 @@ var save = {
         switch (obj.data('type')) {
             case 'text':
                 var data = tinyMCE.activeEditor.getContent();
-                replace.text(obj)
+                replace.text(obj);
                 $.ajax
                         ({
                             type: "POST",
@@ -21,7 +21,7 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Saved!');
+                                    draw.popupWindow(language.saved);
                                 }
 
                             }
@@ -30,6 +30,16 @@ var save = {
                 break;
             case 'image':
                 replace.image(obj);
+                if (obj.data('style') === 'background') {
+                    var bg = obj.css('background-image');
+                    bg = bg.replace('url(', '').replace(')', '');
+                    bg = bg.substring(0, bg.length - 1)
+                    var link = bg.substring(bg.indexOf("/files"));
+                }
+                else {
+                    var link = obj.attr('src');
+                }
+                link = url.getId(link);
                 $.ajax
                         ({
                             type: "POST",
@@ -37,7 +47,7 @@ var save = {
                             data: {
                                 'type': obj.data('type'),
                                 'key': obj.data('key'),
-                                'data': $('#container').attr('src'),
+                                'data': link[0],
                                 'x': obj.data('imagex'),
                                 'y': obj.data('imagey'),
                                 'md5': obj.data('md5')
@@ -48,7 +58,7 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Saved!');
+                                    draw.popupWindow(language.saved);
                                 }
 
                             }
@@ -75,7 +85,7 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Saved!');
+                                    draw.popupWindow(language.saved);
                                 }
 
                             }
@@ -109,7 +119,7 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Saved!');
+                                    draw.popupWindow(language.saved);
                                 }
 
                             }
@@ -153,21 +163,28 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Published!');
+                                    draw.popupWindow(language.published);
                                 }
                                 if (answer === "changes")
                                 {
-                                    draw.popupWindow('Someone made changes too!Check history!');
+                                    draw.popupWindow(language.someonechange);
                                 }
 
                             }
                         });
                 break;
             case 'image':
-
-
                 replace.image(obj)
-
+                if (obj.data('style') === 'background') {
+                    var bg = obj.css('background-image');
+                    bg = bg.replace('url(', '').replace(')', '');
+                    bg = bg.substring(0, bg.length - 1)
+                    var link = bg.substring(bg.indexOf("/files"));
+                }
+                else {
+                    var link = obj.attr('src');
+                }
+                link = url.getId(link);
                 $.ajax
                         ({
                             type: "POST",
@@ -175,7 +192,7 @@ var save = {
                             data: {
                                 'type': obj.data('type'),
                                 'key': obj.data('key'),
-                                'data': $('#container').attr('src'),
+                                'data': link[0],
                                 'x': obj.data('imagex'),
                                 'y': obj.data('imagey'),
                                 'md5': obj.data('md5')
@@ -186,11 +203,11 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Published!');
+                                    draw.popupWindow(language.published);
                                 }
                                 if (answer === "changes")
                                 {
-                                    draw.popupWindow('Someone made changes too!Check history!');
+                                    draw.popupWindow(language.someonechange);
                                 }
 
                             }
@@ -219,11 +236,11 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Published!');
+                                    draw.popupWindow(language.published);
                                 }
                                 if (answer === "changes")
                                 {
-                                    draw.popupWindow('Someone made changes too!Check history!');
+                                    draw.popupWindow(language.someonechange);
                                 }
 
                             }
@@ -258,11 +275,11 @@ var save = {
                                 var answer = JSON.parse(data);
                                 if (answer === "success")
                                 {
-                                    draw.popupWindow('Published!');
+                                    draw.popupWindow(language.published);
                                 }
                                 if (answer === "changes")
                                 {
-                                    draw.popupWindow('Someone made changes too!Check history!');
+                                    draw.popupWindow(language.someonechange);
                                 }
 
                             }
@@ -298,9 +315,9 @@ var save = {
                     success: function(data)
                     {
                         var answer = JSON.parse(data);
-                        if (data === "success")
+                        if (answer === "success")
                         {
-                            draw.popupWindow('Changes aborted!');
+                            draw.popupWindow(language.aborted);
                         }
 
                     }

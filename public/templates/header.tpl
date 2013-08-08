@@ -6,13 +6,16 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{$title}</title>
+        <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-
+        {foreach from=$cadminCss item=css}
+            <link rel="stylesheet" href="{$__cssDir}{$css}">
+        {/foreach}
         <link rel="stylesheet" href="{$__cssDir}normalize.min.css">
         <link rel="stylesheet" href="{$__cssDir}jquery.bxslider.css">
         <link rel="stylesheet" href="{$__cssDir}main.css">
+        <link rel="stylesheet" href="{$__jsDir}fancybox/jquery.fancybox-1.3.1.css">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="{$__jsDir}vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -23,11 +26,11 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <h1 class="title"><a href="/"><img src="img/logo.png" alt="logo"></a></h1>
+                <h1 class="title"><a href="/"><img src="/img/logo.png" alt="logo"></a></h1>
                 <div id="language">
-                    <a href="/pol"><img src="img/pol.png" alt="polski"></a>
-                    <a href="/eng"><img src="img/eng.png" alt="angielski"></a>
-                    <a href="/de"><img src="img/de.png" alt="niemiecki"></a>
+                    <a href="/pol"><img src="/img/pol.png" alt="polski"></a>
+                    <a href="/eng"><img src="/img/eng.png" alt="angielski"></a>
+                    <a href="/de"><img src="/img/de.png" alt="niemiecki"></a>
                 </div>    
                 <div id="top_contact">
 
@@ -36,11 +39,11 @@
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="ofirmie.php">O firmie</a></li>
-                        <li><a href="#">Wycieczki <br/>autokarowe</a></li>
-                        <li><a href="#">Wycieczki <br/>lotnicze</a></li>
-                        <li><a href="#">Wynajem <br/>autokarów</a></li>
-                        <li><a href="kontakt.php">Kontakt</a></li>                        
+                        <li><a href="/strona/o_firmie">O firmie</a></li>
+                        <li><a href="/strona/wycieczki_autokarowe">Wycieczki <br/>autokarowe</a></li>
+                        <li><a href="/strona/wycieczki_lotnicze">Wycieczki <br/>lotnicze</a></li>
+                        <li><a href="/strona/wynamem_autokarow">Wynajem <br/>autokarów</a></li>
+                        <li><a href="/kontakt.html">Kontakt</a></li>                        
                     </ul>
                 </nav>
             </header>

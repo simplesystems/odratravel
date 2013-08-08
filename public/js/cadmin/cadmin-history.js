@@ -5,7 +5,7 @@ var history = {
         scale.setSizes();
         $.ajax
                 ({
-                    url: "/cadmin/gethistory/?key=" + key,
+                    url: "/cadmin/getHistory?key=" + key,
                     success: function(data)
                     {
                         data = JSON.parse(data.trim());
@@ -14,17 +14,18 @@ var history = {
                     }
                 });
     },
-    revertLast: function() {
-        var obj = cadmin.getObject()
-        var type = obj.data('type');
+    revertLast: function(obj) {
+
         var key = obj.data('key');
         $.ajax
                 ({
-                    url: "/cadmin/gethistory/?key=" + key,
+                    url: "/cadmin/getHistory?key=" + key,
                     success: function(data)
                     {
-                        data = JSON.parse(data.trim());
-                        history.restore(data);
+                        if (data === "") {
+                            data = JSON.parse(data.trim());
+                            history.restore(data);
+                        }
                     }
                 });
     },
@@ -43,15 +44,16 @@ var history = {
                 var wrapper = $('<div>').attr({'class': 'historywrapper'}).appendTo(div);
                 var x = obj.data('imagex');
                 var y = obj.data('imagey');
+
                 if (obj.data('imagex') > 200 || obj.data('imagex') > 200) {
                     var size = url.calculate(x, y, 200, 200);
-                    var newUrl = url.modify(data.history[0].cadmin_value, size['x'], size['y']);
+                    var newUrl2 = url.newUrl(data.history[0].cadmin_value, size['x'], size['y']);
                 }
                 else {
-                    var newUrl = url.modify(data.history[0].cadmin_value, obj.data('imagex'), obj.data('imagex'));
+                    var newUrl2 = url.newUrl(data.history[0].cadmin_value, obj.data('imagex'), obj.data('imagex'));
                 }
-                var img = $('<img>').attr({'class': '', 'src': newUrl}).appendTo(wrapper);
-                replace.historyImage(div)
+                var img = $('<img>').attr({'class': '', 'src': newUrl2}).appendTo(wrapper);
+                replace.historyImage(div);
                 break;
             case 'gallery':
                 $.each(data.history[0].cadmin_value, function(k, v) {

@@ -4,6 +4,7 @@ $(window).resize(function() {
     // scale.calculate();
     scale.setSizes();
 });
+
 var scale = {
     calculate: function() {
         Height = $(window).innerHeight() - 265;
@@ -18,12 +19,14 @@ var scale = {
         $('.cadmin_help').css('height', Height);
         $('.cadmin_manager').css('height', Height + 63);
         $('.cadmin_editor').css('height', Height + 63);
+        $('.cadmin_settings').css('height', Height);
         $('.fileContainer').css('height', wHeight - 10);
-        $('.cadmin_add').css('height', wHeight + 1);
+        $('.cadmin_add').css('height', wHeight -18);
         $('.cadmin_add2').css('height', wHeight + 83);
         $('.tinymce').css('height', wHeight - 12);
-        $('.linkdiv').css('height', wHeight);
-
-    },
-}
+        $('.linkdiv').css('height', wHeight - 18);
+        $('.cadmin_set').css('height', wHeight+2);
+        $('.cadmin_sum').css('height', wHeight+2);
+    }
+};
 
