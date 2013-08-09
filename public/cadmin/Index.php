@@ -70,7 +70,7 @@ class cadminMain {
             die();
         }
         $post = $_POST;
-        $_SESSION[$post['type']][$post['key']] = null;
+        unset($_SESSION[$post['type']][$post['key']]);
         print json_encode('success');
         die();
     }
@@ -181,7 +181,7 @@ class cadminMain {
             }
         }
         if (isset($_SESSION[$post['type']][$post['key']])) {
-            $_SESSION[$post['type']][$post['key']] = null;
+            unset($_SESSION[$post['type']][$post['key']]);
         }
 
         print json_encode($status);
@@ -783,7 +783,7 @@ class cadminMain {
                 print json_encode('success');
                 die();
             case 'page_menu';
-                $result = $this->jsTreeSetPagMenu($_POST);
+                $result = $this->jsTreeSetPageMenu($_POST);
                 print json_encode('success');
                 die();
         }
@@ -950,6 +950,24 @@ class cadminMain {
         $database = $this->getDatabase();
         $database->menuList($_POST);
         print json_encode($database->getMenu());
+        die();
+    }
+
+    public function getText() {
+        $database = $this->getDatabase();
+        $answer = $database->getText($_POST);
+        if (isset($answer[0]['cadmin_key'])) {
+            $answer = $answer[0]['cadmin_value'];
+            if (isset($_SESSION['text'][$_POST['key']])) {
+                $answer = $_SESSION['text'][$_POST['key']]['value'];
+            }
+        } else {
+            if (isset($_SESSION['text'][$_POST['key']])) {
+                $answer = $_SESSION['text'][$_POST['key']]['value'];
+            }
+        }
+
+        print $answer;
         die();
     }
 

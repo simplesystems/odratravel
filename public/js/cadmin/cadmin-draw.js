@@ -46,6 +46,24 @@ var draw = {
         textarea.html(obj.html());
         return cadmin_text_edit;
     },
+    list: function(obj) {
+
+        var cadmin_text_edit = $('<div>').attr({'class': 'cadmin_list_edit'});
+        var cadmin_boxheader = $('<div>').attr({'class': 'cadmin_boxheader'}).appendTo(cadmin_text_edit);
+        var textdiv = $('<div>').attr({'class': 'tinymce'}).appendTo(cadmin_text_edit);
+        var textarea = $('<div>').attr({'id': 'editedtext'}).appendTo(textdiv);
+        var cadmin_buttons = $('<div>').attr({'class': 'cadmin_buttons'}).appendTo(cadmin_text_edit);
+        var button_save_text = $('<a>').attr({'class': 'button save', 'href': '#'}).appendTo(cadmin_buttons);
+        var button_public = $('<a>').attr({'class': 'button public', 'href': '#'}).appendTo(cadmin_buttons);
+        var h3 = $('<h3>').appendTo(cadmin_boxheader);
+        var abort = $('<a>').attr({'href': 'cancel', 'class': 'delete_change link'}).appendTo(cadmin_boxheader);
+        h3.html(language.texeditor);
+        abort.html(language.cancelchanges);
+        button_save_text.html(language.save);
+        button_public.html(language.public);
+        textarea.html(obj.html());
+        return cadmin_text_edit;
+    },
     image: function(obj) {
 
         var cadmin_img = $('<div>').attr({'class': 'cadmin_img'});
@@ -337,6 +355,12 @@ var draw = {
                 var li1a = $('<a>').attr({'href': 'text', 'class': 'menu text'}).appendTo(li1);
                 var li1span = $('<span>').html(language.menutext).appendTo(li1a);
                 var li1small = $('<small>').html(language.menutextsmall).appendTo(li1a);
+            case 'list':
+                var li1 = $('<li>').appendTo(ul);
+                li1.addClass('active');
+                var li1a = $('<a>').attr({'href': 'list', 'class': 'menu text'}).appendTo(li1);
+                var li1span = $('<span>').html(language.menulist).appendTo(li1a);
+                var li1small = $('<small>').html(language.menulistsmall).appendTo(li1a);
         }
 
         switch (type) {
@@ -390,7 +414,9 @@ var draw = {
     },
     external: function(obj) {
         if (obj.data('type') == 'text') {
-            tinymcecustom.start(obj);
+            if (!(obj.data('textarea') == 'yes')) {
+                tinymcecustom.start(obj);
+            }
         }
         if (obj.data('type') == 'gallery') {
             pluploadcustom.gallery(obj);

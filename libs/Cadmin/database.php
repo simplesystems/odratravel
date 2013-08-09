@@ -56,19 +56,30 @@ class Database {
         $sth->execute();
         $top = $sth->fetchAll();
         try {
-            $sql = "SELECT * FROM cadmin_pages WHERE cadmin_pages.menu='bottom' ORDER BY cadmin_pages.pos";
+            $sql = "SELECT * FROM cadmin_pages WHERE cadmin_pages.menu='info' ORDER BY cadmin_pages.pos";
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
         $sth = $pdo->prepare($sql);
         $sth->execute();
-        $bottom = $sth->fetchAll();
+        $info = $sth->fetchAll();
+        try {
+            $sql = "SELECT * FROM cadmin_pages WHERE cadmin_pages.menu='help' ORDER BY cadmin_pages.pos";
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $help = $sth->fetchAll();
 
         foreach ($top as $t) {
             $menu['top'][] = $t;
         }
-        foreach ($bottom as $t) {
-            $menu['bottom'][] = $t;
+        foreach ($info as $t) {
+            $menu['info'][] = $t;
+        }
+        foreach ($help as $t) {
+            $menu['help'][] = $t;
         }
         return $menu;
     }
@@ -155,6 +166,18 @@ class Database {
         $sth = $pdo->prepare($sql);
         $sth->execute();
         return $sth->fetchAll();
+    }
+
+    public function getText($post) {
+        $pdo = $this->getInstance();
+        try {
+            $sql = 'SELECT * FROM `cadmin_text` WHERE `cadmin_key` = "' . $post['key'] . '"';
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+         return $sth->fetchAll();
     }
 
     public function findById($DbTableName, $key) {

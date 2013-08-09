@@ -72,13 +72,18 @@ class Cadmin {
         return $pageView;
     }
 
+    public function getMenu() {
+        $database = $this->getDatabase();
+        return $database->getMenu();
+    }
+
     public function getViewImage() {
         $imageView = array();
         $database = $this->getDatabase();
         $images = $database->fetchAll('cadmin_image');
         foreach ($images as $image) {
-            if ($image['cadmin_key'] == 'fghfgh') {
-                $size = '/255/55/';
+            if ($image['cadmin_key'] == 'main_gallery') {
+                $size = '/1400/411/';
             } elseif ($image['cadmin_key'] == 'hfghfg') {
                 $size = '/255/255/';
             } else {
@@ -142,36 +147,49 @@ class Cadmin {
                     'text' => $text);
             }
         }
+        
         if (isset($_SESSION['image'])) {
             foreach ($_SESSION['image'] as $img) {
-
                 if (!(array_key_exists($img['key'], $imageView))) {
-                    $imageView[$img['key']] = $img;
+                    $path = '/files/image/resized/' . $img['value'] . $size . 'image.jpg';
+                    $imageView[$img['key']][] = array(
+                        'key' => $img['key'],
+                        'src' => $path,
+                        'md5' => $img['md5'],
+                        'pos' => '',
+                        'link' => '',
+                        'desc' => '',
+                        'text' => '');
                 }
             }
         }
         if (isset($_SESSION['gallery'])) {
             foreach ($_SESSION['gallery'] as $img) {
                 if (!(array_key_exists($img['key'], $imageView))) {
-                    foreach ($_SESSION['gallery'][$img['key']]['data'] as $src) {
-                        $path = '/files/image/resized/' . $src['image'] . $size . 'image.png';
+                    $pos = 0;
+                    foreach ($_SESSION['gallery'][$img['key']]['value'] as $src) {
+
+                        if ($img['key'] === 'main_gallery') {
+                            $size = '/1400/411/';
+                        }
+                        $path = '/files/image/resized/' . $src['image'] . $size . 'image.jpg';
                         if (isset($image['optional'])) {
-                            $imageView[$img['cadmin_key']][] = array(
-                                'key' => $_SESSION['gallery'][$img['cadmin_key']]['key'],
+                            $imageView[$img['key']][] = array(
+                                'key' => $_SESSION['gallery'][$img['key']]['key'],
                                 'src' => $path,
                                 'link' => $src['link'],
                                 'desc' => $src['desc'],
                                 'text' => $src['text'],
-                                'md5' => $_SESSION['gallery'][$img['cadmin_key']]['md5'],
+                                'md5' => $_SESSION['gallery'][$img['key']]['md5'],
                                 'pos' => $pos);
                         } else {
-                            $imageView[$img['cadmin_key']][] = array(
-                                'key' => $_SESSION['gallery'][$img['cadmin_key']]['key'],
+                            $imageView[$img['key']][] = array(
+                                'key' => $_SESSION['gallery'][$img['key']]['key'],
                                 'src' => $path,
                                 'link' => '',
                                 'desc' => '',
                                 'text' => '',
-                                'md5' => $_SESSION['gallery'][$img['cadmin_key']]['md5'],
+                                'md5' => $_SESSION['gallery'][$img['key']]['md5'],
                                 'pos' => $pos);
                         }
                     } $pos++;

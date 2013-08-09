@@ -3,7 +3,13 @@ var save = {
 
         switch (obj.data('type')) {
             case 'text':
-                var data = tinyMCE.activeEditor.getContent();
+                if (!(obj.data('textarea') == 'yes')) {
+                    var data = tinyMCE.activeEditor.getContent();
+                }
+                else {
+                    var data = $('#editedtext').val();
+                }
+
                 replace.text(obj);
                 $.ajax
                         ({
@@ -145,7 +151,12 @@ var save = {
 
         switch (obj.data('type')) {
             case 'text':
-                var data = tinyMCE.activeEditor.getContent();
+                if (!(obj.data('textarea') == 'yes')) {
+                    var data = tinyMCE.activeEditor.getContent();
+                }
+                else {
+                    var data = $('#editedtext').val();
+                }
                 replace.text(obj)
                 $.ajax
                         ({

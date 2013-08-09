@@ -1,25 +1,37 @@
 
 <div class="footer-container">
     <footer class="wrapper">
-        <ul class="footer1">
+        <ul class="footer1" id="menu-info">
             <li>
                 <h2>O nas</h2>
             </li>
-            <li>
-                <a href="/link">O firmie</a>
-            </li>
-            <li>
-                <a href="/link">Partnerzy</a>
-            </li>
-            <li>
-                <a href="/link">Kontakt</a>
-            </li>    
-        </ul>    
+            {if isset($menuItems.info)}
+                {foreach from=$menuItems.info item=foo}
+                    <li><a href="{$foo.route}">{$foo.title}</a></li>
+                    {/foreach}
 
-        <ul class="footer2">
+            {else}
+                <li>
+                    <a href="/link">O firmie</a>
+                </li>
+                <li>
+                    <a href="/link">Partnerzy</a>
+                </li>
+                <li>
+                    <a href="/link">Kontakt</a>
+                </li>  
+            {/if}
+        </ul>
+        <ul class="footer2" id="menu-help">
             <li>
                 <h2>Pomoc</h2>
             </li>
+            {if isset($menuItems.help)}
+                {foreach from=$menuItems.help item=foo}
+                    <li><a href="{$foo.route}">{$foo.title}</a></li>
+                    {/foreach}
+
+            {else}
             <li>
                 <a href="/link">Jak dokonać rezerwacji?</a>
             </li>
@@ -28,9 +40,9 @@
             </li>
             <li>
                 <a href="/link">Regulamin</a>
-            </li>    
-        </ul>  
-
+            </li>   
+            {/if}
+        </ul>
         <ul class="footer3">
             <li>
                 <h2>Dane naszej firmy</h2>

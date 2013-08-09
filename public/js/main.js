@@ -1,7 +1,15 @@
 slider = '';
 slider2 = '';
 
-$(document).bind('#bxslider_p-update', function() {
+$(document).ready(function() {
+    var stars = $('.stars').children('div').text();
+    $('.stars').children('div').html(stars.replace(/\*/g, '<img src="/img/star.png">'));
+});
+$(document).bind('text_content_update', function(obj) {
+    var stars = $('.stars').children('div').text();
+    $('.stars').children('div').html(stars.replace(/\*/g, '<img src="/img/star.png">'));
+});
+$(document).bind('slider_gallery_update', function() {
     var obj = $('.galleryslider');
     var div = $('<div>').attr({'class': 'bxslider'});
     var ul = $('<ul>').attr({'class': 'bxslider', 'id': 'bxslider_p'}).appendTo(div);
@@ -12,7 +20,16 @@ $(document).bind('#bxslider_p-update', function() {
         if (newUrl.indexOf('?')) {
             newUrl = newUrl.split('?')[0];
         }
-        var a = $('<a>').attr({'href': newUrl, 'data-medium-image': newUrl, 'alt': 'alt'}).appendTo(li);
+        var newUrl2 = newUrl.split('/');
+        newUrl2[5] = 326;
+        newUrl2[6] = 217;
+        newUrl2 = newUrl2.join('/');
+        
+        var newUrl3 = newUrl.split('/');
+        newUrl3[5] = 640;
+        newUrl3[6] = 480;
+        newUrl3 = newUrl3.join('/');
+        var a = $('<a>').attr({'href': newUrl3, 'data-medium-image': newUrl2, 'alt': 'alt'}).appendTo(li);
         var img = $('<img>').attr({'src': newUrl}).appendTo(a);
     });
     obj.empty();
@@ -25,6 +42,10 @@ $(document).bind('#bxslider_p-update', function() {
         clones: false
     });
 });
+$(document).bind('text_content_update', function() {
+
+});
+
 
 slider = $('#bxslider').bxSlider({
     minSlides: 1,
@@ -34,7 +55,6 @@ slider = $('#bxslider').bxSlider({
     useCSS: false,
     clones: false
 });
-
 slider2 = $('#bxslider_p').bxSlider({
     minSlides: 3,
     maxSlides: 10,
@@ -42,8 +62,6 @@ slider2 = $('#bxslider_p').bxSlider({
     slideMargin: 10,
     clones: false
 });
-
-
 curr_obj = '';
 $('#sidemenu > li:not(.active) a').not('.active').hover(
         function() {
@@ -69,9 +87,6 @@ $('#sidemenu a').click(function() {
 
 
 $("a.gallery").fancybox();
-
-
-
 $('#bxslider_p a:first').addClass('active');
 $('#bxslider_p a').click(function() {
     $('#bxslider_p a.active').removeClass('active');

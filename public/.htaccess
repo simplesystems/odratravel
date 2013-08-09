@@ -8,6 +8,7 @@ RewriteRule ^(.*\.(html))$ index\.php?site=$1    [L]
 RewriteRule ^cadmin/view/(.*)$   /cadmin/index\.php?cadmin=fileManager&page=$1    [L]
 RewriteRule ^files/(.*)$   /cadmin/image\.php?&file=$1    [L]
 RewriteRule ^cadmin/(.*)$ /cadmin/index\.php?cadmin=$1    [L,QSA]
+RewriteRule ^validate/(.*)$ /ep/index\.php?$1    [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)\.(png|gif|jpg|jpeg)$ image.php?path=$1.$2 [L]
 RewriteRule ^strona/(.*)$   cms\.php?&site=$1     [L,QSA]

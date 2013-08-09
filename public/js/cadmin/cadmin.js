@@ -31,8 +31,15 @@ var cadmin = {
                 var content = draw.text(obj);
                 var menu = draw.menu(this.type);
                 content.appendTo('.cadmin_leftcol_sub');
-
+                if(obj.data('reload') === 'yes'){
+                    reload.text(obj);
+                }
                 break;
+            case 'list':
+                var content = draw.list(obj);
+                var menu = draw.menu(this.type);
+                content.appendTo('.cadmin_leftcol_sub');
+                 break;
             case 'image':
                 var content = draw.image(obj);
                 var menu = draw.menu(this.type);

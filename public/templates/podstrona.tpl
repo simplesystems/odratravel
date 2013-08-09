@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 <div class="banner-container">
     <div class="bxslider" id="bxslider_static">
-        <img src="/pictures/banner_1.jpg" alt="alt" />
+        <img class="editable" data-imagey="411" data-imagex="1400" data-type='image' data-md5='{$templatebackground.md5}' data-key='{$templatebackground.key}' src="{$templatebackground.src}"></img>
     </div>
 </div>
 <div class="main-container">
@@ -10,28 +10,38 @@
 
             <form class="product_wrapper">
                 <div class="product_info">
-                    <h1> <div class="editable"  data-type='text' data-md5='{$templatetitle.md5}' data-key='{$templatetitle.key}'>{$templatetitle.value}</div></h1>
+                    <h1> <div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatetitle.md5}' data-key='{$templatetitle.key}'>{$templatetitle.value}</div></h1>
 
                     <div class="stars">
-                        <i>*</i><i>*</i><i>*</i><i>*</i><i>*</i><i>*</i>
+                        <div class="editable" data-reload="yes"  data-textarea='yes' data-type='text' data-md5='{$templatestars.md5}' data-key='{$templatestars.key}'>{$templatestars.value}</div>
                     </div>
 
                     <a  href="javascript:window.print();" class="print"></a>
 
-                    <span class="code">kod oferty: <div class="editable"  data-type='text' data-md5='{$templatecode.md5}' data-key='{$templatecode.key}'>{$templatecode.value}</div></span>
+                    <span class="code">kod oferty: <div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatecode.md5}' data-key='{$templatecode.key}'>{$templatecode.value}</div></span>
 
-                    <ul class="dictionary ">
-                        <li><b>miejsce:</b><div class="editable"  data-type='text' data-md5='{$templatemenu0.md5}' data-key='{$templatemenu0.key}'>{$templatemenu0.value}</div></li>
-                        <li><b>długość pobytu:</b><div class="editable"  data-type='text' data-md5='{$templatemenu1.md5}' data-key='{$templatemenu1.key}'>{$templatemenu1.value}</div></li>
-                        <li><b>typ dojazdu:</b><div class="editable"  data-type='text' data-md5='{$templatemenu2.md5}' data-key='{$templatemenu2.key}'>{$templatemenu2.value}</div></li>
-                        <li><b>data wyjazdu:</b><div class="editable"  data-type='text' data-md5='{$templatemenu3.md5}' data-key='{$templatemenu3.key}'>{$templatemenu3.value}</div></li>
-                        <li><b>data powrotu:</b><div class="editable"  data-type='text' data-md5='{$templatemenu4.md5}' data-key='{$templatemenu4.key}'>{$templatemenu4.value}</div></li>
-                        <li><b>wyżywienie:</b><div class="editable"  data-type='text' data-md5='{$templatemenu5.md5}' data-key='{$templatemenu5.key}'>{$templatemenu5.value}</div></li>
-                    </ul>  
+                    <table class="editable dictionary "  data-type='list' data-cell="2" data-rows="6" data-md5='' data-key=''>
+                    {foreach from=$templatelist.table item=table}
+                        <tr>
+                            {foreach from=$table item=td}
+                                <td>{$td}</td>
+                            {/foreach}
+                        </tr>
+                    {/foreach}
+                    </table>
+
+{*                    <ul class="dictionary ">
+                        <li><b>miejsce:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu0.md5}' data-key='{$templatemenu0.key}'>{$templatemenu0.value}</div></li>
+                        <li><b>długość pobytu:</b><div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatemenu1.md5}' data-key='{$templatemenu1.key}'>{$templatemenu1.value}</div></li>
+                        <li><b>typ dojazdu:</b><div class="editable" data-textarea='yes' data-type='text' data-md5='{$templatemenu2.md5}' data-key='{$templatemenu2.key}'>{$templatemenu2.value}</div></li>
+                        <li><b>data wyjazdu:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu3.md5}' data-key='{$templatemenu3.key}'>{$templatemenu3.value}</div></li>
+                        <li><b>data powrotu:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu4.md5}' data-key='{$templatemenu4.key}'>{$templatemenu4.value}</div></li>
+                        <li><b>wyżywienie:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu5.md5}' data-key='{$templatemenu5.key}'>{$templatemenu5.value}</div></li>
+                    </ul>  *}
 
                     <div class="price">
-                        <del><div class="editable"  data-type='text' data-md5='{$templatepricedel.md5}' data-key='{$templatepricedel.key}'>{$templatepricedel.value}</div></del>
-                        <div class="value"><small>cena:</small><div class="editable"  data-type='text' data-md5='{$templateprice.md5}' data-key='{$templateprice.key}'>{$templateprice.value}</div></div>
+                        <del><div class="editable"  data-type='text'data-textarea='yes'  data-md5='{$templatepricedel.md5}' data-key='{$templatepricedel.key}'>{$templatepricedel.value}</div></del>
+                        <div class="value"><small>cena:</small><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templateprice.md5}' data-key='{$templateprice.key}'>{$templateprice.value}</div></div>
                     </div> 
                     <button class="btn" type="submit">zarezerwuj</button>
                 </div>
@@ -47,7 +57,7 @@
                             <ul class="bxslider" id="bxslider_p">
                                 {foreach from=$templategallery.value item=imgsrc}
                                     <li>
-                                        <a href="{$imgsrc.src}" data-medium-image="{$imgsrc.src}">
+                                        <a href="{$imgsrc.src3}" data-medium-image="{$imgsrc.src2}">
                                             <img src="{$imgsrc.src}" alt="alt" />
                                         </a>
                                     </li>
@@ -64,7 +74,7 @@
                 </p>
 
                 <p>
-                    <img class="editable left" data-imagey="220" data-imagex="180" data-type='image' data-md5='{$templateimage.md5}' data-key='{$templateimage.key}' src="{$templateimage.src}"></img>
+                    <img class="editable left" data-imagex="220" data-imagey="148" data-type='image' data-md5='{$templateimage.md5}' data-key='{$templateimage.key}' src="{$templateimage.src}"></img>
                 <div class="editable"  data-type='text' data-md5='{$templatetext1.md5}' data-key='{$templatetext1.key}'>{$templatetext1.value}</div>
 
                 </p>
@@ -82,7 +92,7 @@
 
                 <p>
 
-                    <img class="editable left" data-imagey="220" data-imagex="180" data-type='image' data-md5='{$templateimage2.md5}' data-key='{$templateimage2.key}' src="{$templateimage2.src}"></img>
+                    <img class="editable left" data-imagex="220" data-imagey="148" data-type='image' data-md5='{$templateimage2.md5}' data-key='{$templateimage2.key}' src="{$templateimage2.src}"></img>
                 <div class="editable"  data-type='text' data-md5='{$templatetext4.md5}' data-key='{$templatetext4.key}'>{$templatetext4.value}</div>
 
                 </p>

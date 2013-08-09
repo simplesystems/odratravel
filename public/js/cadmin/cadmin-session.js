@@ -8,6 +8,7 @@ var session = {
         var imagecontent;
         var generalcontent;
         var currentcontent;
+        var listcontent;
         var settingsCon;
 
         var content = $('.cadmin_leftcol_sub').children();
@@ -15,9 +16,14 @@ var session = {
         var obj = cadmin.getObject();
         switch (selected) {
             case 'text':
-                $('textarea').html(tinyMCE.activeEditor.getContent());
-                tinyMCE.activeEditor.remove();
+                if (!(obj.data('textarea') == 'yes')) {
+                    $('textarea').html(tinyMCE.activeEditor.getContent());
+                    tinyMCE.activeEditor.remove();
+                }
                 this.textcontent = content;
+                break;
+            case 'list':
+                this.listcontent = content;
                 break;
             case 'image':
                 this.imagecontent = content;
@@ -56,6 +62,13 @@ var session = {
                 }
                 else {
                     return draw.text(obj);
+                }
+            case 'list':
+                if (this.listcontent !== undefined) {
+                    return this.listcontent;
+                }
+                else {
+                    return draw.list(obj);
                 }
 
                 break;

@@ -1,251 +1,258 @@
 /* Reset */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,a {margin:0;padding:0}
+.cadmin_panel body,.cadmin_panel div,.cadmin_panel dl,.cadmin_panel dt,.cadmin_panel dd,.cadmin_panel ul,.cadmin_panel ol,.cadmin_panel li,.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel .cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6,.cadmin_panel pre,.cadmin_panel form,.cadmin_panel fieldset,.cadmin_panel input,.cadmin_panel textarea,.cadmin_panel p,.cadmin_panel blockquote,.cadmin_panel th,.cadmin_panel td,.cadmin_panel a {margin:0;padding:0; color: #646464;}
 
-table {border-collapse:collapse;border-spacing:0}
-fieldset,img {border:0}
-address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal}
-ol,ul {list-style:none}
-caption,th {text-align:left}
-h1,h2,h3,h4,h5,h6 {font-size:100%}
-q:before,q:after {content:''}
-abbr,acronym {border:0}
+.cadmin_panel table {border-collapse:collapse;border-spacing:0}
+.cadmin_panel fieldset,.cadmin_panel img {border:0}
+.cadmin_panel address,.cadmin_panel caption,.cadmin_panel cite,.cadmin_panel code,.cadmin_panel dfn,.cadmin_panel em,.cadmin_panel strong,.cadmin_panel th,.cadmin_panel var {font-style:normal;font-weight:normal}
+.cadmin_panel ol,.cadmin_panel ul {list-style:none;padding:0px}
+.cadmin_panel caption,.cadmin_panel th {text-align:left}
+.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6 {font-size:100%}
+.cadmin_panel q:before,.cadmin_panel q:after {content:''}
+.cadmin_panel abbr,.cadmin_panel acronym {border:0}
 
-body {text-align:center}
-p {text-align: justify}
-a {color:#020202; text-decoration:underline; outline:none; border:0}
-img {border:0}
-a:hover {color:#000; outline:none}
-div {text-align:left;}
-h2 {font-size:18px;color:#020202}
+.cadmin_panel body {text-align:center}
+.cadmin_panel p {text-align: justify}
+.cadmin_panel a {color:#020202; text-decoration:underline; outline:none; border:0}
+.cadmin_panel img {border:0}
+.cadmin_panel a:hover {color:#000; outline:none}
+.cadmin_panel div {text-align:left;}
+.cadmin_panel h2 {font-size:18px;color:#020202}
 
 div.cadmin_panel {width:100%;z-index:10000;position:fixed;left:0;top:0;font-family:Arial;font-size:12px;color:#646464;background:url('/img/cadmin/bg.gif') center 0 no-repeat rgba(232,232,232,0.9)}
-div.cadmin_bar {width:100%;z-index:10001;position:fixed;height:40px;top:0;width:100%;background:url('/img/cadmin/bar.gif') 0 0 repeat-x}
-div.cadmin_header {width:980px;margin:0 auto;background:url('/img/cadmin/notice.gif') 10px 9px no-repeat;height:40px;color:#e3e3e3;line-height:38px}
-span.cadmin_bar_title {margin:0 0 0 42px;float:left}
-span.cadmin_bar_title b {color:#82ae17}
-a.up {float:right;color:#e3e3e3;font-weight:bold;text-transform:uppercase;font-size:12px;text-decoration:none}
-a.up:hover {color:#82ae17}
-a.logout {background:url('/img/cadmin/logout.gif') 0 9px no-repeat;padding-left:25px}
-a.settings {background:url('/img/cadmin/settings.gif') 0 8px no-repeat;padding-left:28px;margin-right:25px}
+.cadmin_panel div.cadmin_bar {width:100%;z-index:10001;position:fixed;height:40px;top:0;width:100%;background:url('/img/cadmin/bar.gif') 0 0 repeat-x}
+.cadmin_panel div.cadmin_header {width:980px;margin:0 auto;background:url('/img/cadmin/notice.gif') 10px 9px no-repeat;height:40px;color:#e3e3e3;line-height:38px}
+.cadmin_panel span.cadmin_bar_title {margin:0 0 0 42px;float:left}
+.cadmin_panel span.cadmin_bar_title b {color:#82ae17}
+.cadmin_panel a.up {float:right;color:#e3e3e3;font-weight:bold;text-transform:uppercase;font-size:12px;text-decoration:none}
+.cadmin_panel a.up:hover {color:#82ae17}
+.cadmin_panel a.logout {background:url('/img/cadmin/logout.gif') 0 9px no-repeat;padding-left:25px}
+.cadmin_panel a.settings {background:url('/img/cadmin/settings.gif') 0 8px no-repeat;padding-left:28px;margin-right:25px}
 
-div.cadmin_content {width:980px;margin:40px auto 40px;overflow:hidden}
+.cadmin_panel div.cadmin_content {width:980px;margin:40px auto 40px;overflow:hidden}
 
-div.cadmin_top {height:131px}
-div.cadmin_top img {margin-top:12px;float:left;margin-left:10px}
-div.cadmin_top h2 {font-size:26px;color:#a8a8a8;float:left;padding-left:33px;margin:38px 0 0 32px;height:52px;line-height:52px;border-left:1px solid #d3d3d3;font-weight:normal}
+.cadmin_panel div.cadmin_top {height:131px}
+.cadmin_panel div.cadmin_top img {margin-top:12px;float:left;margin-left:10px}
+.cadmin_panel div.cadmin_top h2 {font-size:26px;color:#a8a8a8;float:left;padding-left:33px;margin:38px 0 0 32px;height:52px;line-height:52px;border-left:1px solid #d3d3d3;font-weight:normal}
 
-div.cadmin_form {width:980px}
+.cadmin_panel div.cadmin_form {width:980px}
 
-div.cadmin_leftcol {width:780px;background:#fff;float:left;box-shadow:0 2px 4px rgba(0, 0, 0, 0.15)}
-div.cadmin_leftcol_sub {padding:26px;border-color:#d3d3d3 #fff #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;overflow:hidden}
-div.cadmin_boxheader {border-bottom:1px solid #dadada;width:720px;float:left;margin-bottom:12px}
-div.cadmin_boxheader h3 {font-size:16px;padding-bottom:12px;float:left}
-a.delete_change {color:#c60000;text-decoration:underline;padding-right:19px;background:url('/img/cadmin/x.gif') right center no-repeat;float:right;font-size:11px}
-a.text_restore {color:#c60000;text-decoration:underline;padding-left:19px;background:url('/img/cadmin/restore.png') left center no-repeat;float:left;font-size:11px}
-div.tinymce{padding-top: 65px}
-div.tinymce_option {margin-top:10px;overflow:hidden}
+.cadmin_panel div.cadmin_leftcol {width:780px;background:#fff;float:left;box-shadow:0 2px 4px rgba(0, 0, 0, 0.15)}
+.cadmin_panel div.cadmin_leftcol_sub {padding:26px;border-color:#d3d3d3 #fff #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;overflow:hidden}
+.cadmin_panel div.cadmin_boxheader {border-bottom:1px solid #dadada;width:720px;float:left;margin-bottom:12px}
+.cadmin_panel div.cadmin_boxheader h3 {font-size:16px;padding-bottom:12px;float:left}
+.cadmin_panel a.delete_change {color:#c60000;text-decoration:underline;padding-right:19px;background:url('/img/cadmin/x.gif') right center no-repeat;float:right;font-size:11px}
+.cadmin_panel a.text_restore {color:#c60000;text-decoration:underline;padding-left:19px;background:url('/img/cadmin/restore.png') left center no-repeat;float:left;font-size:11px}
+.cadmin_panel div.tinymce{padding-top: 65px}
+.cadmin_panel div.tinymce_option {margin-top:10px;overflow:hidden}
 
-span.text_characters {float:right;font-size:11px}
+.cadmin_panel span.text_characters {float:right;font-size:11px}
 
-div.cadmin_rightcol {width:200px;float:right}
-div.cadmin_rightcol li {border-bottom:1px solid #cdcdcd}
-div.cadmin_rightcol li  small {font-size:12px}
-div.cadmin_rightcol li a {color:#646464;text-decoration:none;font-size:16px;height:65px;display:block;padding:25px 0 0 20px}
-div.cadmin_rightcol li span {font-weight:bold;display:block}
-a.menu {opacity:0.6;filter: alpha(opacity=60)}
-a.menu:hover {opacity:1;filter: alpha(opacity=100)}
-div.cadmin_rightcol li.last {border-bottom:0 !important}
-div.cadmin_rightcol li.active {box-shadow:2px 2px 4px rgba(0, 0, 0, 0.15);background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #fff;border-style:solid;border-width:1px;position:relative;top:-1px}
-div.cadmin_rightcol li.active a.menu {opacity:1 !important;filter: alpha(opacity=100) !important}
-a.text {background:url('/img/cadmin/m-text.png') 142px center no-repeat}
-a.img {background:url('/img/cadmin/m-img.png') 141px center no-repeat}
-a.video {background:url('/img/cadmin/m-video.png') 141px center no-repeat}
-a.history {background:url('/img/cadmin/m-history.png') 142px center no-repeat}
-a.import {background:url('/img/cadmin/m-import.png') 140px center no-repeat}
-a.export {background:url('/img/cadmin/m-export.png') 148px center no-repeat}
-a.help {background:url('/img/cadmin/m-help.png') 148px center no-repeat}
-a.exit {background:url('/img/cadmin/m-exit.png') 148px center no-repeat}
-a.general {background:url('/img/cadmin/m-settings.png') 148px center no-repeat}
-a.current {background:url('/img/cadmin/m-settings.png') 148px center no-repeat}
-a.summary {background:url('/img/cadmin/m-export.png') 148px center no-repeat}
-a.pages {background:url('/img/cadmin/m-import.png') 148px center no-repeat}
-a.link:hover {text-decoration:none}
+.cadmin_panel div.cadmin_rightcol {width:200px;float:right}
+.cadmin_panel div.cadmin_rightcol li {border-bottom:1px solid #cdcdcd}
+.cadmin_panel div.cadmin_rightcol li  small {font-size:12px}
+.cadmin_panel div.cadmin_rightcol li a {color:#646464;text-decoration:none;font-size:16px;height:65px;display:block;padding:25px 0 0 20px}
+.cadmin_panel div.cadmin_rightcol li span {font-weight:bold;display:block}
+.cadmin_panel a.menu {opacity:0.6;filter: alpha(opacity=60)}
+.cadmin_panel a.menu:hover {opacity:1;filter: alpha(opacity=100)}
+.cadmin_panel div.cadmin_rightcol li.last {border-bottom:0 !important}
+.cadmin_panel div.cadmin_rightcol li.active {box-shadow:2px 2px 4px rgba(0, 0, 0, 0.15);background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #fff;border-style:solid;border-width:1px;position:relative;top:-1px}
+.cadmin_panel div.cadmin_rightcol li.active a.menu {opacity:1 !important;filter: alpha(opacity=100) !important}
+.cadmin_panel a.text {background:url('/img/cadmin/m-text.png') 142px center no-repeat}
+.cadmin_panel a.img {background:url('/img/cadmin/m-img.png') 141px center no-repeat}
+.cadmin_panel a.video {background:url('/img/cadmin/m-video.png') 141px center no-repeat}
+.cadmin_panel a.history {background:url('/img/cadmin/m-history.png') 142px center no-repeat}
+.cadmin_panel a.import {background:url('/img/cadmin/m-import.png') 140px center no-repeat}
+.cadmin_panel a.export {background:url('/img/cadmin/m-export.png') 148px center no-repeat}
+.cadmin_panel a.help {background:url('/img/cadmin/m-help.png') 148px center no-repeat}
+.cadmin_panel a.exit {background:url('/img/cadmin/m-exit.png') 148px center no-repeat}
+.cadmin_panel a.general {background:url('/img/cadmin/m-settings.png') 148px center no-repeat}
+.cadmin_panel a.current {background:url('/img/cadmin/m-settings.png') 148px center no-repeat}
+.cadmin_panel a.summary {background:url('/img/cadmin/m-export.png') 148px center no-repeat}
+.cadmin_panel a.pages {background:url('/img/cadmin/m-import.png') 148px center no-repeat}
+.cadmin_panel a.link:hover {text-decoration:none}
 
 
-div.cadmin_upload {clear:both;float:left;margin:20px 0}
-a.button {font-size:16px;font-weight:bold;padding:8px 15px;margin-right:10px;text-decoration:none;display:block;float:left}
-a.add {background:#b2b2b2;color:#fff;border:2px solid #a4a4a4}
-a.add:hover {cursor: pointer;background:#646464;border:2px solid #646464}
-a.upload {color:#646464;background:url('/img/cadmin/upload.gif') 15px center no-repeat #fff;padding-left:40px;border:2px solid #a4a4a4}
+.cadmin_panel div.cadmin_upload {clear:both;float:left;margin:20px 0}
+.cadmin_panel a.button {font-size:16px;font-weight:bold;padding:8px 15px;margin-right:10px;text-decoration:none;display:block;float:left}
+.cadmin_panel a.add {background:#b2b2b2;color:#fff;border:2px solid #a4a4a4}
+.cadmin_panel a.add:hover {cursor: pointer;background:#646464;border:2px solid #646464}
+.cadmin_panel a.upload {color:#646464;background:url('/img/cadmin/upload.gif') 15px center no-repeat #fff;padding-left:40px;border:2px solid #a4a4a4}
 
-div.cadmin_buttons {border-top:1px solid #dadada;width:728px;float:left;padding-top:20px}
-a.save {float:left;border:2px solid #000;color:#fff;padding:8px 30px;}
-a.save {background: #070707} /* Old browsers */
-a.save {background:-moz-linear-gradient(center top , #3e3e3e 0%, #070707 100%) repeat scroll 0 0 transparent;} /* FF3.6+ */
-a.save {background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#070707), color-stop(100%,#3e3e3e))} /* Chrome,Safari4+ */
-a.save {background: -webkit-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Chrome10+,Safari5.1+ */
-a.save {background: -o-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Opera 11.10+ */
-a.save {background: -ms-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* IE10+ */
-a.save {background: linear-gradient(to bottom, #070707 0%,#3e3e3e 100%)} /* W3C */
-a.save {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#070707', endColorstr='#3e3e3e',GradientType=0 )} /* IE6-9 */
-a.save:hover {background: #3e3e3e} /* Old browsers */
-a.save:hover {background: -moz-linear-gradient(center top , #070707 0%, #3e3e3e 100%) repeat scroll 0 0 transparent} /* FF3.6+ */
-a.save:hover {background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3e3e), color-stop(110%,#070707))} /* Chrome,Safari4+ */
-a.save:hover {background:-webkit-linear-gradient(top, #3e3e3e 0%, #070707 100%)} /* Chrome10+,Safari5.1+ */
-a.save:hover {background:-o-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* Opera 11.10+ */
-a.save:hover {background:-ms-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* IE10+ */
-a.save:hover {background: linear-gradient(to bottom,#3e3e3e 0%, #070707 100%)} /* W3C */
-a.save:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#070707',GradientType=0)} /* IE6-9 */
-a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -moz-linear-gradient(center top , #94b81a 0%, #6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}/* FF3.6+ */
-a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, #94b81a, repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px} /* Old browsers */
-a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#94b81a), color-stop(100%,#6a9f13));color:#fff;padding:8px 25px 8px 45px} /* Chrome,Safari4+ */
-a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -webkit-linear-gradient(top, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}/* Chrome10+,Safari5.1+ */
-a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -o-linear-gradient(top, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px} /* Opera 11.10+ */
-a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -ms-linear-gradient(top, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}/* IE10+ */
-a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, linear-gradient(to bottom, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}
-a.public {float:right;border:2px solid #6a9f13;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94b81a', endColorstr='#6a9f13',GradientType=0 ); /* IE6-9 */;color:#fff;padding:8px 25px 8px 45px}/* W3C */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -moz-linear-gradient(center top , #6a9f13 0%, #94b81a 100%) repeat scroll 0 0 transparent}/* FF3.6+ */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat,  #6a9f13 repeat scroll 0 0 transparent} /* Old browsers */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat,-webkit-gradient(linear, left top, left bottom, color-stop(0%,#6a9f13), color-stop(100%,#94b81a)) repeat scroll 0 0 transparent}/* Chrome,Safari4+ */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -webkit-linear-gradient(top, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent}/* Chrome10+,Safari5.1+ */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -o-linear-gradient(top, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent}/* Opera 11.10+ */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -ms-linear-gradient(top, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent}/* IE10+ */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, linear-gradient(to bottom, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent} /* W3C */
-a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -moz-linear-gradient(center top , #6a9f13 0%, #94b81a 100%) repeat scroll 0 0 transparent}
-a.public:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a9f13', endColorstr='#94b81a',GradientType=0 )}/* IE6-9 */
-a.customButton {float:left;border:2px solid #000;color:#fff;padding:8px 30px;}
-a.customButton {background: #070707} /* Old browsers */
-a.customButton {background:-moz-linear-gradient(center top , #3e3e3e 0%, #070707 100%) repeat scroll 0 0 transparent;} /* FF3.6+ */
-a.customButton {background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#070707), color-stop(100%,#3e3e3e))} /* Chrome,Safari4+ */
-a.customButton {background: -webkit-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Chrome10+,Safari5.1+ */
-a.customButton {background: -o-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Opera 11.10+ */
-a.customButton {background: -ms-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* IE10+ */
-a.customButton {background: linear-gradient(to bottom, #070707 0%,#3e3e3e 100%)} /* W3C */
-a.customButton {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#070707', endColorstr='#3e3e3e',GradientType=0 )} /* IE6-9 */
-a.customButton:hover {background: #3e3e3e} /* Old browsers */
-a.customButton:hover {background: -moz-linear-gradient(center top , #070707 0%, #3e3e3e 100%) repeat scroll 0 0 transparent} /* FF3.6+ */
-a.customButton:hover {background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3e3e), color-stop(110%,#070707))} /* Chrome,Safari4+ */
-a.customButton:hover {background:-webkit-linear-gradient(top, #3e3e3e 0%, #070707 100%)} /* Chrome10+,Safari5.1+ */
-a.customButton:hover {background:-o-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* Opera 11.10+ */
-a.customButton:hover {background:-ms-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* IE10+ */
-a.customButton:hover {background: linear-gradient(to bottom,#3e3e3e 0%, #070707 100%)} /* W3C */
-a.customButton:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#070707',GradientType=0)} /* IE6-9 */
+.cadmin_panel div.cadmin_buttons {border-top:1px solid #dadada;width:728px;float:left;padding-top:20px}
+.cadmin_panel a.save {float:left;border:2px solid #000;color:#fff;padding:8px 30px;}
+.cadmin_panel a.save {background: #070707} /* Old browsers */
+.cadmin_panel a.save {background:-moz-linear-gradient(center top , #3e3e3e 0%, #070707 100%) repeat scroll 0 0 transparent;} /* FF3.6+ */
+.cadmin_panel a.save {background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#070707), color-stop(100%,#3e3e3e))} /* Chrome,Safari4+ */
+.cadmin_panel a.save {background: -webkit-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Chrome10+,Safari5.1+ */
+.cadmin_panel a.save {background: -o-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Opera 11.10+ */
+.cadmin_panel a.save {background: -ms-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* IE10+ */
+.cadmin_panel a.save {background: linear-gradient(to bottom, #070707 0%,#3e3e3e 100%)} /* W3C */
+.cadmin_panel a.save {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#070707', endColorstr='#3e3e3e',GradientType=0 )} /* IE6-9 */
+.cadmin_panel a.save:hover {background: #3e3e3e} /* Old browsers */
+.cadmin_panel a.save:hover {background: -moz-linear-gradient(center top , #070707 0%, #3e3e3e 100%) repeat scroll 0 0 transparent} /* FF3.6+ */
+.cadmin_panel a.save:hover {background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3e3e), color-stop(110%,#070707))} /* Chrome,Safari4+ */
+.cadmin_panel a.save:hover {background:-webkit-linear-gradient(top, #3e3e3e 0%, #070707 100%)} /* Chrome10+,Safari5.1+ */
+.cadmin_panel a.save:hover {background:-o-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* Opera 11.10+ */
+.cadmin_panel a.save:hover {background:-ms-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* IE10+ */
+.cadmin_panel a.save:hover {background: linear-gradient(to bottom,#3e3e3e 0%, #070707 100%)} /* W3C */
+.cadmin_panel a.save:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#070707',GradientType=0)} /* IE6-9 */
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -moz-linear-gradient(center top , #94b81a 0%, #6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}/* FF3.6+ */
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, #94b81a, repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px} /* Old browsers */
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#94b81a), color-stop(100%,#6a9f13));color:#fff;padding:8px 25px 8px 45px} /* Chrome,Safari4+ */
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -webkit-linear-gradient(top, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}/* Chrome10+,Safari5.1+ */
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -o-linear-gradient(top, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px} /* Opera 11.10+ */
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, -ms-linear-gradient(top, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}/* IE10+ */
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;background:url('/img/cadmin/refresh.png') 15px center no-repeat, linear-gradient(to bottom, #94b81a 0%,#6a9f13 100%) repeat scroll 0 0 transparent;color:#fff;padding:8px 25px 8px 45px}
+.cadmin_panel a.public {float:right;border:2px solid #6a9f13;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94b81a', endColorstr='#6a9f13',GradientType=0 ); /* IE6-9 */;color:#fff;padding:8px 25px 8px 45px}/* W3C */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -moz-linear-gradient(center top , #6a9f13 0%, #94b81a 100%) repeat scroll 0 0 transparent}/* FF3.6+ */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat,  #6a9f13 repeat scroll 0 0 transparent} /* Old browsers */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat,-webkit-gradient(linear, left top, left bottom, color-stop(0%,#6a9f13), color-stop(100%,#94b81a)) repeat scroll 0 0 transparent}/* Chrome,Safari4+ */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -webkit-linear-gradient(top, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent}/* Chrome10+,Safari5.1+ */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -o-linear-gradient(top, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent}/* Opera 11.10+ */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -ms-linear-gradient(top, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent}/* IE10+ */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, linear-gradient(to bottom, #6a9f13 0%,#94b81a 100%) repeat scroll 0 0 transparent} /* W3C */
+.cadmin_panel a.public:hover {background:url('/img/cadmin/refresh.png') 15px center no-repeat, -moz-linear-gradient(center top , #6a9f13 0%, #94b81a 100%) repeat scroll 0 0 transparent}
+.cadmin_panel a.public:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a9f13', endColorstr='#94b81a',GradientType=0 )}/* IE6-9 */
+.cadmin_panel a.customButton {float:left;border:2px solid #000;color:#fff;padding:8px 30px;}
+.cadmin_panel a.customButton {background: #070707} /* Old browsers */
+.cadmin_panel a.customButton {background:-moz-linear-gradient(center top , #3e3e3e 0%, #070707 100%) repeat scroll 0 0 transparent;} /* FF3.6+ */
+.cadmin_panel a.customButton {background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#070707), color-stop(100%,#3e3e3e))} /* Chrome,Safari4+ */
+.cadmin_panel a.customButton {background: -webkit-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Chrome10+,Safari5.1+ */
+.cadmin_panel a.customButton {background: -o-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* Opera 11.10+ */
+.cadmin_panel a.customButton {background: -ms-linear-gradient(top, #070707 0%,#3e3e3e 100%)} /* IE10+ */
+.cadmin_panel a.customButton {background: linear-gradient(to bottom, #070707 0%,#3e3e3e 100%)} /* W3C */
+.cadmin_panel a.customButton {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#070707', endColorstr='#3e3e3e',GradientType=0 )} /* IE6-9 */
+.cadmin_panel a.customButton:hover {background: #3e3e3e} /* Old browsers */
+.cadmin_panel a.customButton:hover {background: -moz-linear-gradient(center top , #070707 0%, #3e3e3e 100%) repeat scroll 0 0 transparent} /* FF3.6+ */
+.cadmin_panel a.customButton:hover {background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#3e3e3e), color-stop(110%,#070707))} /* Chrome,Safari4+ */
+.cadmin_panel a.customButton:hover {background:-webkit-linear-gradient(top, #3e3e3e 0%, #070707 100%)} /* Chrome10+,Safari5.1+ */
+.cadmin_panel a.customButton:hover {background:-o-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* Opera 11.10+ */
+.cadmin_panel a.customButton:hover {background:-ms-linear-gradient(top, #3e3e3e 0%,#070707 100%)} /* IE10+ */
+.cadmin_panel a.customButton:hover {background: linear-gradient(to bottom,#3e3e3e 0%, #070707 100%)} /* W3C */
+.cadmin_panel a.customButton:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#070707',GradientType=0)} /* IE6-9 */
 
-div.cadmin_img p {margin-bottom:15px}
-div.cadmin_history ol {list-style-type:decimal;margin-left:25px;margin-right:25px}
-div.cadmin_history ol li {float:left;width:100%;border-bottom:1px solid #ebebeb;padding:12px 0}
-a.li {float:right;margin-left:10px;color:#82AE17}
-a.li:hover {text-decoration:none}
-a.active {font-weight:bold;text-decoration:none}
-div.preview {display:none;background:#eef6db;font-size:11px;margin-top:10px;padding:10px;max-height: 300px;overflow-y: auto}
-div.active2 {display:block !important}
+.cadmin_panel div.cadmin_img p {margin-bottom:15px}
+.cadmin_panel div.cadmin_history ol {list-style-type:decimal;margin-left:25px;margin-right:25px}
+.cadmin_panel div.cadmin_history ol li {float:left;width:100%;border-bottom:1px solid #ebebeb;padding:12px 0}
+.cadmin_panel a.li {float:right;margin-left:10px;color:#82AE17}
+.cadmin_panel a.li:hover {text-decoration:none}
+.cadmin_panel a.active {font-weight:bold;text-decoration:none}
+.cadmin_panel div.preview {display:none;background:#eef6db;font-size:11px;margin-top:10px;padding:10px;max-height: 300px;overflow-y: auto}
+.cadmin_panel div.active2 {display:block !important}
 .cpadminover{ Opacity:0.4;filter:alpha(opacity=40); /* For IE8 and earlier */}
-div.editimagebox{overflow:hidden; min-height:200px ;width: 350px;float: left}
-div.editimagebox2{overflow:hidden;  min-height:200px ;width: 350px;float:left}
+.cadmin_panel div.editimagebox{overflow:hidden; min-height:200px ;width: 350px;float: left}
+.cadmin_panel div.editimagebox2{overflow:hidden;  min-height:200px ;width: 350px;float:left}
 /*
 div.editimage {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 div.editimage2 {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 */
-div.attachments {width: 700px;float: left}
-div.uploader{height: 230px;float: left; width: 700px}
-li.dropbox{width: 100% ;display: block;text-align: center; display:block }
-ul.connectedSortable{float: left; list-style-type: none;  margin: 0 10px 0 0;  padding: 0 0 2.5em -1px; min-height: 180px; width: 364px}
-#uploadedtext{text-align: center}
-div.cadmin_manager {background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;width:980px;margin-left:-490px;overflow:hidden;z-index: 103;position:absolute;top: 160px;left:50%;min-height:200px}
-div.cadmin_boxheader_manager {padding: 4px;border-bottom:1px solid #dadada;width:980px;float:left;margin-bottom:12px}
-div.cadmin_editor {background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;width:980px;margin-left:-490px;overflow:hidden;z-index: 103;position:absolute;top: 160px;left:50%;min-height:200px}
-div.cadmin_boxheader_editor {padding: 4px;border-bottom:1px solid #dadada;width:980px;float:left;margin-bottom:12px}
+.cadmin_panel div.attachments {width: 700px;float: left}
+.cadmin_panel div.uploader{height: 230px;float: left; width: 700px}
+.cadmin_panel li.dropbox{width: 100% ;display: block;text-align: center; display:block }
+.cadmin_panel ul.connectedSortable{float: left; list-style-type: none;  margin: 0 10px 0 0;  padding: 0 0 2.5em -1px; min-height: 180px; width: 364px}
+.cadmin_panel #uploadedtext{text-align: center}
+.cadmin_panel div.cadmin_manager {background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;width:980px;margin-left:-490px;overflow:hidden;z-index: 103;position:absolute;top: 160px;left:50%;min-height:200px}
+.cadmin_panel div.cadmin_boxheader_manager {padding: 4px;border-bottom:1px solid #dadada;width:980px;float:left;margin-bottom:12px}
+.cadmin_panel div.cadmin_editor {background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;width:980px;margin-left:-490px;overflow:hidden;z-index: 103;position:absolute;top: 160px;left:50%;min-height:200px}
+.cadmin_panel div.cadmin_boxheader_editor {padding: 4px;border-bottom:1px solid #dadada;width:980px;float:left;margin-bottom:12px}
 .baractive{padding-top: 40px}
-.imgrow{widht: 100%; float:left}
-.imgbox{float:left;width: 280px;padding: 10px;width: 280px;text-align: center;position: relative}
-.close {z-index: 300;cursor: pointer;position:absolute;right: 1px; top: 1px; width:20px; color: black; padding-left: 3px; padding-top: 1px;font-size:16px; font-weight:bold;}
-.filemanagerfiles{ }
-.selected{border: 5px solid red;Opacity:0.4;filter:alpha(opacity=40)}
-.unselected{border:  5px solid white;}
-.toosmall{Opacity:0.6;filter:alpha(opacity=40); position: relative}
-div.inputdiv {border: 1px solid #CCCCCC;margin: 0 !important;padding: 5px !important;overflow: auto !important; min-height: 36px}
-div.inputdiv span.tag {float:left;background: #22C0CB !important;color: #fff !important; border: 0 !important; padding: 0px 6px !important;margin-bottom: 4px !important;margin: 1px 1px 1px 1px;}
-div.inputdiv input {padding: 3px 6px !important;width: 80px;border: 0px}
-div.inputdiv span.tag a { color: #fff !important;}
-div.inputdiv .not_valid {color: #fff !important;padding: 3px 6px !important;background-color: #e02222 !important;}
-div.cadmin_filter{height:80px}
-#tags{display:inline-block;border :0px ;padding-left: 20px}
-.videobtn{cursor: pointer}
-.toEdit{cursor: pointer;color:#4bb1cf;display: block}
+.cadmin_panel .imgrow{widht: 100%; float:left}
+.cadmin_panel .imgbox{float:left;width: 280px;padding: 10px;width: 280px;text-align: center;position: relative}
+.cadmin_panel .close {z-index: 300;cursor: pointer;position:absolute;right: 1px; top: 1px; width:20px; color: black; padding-left: 3px; padding-top: 1px;font-size:16px; font-weight:bold;}
+.cadmin_panel .filemanagerfiles{ }
+.cadmin_panel .selected{border: 5px solid red;Opacity:0.4;filter:alpha(opacity=40)}
+.cadmin_panel .unselected{border:  5px solid white;}
+.cadmin_panel .toosmall{Opacity:0.6;filter:alpha(opacity=40); position: relative}
+.cadmin_panel div.inputdiv {border: 1px solid #CCCCCC;margin: 0 !important;padding: 5px !important;overflow: auto !important; min-height: 36px}
+.cadmin_panel div.inputdiv span.tag {float:left;background: #22C0CB !important;color: #fff !important; border: 0 !important; padding: 0px 6px !important;margin-bottom: 4px !important;margin: 1px 1px 1px 1px;}
+.cadmin_panel div.inputdiv input {padding: 3px 6px !important;width: 80px;border: 0px}
+.cadmin_panel div.inputdiv span.tag a { color: #fff !important;}
+.cadmin_panel div.inputdiv .not_valid {color: #fff !important;padding: 3px 6px !important;background-color: #e02222 !important;}
+.cadmin_panel div.cadmin_filter{height:80px}
+.cadmin_panel #tags{display:inline-block;border :0px ;padding-left: 20px}
+.cadmin_panel .videobtn{cursor: pointer}
+.cadmin_panel .toEdit{cursor: pointer;color:#4bb1cf;display: block}
 
-.maxlist { width: 400px; float: left ;padding-left: 20px}
-.maxlist-li {list-style: none;display: inline;margin-left: 16px;color:#0063DC;height: 10px;}
-li.maxlist-li:hover {color:#FF0084;cursor: pointer;}
-.cadmin_editor_gal{min-height:200px}
-.fileContainer{max-height: 600px;overflow-y: auto}
-.imageContainer{}
-.editimagewrapper{text-align: center}
-#draggable{min-width: 250px;min-height: 80px;width: 100px}
-.videopreview{width: 100px;height: 75px;border: 1px solid #000}
-.historywrapper{widows: 200px;padding: 5px ;}
-div.cadmin_history{overflow-y: auto;overflow-x: hidden}
-div.cadmin_text_edit{overflow-y: auto;overflow-x: hidden}
-div.cadmin_img{overflow-y: auto;overflow: hidden}
-div.cadmin_video_edit{overflow-y: auto;overflow-x: hidden}
-div.cadmin_help{overflow-y: auto;overflow-x: hidden}
-div.cadmin_add {margin-top:30px;width:720px}
-div.cadmin_add2 {margin-top:30px;width:720px}
-.dropable{border: 5px dashed lightblue;z-index: 9999;}
-#dropimagebox{text-align: center}
-.linkdiv{overflow-y: auto;width: 100%}
-.cadmin_buttons_manager{border-top:1px solid #dadada;width: 952px;padding:10px 0px 0px 13px}
-.cadmin_buttons_editor{border-top:1px solid #dadada;width: 967px;padding:10px 0px 0px 13px}
+.cadmin_panel .maxlist { width: 400px; float: left ;padding-left: 20px}
+.cadmin_panel .maxlist-li {list-style: none;display: inline;margin-left: 16px;color:#0063DC;height: 10px;}
+.cadmin_panel li.maxlist-li:hover {color:#FF0084;cursor: pointer;}
+.cadmin_panel .cadmin_editor_gal{min-height:200px}
+.cadmin_panel .fileContainer{max-height: 600px;overflow-y: auto}
+.cadmin_panel .imageContainer{}
+.cadmin_panel .editimagewrapper{text-align: center}
+.cadmin_panel #draggable{min-width: 250px;min-height: 80px;width: 100px}
+.cadmin_panel .videopreview{width: 100px;height: 75px;border: 1px solid #000}
+.cadmin_panel .historywrapper{widows: 200px;padding: 5px ;}
+.cadmin_panel div.cadmin_history{overflow-y: auto;overflow-x: hidden}
+.cadmin_panel div.cadmin_text_edit{overflow-y: auto;overflow-x: hidden}
+.cadmin_panel div.cadmin_img{overflow-y: auto;overflow: hidden}
+.cadmin_panel div.cadmin_video_edit{overflow-y: auto;overflow-x: hidden}
+.cadmin_panel div.cadmin_help{overflow-y: auto;overflow-x: hidden}
+.cadmin_panel div.cadmin_add {margin-top:30px;width:720px}
+.cadmin_panel div.cadmin_add2 {margin-top:30px;width:720px}
+.cadmin_panel .dropable{border: 5px dashed lightblue;z-index: 9999;}
+.cadmin_panel #dropimagebox{text-align: center}
+.cadmin_panel .linkdiv{overflow-y: auto;width: 100%}
+.cadmin_panel .cadmin_buttons_manager{border-top:1px solid #dadada;width: 952px;padding:10px 0px 0px 13px}
+.cadmin_panel .cadmin_buttons_editor{border-top:1px solid #dadada;width: 967px;padding:10px 0px 0px 13px}
 
-.simple-pagination { width: 100px;}
-.simple-pagination-li {list-style: none;display: inline;margin-right: 16px;color:#0063DC;height: 10px;}
-li.simple-pagination-li:hover {color:#FF0084;cursor: pointer;}
-#pagination-digg {height: 40px; width: 20%; margin: auto;padding-top: 5px}
-#pagination-digg li{border:0; margin:0; padding:0;font-size:11px;list-style:none;margin-right:2px;}
-#pagination-digg a{border:solid 1px #9aafe5;margin-right:2px;}
-#pagination-digg .previous-off,
-#pagination-digg .next-off {cursor: not-allowed ; border:solid 1px #DEDEDE;color:#DEDEDE;display:block;float:left;font-weight:bold;margin-right:2px;padding:3px 4px;}
-#pagination-digg .next a,#pagination-digg .previous a {font-weight:bold;}
-#pagination-digg .activepage{background:#2e6ab1;color:#FFFFFF;font-weight:bold;display:block;float:left;padding:4px 6px;}
-#pagination-digg a:link,#pagination-digg a:visited {color:#0e509e;display:block;float:left;padding:3px 6px;text-decoration:none;}
-#pagination-digg a:hover{border:solid 1px #0e509e}
-.ui-autocomplete { position: absolute; cursor: default;z-index:30000 !important;} 
-.checkboxwrapper{float :left;padding-left: 20px}
-.autocmpl{float:left;padding-left: 20px}
-.ui-front {z-index:100000000 !important;}
-div.cadmin_add2 .tinymce{padding: 70px}
-div.cadmin_add{overflow-y: auto;overflow-x: hidden}
-.filemanagertosmall{position: absolute;color: red;top:40%;left:40%;font-weight: bold}
-.activemax{color:#000;cursor: not-allowed}
+.cadmin_panel .simple-pagination { width: 100px;}
+.cadmin_panel .simple-pagination-li {list-style: none;display: inline;margin-right: 16px;color:#0063DC;height: 10px;}
+.cadmin_panel li.simple-pagination-li:hover {color:#FF0084;cursor: pointer;}
+.cadmin_panel #pagination-digg {height: 40px; width: 20%; margin: auto;padding-top: 5px}
+.cadmin_panel #pagination-digg li{border:0; margin:0; padding:0;font-size:11px;list-style:none;margin-right:2px;}
+.cadmin_panel #pagination-digg a{border:solid 1px #9aafe5;margin-right:2px;}
+.cadmin_panel #pagination-digg .previous-off,
+.cadmin_panel #pagination-digg .next-off {cursor: not-allowed ; border:solid 1px #DEDEDE;color:#DEDEDE;display:block;float:left;font-weight:bold;margin-right:2px;padding:3px 4px;}
+.cadmin_panel #pagination-digg .next a,#pagination-digg .previous a {font-weight:bold;}
+.cadmin_panel #pagination-digg .activepage{background:#2e6ab1;color:#FFFFFF;font-weight:bold;display:block;float:left;padding:4px 6px;}
+.cadmin_panel #pagination-digg a:link,#pagination-digg a:visited {color:#0e509e;display:block;float:left;padding:3px 6px;text-decoration:none;}
+.cadmin_panel #pagination-digg a:hover{border:solid 1px #0e509e}
+.cadmin_panel .ui-autocomplete { position: absolute; cursor: default;z-index:30000 !important;} 
+.cadmin_panel .checkboxwrapper{float :left;padding-left: 20px}
+.cadmin_panel .autocmpl{float:left;padding-left: 20px}
+.cadmin_panel .ui-front {z-index:100000000 !important;}
+.cadmin_panel div.cadmin_add2 .tinymce{padding: 70px}
+.cadmin_panel div.cadmin_add{overflow-y: auto;overflow-x: hidden}
+.cadmin_panel .filemanagertosmall{position: absolute;color: red;top:40%;left:40%;font-weight: bold}
+.cadmin_panel .activemax{color:#000;cursor: not-allowed}
 /*settings*/
-div.cadmin_content_settings {width:980px;margin:40px auto 40px;overflow:hidden}
-div.cadmin_top_settings  {height:131px}
-div.cadmin_top_settings  img {margin-top:12px;float:left;margin-left:10px}
-div.cadmin_top_settings  h2 {font-size:26px;color:#a8a8a8;float:left;padding-left:33px;margin:38px 0 0 32px;height:52px;line-height:52px;border-left:1px solid #d3d3d3;font-weight:normal}
-div.cadmin_form_settings  {width:980px}
-div.cadmin_leftcol_settings  {width:780px;background:#fff;float:left;box-shadow:0 2px 4px rgba(0, 0, 0, 0.15)}
-div.cadmin_leftcol_sub_settings  {padding:26px;border-color:#d3d3d3 #fff #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;overflow:hidden}
-div.cadmin_rightcol_settings  {width:200px;float:right}
-div.cadmin_rightcol_settings  li {border-bottom:1px solid #cdcdcd}
-div.cadmin_rightcol_settings  li  small {font-size:12px}
-div.cadmin_rightcol_settings  li a {color:#646464;text-decoration:none;font-size:16px;height:65px;display:block;padding:25px 0 0 20px}
-div.cadmin_rightcol_settings  li span {font-weight:bold;display:block}
-div.cadmin_rightcol_settings  li.last {border-bottom:0 !important}
-div.cadmin_rightcol_settings  li.active {box-shadow:2px 2px 4px rgba(0, 0, 0, 0.15);background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #fff;border-style:solid;border-width:1px;position:relative;top:-1px}
-div.cadmin_rightcol_settings  li.active a.menu {opacity:1 !important;filter: alpha(opacity=100) !important}
-div.cadmin_set{width:100%;float:left;overflow-y: auto}
-div.cadmin_sum{width: 100%;overflow-y: auto;float:left}
-div.cadmin_tree{float:left}
-div.pageedit{float:left}
-textarea{display: none}
-.popup{padding: 30px 50px ;font-weight: bold;font-size: 30px;z-index: 999999;position: absolute; left: 45% ;top: 300px;background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px }
-.fileContainer{width: 100%}
-.backgroundbtn{text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray; cursor: pointer;padding-left: 50%;font-weight: bolder}
-.backgroundbtn:hover{color: red;cursor: pointer;padding-left: 50%;font-weight: bolder}
-.pageedit{width: 100px}
-.pageedit2{width: 100px; float:left}
-#menu-top li{min-width: 15px}
-#menu-front li{min-width: 20px}
-#menu-info li{min-width: 20px}
-#menu-help li{min-width: 20px}
-div .editable{ margin-bottom: 0; }
+.cadmin_panel div.cadmin_content_settings {width:980px;margin:40px auto 40px;overflow:hidden}
+.cadmin_panel div.cadmin_top_settings  {height:131px}
+.cadmin_panel div.cadmin_top_settings  img {margin-top:12px;float:left;margin-left:10px}
+.cadmin_panel div.cadmin_top_settings  h2 {font-size:26px;color:#a8a8a8;float:left;padding-left:33px;margin:38px 0 0 32px;height:52px;line-height:52px;border-left:1px solid #d3d3d3;font-weight:normal}
+.cadmin_panel div.cadmin_form_settings  {width:980px}
+.cadmin_panel div.cadmin_leftcol_settings  {width:780px;background:#fff;float:left;box-shadow:0 2px 4px rgba(0, 0, 0, 0.15)}
+.cadmin_panel div.cadmin_leftcol_sub_settings  {padding:26px;border-color:#d3d3d3 #fff #d3d3d3 #d3d3d3;border-style:solid;border-width:1px;overflow:hidden}
+.cadmin_panel div.cadmin_rightcol_settings  {width:200px;float:right}
+.cadmin_panel div.cadmin_rightcol_settings  li {border-bottom:1px solid #cdcdcd}
+.cadmin_panel div.cadmin_rightcol_settings  li  small {font-size:12px}
+.cadmin_panel div.cadmin_rightcol_settings  li a {color:#646464;text-decoration:none;font-size:16px;height:65px;display:block;padding:25px 0 0 20px}
+.cadmin_panel div.cadmin_rightcol_settings  li span {font-weight:bold;display:block}
+.cadmin_panel div.cadmin_rightcol_settings  li.last {border-bottom:0 !important}
+.cadmin_panel div.cadmin_rightcol_settings  li.active {box-shadow:2px 2px 4px rgba(0, 0, 0, 0.15);background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #fff;border-style:solid;border-width:1px;position:relative;top:-1px}
+.cadmin_panel div.cadmin_rightcol_settings  li.active a.menu {opacity:1 !important;filter: alpha(opacity=100) !important}
+.cadmin_panel div.cadmin_set{width:100%;float:left;overflow-y: auto}
+.cadmin_panel div.cadmin_sum{width: 100%;overflow-y: auto;float:left}
+.cadmin_panel div.cadmin_tree{float:left}
+.cadmin_panel div.pageedit{float:left}
+.cadmin_panel textarea{width: 100%;height: 200px}
+.cadmin_panel .popup{padding: 30px 50px ;font-weight: bold;font-size: 30px;z-index: 999999;position: absolute; left: 45% ;top: 300px;background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px }
+.cadmin_panel .fileContainer{width: 100%}
+.cadmin_panel .backgroundbtn{text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray; cursor: pointer;padding-left: 50%;font-weight: bolder}
+.cadmin_panel .backgroundbtn:hover{color: red;cursor: pointer;padding-left: 50%;font-weight: bolder}
+.cadmin_panel .pageedit{width: 100px}
+.cadmin_panel .pageedit2{width: 100px; float:left}
+.cadmin_panel #menu-top li{min-width: 15px}
+.cadmin_panel #menu-front li{min-width: 20px}
+.cadmin_panel #menu-info li{min-width: 20px}
+.cadmin_panel #menu-help li{min-width: 20px}
+.cadmin_panel div .editable{ margin-bottom: 0; }
 .editable p{margin: 0px;}
+.editable{display: inline;}
+.editableTable {  border:solid 1px;  width:100%}
+.editableTable td {border:solid 1px;}
+.editableTable .cellEditing {padding: 0;}
+.editableTable .cellEditing input[type=text]{width:100%; border:0;background-color:rgb(255,253,210); 
+}
+

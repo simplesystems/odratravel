@@ -6,6 +6,6 @@ positions = {
     'Nie w menu': 'none',
     'Górne': 'top',
 //    'Front': 'front',
-//    'Bottom Information': 'info',
-//    'Bottom Help': 'help'
+    'Dolne O nas': 'info',
+    'Dolne Pomoc': 'help'
 };
