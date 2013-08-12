@@ -3,3 +3,5 @@
 cache/*
 template_c/*
 public/template_c/*
+/public/files/image/
+/public/tmp/
