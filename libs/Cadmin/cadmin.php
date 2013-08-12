@@ -41,6 +41,7 @@ class Cadmin {
         $js[] = 'cadmin/cadmin-menu-sort.js';
         $js[] = 'cadmin/cadmin-config.js';
         $js[] = 'cadmin/cadmin-plupload.js';
+        $js[] = 'cadmin/cadmin-list.js';
 
         return $js;
     }
@@ -267,6 +268,36 @@ class Cadmin {
 
 
         return $textView;
+    }
+    public function getViewLists() {
+
+
+        $listView = array();
+        $database = $this->getDatabase();
+        $lists = $database->fetchAll('cadmin_list');
+        foreach ($lists as $list) {
+            if (isset($_SESSION['list'][$list['cadmin_key']])) {
+                $listView[$list['cadmin_key']] = array(
+                    'key' => $_SESSION['list'][$list['cadmin_key']]['key'],
+                    'value' => $_SESSION['list'][$list['cadmin_key']]['data'],
+                    'md5' => $_SESSION['list'][$list['cadmin_key']]['md5']);
+            } else {
+                $listView[$list['cadmin_key']] = array(
+                    'key' => $list['cadmin_key'],
+                    'value' => $list['cadmin_value'],
+                    'md5' => $list['cadmin_md5']);
+            }
+        }
+        if (isset($_SESSION['list'])) {
+            foreach ($_SESSION['list'] as $img) {
+                if (!(array_key_exists($img['key'], $listView))) {
+                    $listView[$img['key']] = $img;
+                }
+            }
+        }
+
+
+        return $listView;
     }
 
 }

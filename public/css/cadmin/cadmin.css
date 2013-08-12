@@ -1,12 +1,12 @@
 /* Reset */
-.cadmin_panel body,.cadmin_panel div,.cadmin_panel dl,.cadmin_panel dt,.cadmin_panel dd,.cadmin_panel ul,.cadmin_panel ol,.cadmin_panel li,.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel .cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6,.cadmin_panel pre,.cadmin_panel form,.cadmin_panel fieldset,.cadmin_panel input,.cadmin_panel textarea,.cadmin_panel p,.cadmin_panel blockquote,.cadmin_panel th,.cadmin_panel td,.cadmin_panel a {margin:0;padding:0; color: #646464;}
+body .cadmin_panel ,.cadmin_panel div,.cadmin_panel dl,.cadmin_panel dt,.cadmin_panel dd,.cadmin_panel ul,.cadmin_panel ol,.cadmin_panel li,.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel .cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6,.cadmin_panel pre,.cadmin_panel form,.cadmin_panel fieldset,.cadmin_panel input,.cadmin_panel textarea,.cadmin_panel p,.cadmin_panel blockquote,.cadmin_panel th,.cadmin_panel td,.cadmin_panel a {margin:0;padding:0; color: #646464;}
 
 .cadmin_panel table {border-collapse:collapse;border-spacing:0}
 .cadmin_panel fieldset,.cadmin_panel img {border:0}
 .cadmin_panel address,.cadmin_panel caption,.cadmin_panel cite,.cadmin_panel code,.cadmin_panel dfn,.cadmin_panel em,.cadmin_panel strong,.cadmin_panel th,.cadmin_panel var {font-style:normal;font-weight:normal}
 .cadmin_panel ol,.cadmin_panel ul {list-style:none;padding:0px}
 .cadmin_panel caption,.cadmin_panel th {text-align:left}
-.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6 {font-size:100%}
+.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6 {font-size:100%;color: #646464;}
 .cadmin_panel q:before,.cadmin_panel q:after {content:''}
 .cadmin_panel abbr,.cadmin_panel acronym {border:0}
 
@@ -248,11 +248,12 @@ div.editimage2 {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 .cadmin_panel #menu-info li{min-width: 20px}
 .cadmin_panel #menu-help li{min-width: 20px}
 .cadmin_panel div .editable{ margin-bottom: 0; }
-.editable p{margin: 0px;}
-.editable{display: inline;}
-.editableTable {  border:solid 1px;  width:100%}
-.editableTable td {border:solid 1px;}
-.editableTable .cellEditing {padding: 0;}
-.editableTable .cellEditing input[type=text]{width:100%; border:0;background-color:rgb(255,253,210); 
-}
+.cadmin_panel .editable p{margin: 0px;}
+.cadmin_panel .editable{display: inline;}
+.cadmin_panel #editedTable {  border:solid 1px;  width:100%}
+.cadmin_panel #editedTable td {border:solid 1px; width: 50px;height: 30px;cursor: pointer}
+.cadmin_panel #editedTable .cellEditing {padding: 0;}
+.cadmin_panel #editedTable .cellEditing input[type=text]{width:100%; border:0;background-color:rgb(255,253,210)}
+.cadmin_panel .listButton{cursor: pointer;padding: 5px;color: #646464}
+
 

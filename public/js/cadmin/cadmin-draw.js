@@ -39,7 +39,7 @@ var draw = {
         var button_public = $('<a>').attr({'class': 'button public', 'href': '#'}).appendTo(cadmin_buttons);
         var h3 = $('<h3>').appendTo(cadmin_boxheader);
         var abort = $('<a>').attr({'href': 'cancel', 'class': 'delete_change link'}).appendTo(cadmin_boxheader);
-        h3.html(language.texeditor);
+        h3.html(language.texteditor);
         abort.html(language.cancelchanges);
         button_save_text.html(language.save);
         button_public.html(language.public);
@@ -51,17 +51,21 @@ var draw = {
         var cadmin_text_edit = $('<div>').attr({'class': 'cadmin_list_edit'});
         var cadmin_boxheader = $('<div>').attr({'class': 'cadmin_boxheader'}).appendTo(cadmin_text_edit);
         var textdiv = $('<div>').attr({'class': 'tinymce'}).appendTo(cadmin_text_edit);
-        var textarea = $('<div>').attr({'id': 'editedtext'}).appendTo(textdiv);
+        var textarea = $('<table>').attr({'id': 'editedTable'}).appendTo(textdiv);
         var cadmin_buttons = $('<div>').attr({'class': 'cadmin_buttons'}).appendTo(cadmin_text_edit);
         var button_save_text = $('<a>').attr({'class': 'button save', 'href': '#'}).appendTo(cadmin_buttons);
         var button_public = $('<a>').attr({'class': 'button public', 'href': '#'}).appendTo(cadmin_buttons);
         var h3 = $('<h3>').appendTo(cadmin_boxheader);
         var abort = $('<a>').attr({'href': 'cancel', 'class': 'delete_change link'}).appendTo(cadmin_boxheader);
-        h3.html(language.texeditor);
+        h3.html(language.listeditor);
         abort.html(language.cancelchanges);
         button_save_text.html(language.save);
         button_public.html(language.public);
-        textarea.html(obj.html());
+        textarea.html(textarea.html() + obj.html());
+        var a = $('<button>').html(language.addrow).attr('class', 'listButton addRow').appendTo(textdiv);
+        var a = $('<button>').html(language.removerow).attr('class', 'listButton removeRow').appendTo(textdiv);
+        var a = $('<button>').html(language.addcolumn).attr('class', 'listButton addColumn').appendTo(textdiv);
+        var a = $('<button>').html(language.removecolumn).attr('class', 'listButton removeColumn').appendTo(textdiv);
         return cadmin_text_edit;
     },
     image: function(obj) {
@@ -100,7 +104,7 @@ var draw = {
         if (obj.data('style') === 'background') {
             var bg = obj.css('background-image');
             bg = bg.replace('url(', '').replace(')', '');
-            bg = bg.substring(0, bg.length - 1)
+            bg = bg.substring(0, bg.length - 1);
             bg = bg.substring(bg.indexOf("/files"));
             var newUrl = url.modify(bg, size['x'], size['y']);
         }
@@ -258,7 +262,7 @@ var draw = {
                 var apreview = $('<a>').attr({'class': 'preview li', 'href': '#'}).appendTo(li);
                 var preview = $('<div>').attr({'class': 'preview'}).appendTo(li);
                 var newDate = new Date(val.cadmin_date * 1000);
-                var newTime = newDate.toGMTString()
+                var newTime = newDate.toGMTString();
                 spantime.html(language.date + newTime);
                 spanauthor.html(language.author + val.cadmin_author);
                 arevert.html(language.revert);
@@ -355,39 +359,35 @@ var draw = {
                 var li1a = $('<a>').attr({'href': 'text', 'class': 'menu text'}).appendTo(li1);
                 var li1span = $('<span>').html(language.menutext).appendTo(li1a);
                 var li1small = $('<small>').html(language.menutextsmall).appendTo(li1a);
+                break;
             case 'list':
                 var li1 = $('<li>').appendTo(ul);
                 li1.addClass('active');
                 var li1a = $('<a>').attr({'href': 'list', 'class': 'menu text'}).appendTo(li1);
                 var li1span = $('<span>').html(language.menulist).appendTo(li1a);
                 var li1small = $('<small>').html(language.menulistsmall).appendTo(li1a);
-        }
-
-        switch (type) {
+                break;
             case 'image':
                 var li2 = $('<li>').appendTo(ul);
                 li2.addClass('active');
                 var li2a = $('<a>').attr({'href': 'image', 'class': 'menu img'}).appendTo(li2);
                 var li2span = $('<span>').html(language.menuimage).appendTo(li2a);
                 var li2small = $('<small>').html(language.menuimagesmall).appendTo(li2a);
-        }
-
-        switch (type) {
+                break;
             case 'gallery':
                 var li2 = $('<li>').appendTo(ul);
                 li2.addClass('active');
                 var li2a = $('<a>').attr({'href': 'gallery', 'class': 'menu img'}).appendTo(li2);
                 var li2span = $('<span>').html(language.menugallery).appendTo(li2a);
                 var li2small = $('<small>').html(language.menugallerysmall).appendTo(li2a);
-        }
-
-        switch (type) {
+                break;
             case 'video':
                 var li3 = $('<li>').appendTo(ul);
                 li3.addClass('active');
                 var li3a = $('<a>').attr({'href': 'video', 'class': 'menu video'}).appendTo(li3);
                 var li3span = $('<span>').html(language.menuvideo).appendTo(li3a);
                 var li3small = $('<small>').html(language.menuvideosmall).appendTo(li3a);
+                break;
         }
 
         var li4 = $('<li>').appendTo(ul);
@@ -413,16 +413,19 @@ var draw = {
         return ul;
     },
     external: function(obj) {
-        if (obj.data('type') == 'text') {
-            if (!(obj.data('textarea') == 'yes')) {
+        if (obj.data('type') === 'text') {
+            if (!(obj.data('textarea') === 'yes')) {
                 tinymcecustom.start(obj);
             }
         }
-        if (obj.data('type') == 'gallery') {
+        if (obj.data('type') === 'gallery') {
             pluploadcustom.gallery(obj);
         }
-        if (obj.data('type') == 'image') {
+        if (obj.data('type') === 'image') {
             pluploadcustom.image(obj);
+        }
+        if (obj.data('type') === 'list') {
+            listeditor.init();
         }
     },
     startSortable: function(max) {

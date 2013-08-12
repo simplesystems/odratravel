@@ -6,12 +6,12 @@ var language = {
     cms: 'Cadmin - Content Menagement System',
     adminpanel: 'Administrator Panel',
     texteditor: 'Text Editor',
+    listeditor: 'List Editor',
     cancelchanges: 'cancel changes',
     save: 'Save',
     public: 'Public',
     imageeditor: 'Image editor',
-    texteditor: 'Text editor',
-            browse: 'Browse files',
+    browse: 'Browse files',
     filemanager: 'Open File Manager',
     galleryeditor: 'Gallery Editor',
     imagesonpage: 'Images on page:',
@@ -85,9 +85,17 @@ var language = {
     editbackground: 'CHANGE BACKGROUND',
     template: 'Template',
     position: 'Position',
-    def: 'Default'
-
-
+    def: 'Default',
+    addrow: 'Add row',
+    removerow: 'Remove row',
+    addcolumn: 'Add column',
+    removecolumn: 'Remove column',
+    limit: 'Minimum reached',
+    error: 'Error! Cannot save!',
+    video: 'Video',
+    image: 'Image',
+    text: 'Text',
+    list: 'List'
 
 };
 

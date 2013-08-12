@@ -86,7 +86,6 @@ class cadminMain {
         $database = $this->getDatabase();
         if ($post['type'] === 'text') {
 
-
             $database->insert('cadmin_history', array(
                 'cadmin_key' => $post['key'],
                 'cadmin_value' => $post['data'],
@@ -102,6 +101,25 @@ class cadminMain {
                     'cadmin_md5' => md5($post['data'])));
             } else {
                 $database->updateByKey('cadmin_text', array('cadmin_key' => $post['key'], 'cadmin_value' => $post['data'], 'cadmin_md5' => md5($post['data'])), $post['key']);
+            }
+        }
+        if ($post['type'] === 'list') {
+
+            $database->insert('cadmin_history', array(
+                'cadmin_key' => $post['key'],
+                'cadmin_value' => serialize($post['data']),
+                'cadmin_md5' => md5(serialize($post['data'])),
+                'cadmin_date' => time(),
+                'cadmin_author' => 'user'));
+
+            $text = $database->findByKey('cadmin_list', $post['key']);
+            if (empty($text)) {
+                $database->insert('cadmin_list', array(
+                    'cadmin_key' => $post['key'],
+                    'cadmin_value' => serialize($post['data']),
+                    'cadmin_md5' => md5(serialize($post['data']))));
+            } else {
+                $database->updateByKey('cadmin_list', array('cadmin_key' => $post['key'], 'cadmin_value' => serialize($post['data']), 'cadmin_md5' => md5(serialize($post['data']))), $post['key']);
             }
         }
         if ($post['type'] === 'gallery') {
@@ -136,10 +154,9 @@ class cadminMain {
             }
         }
         if ($post['type'] === 'image') {
-
             $database->insert('cadmin_history', array(
                 'cadmin_key' => $post['key'],
-                'cadmin_value' => serialize($post['data']),
+                'cadmin_value' => $post['data'],
                 'cadmin_md5' => md5($post['data']),
                 'cadmin_date' => time(),
                 'cadmin_author' => 'user'));
@@ -149,7 +166,7 @@ class cadminMain {
                 $database->insert('cadmin_image', array(
                     'cadmin_key' => $post['key'],
                     'cadmin_value' => $post['data'],
-                    'cadmin_md5' => md5(serialize($post['data'])),
+                    'cadmin_md5' => md5($post['data']),
                     'cadmin_pos' => '1',
                     'cadmin_optional' => null
                 ));

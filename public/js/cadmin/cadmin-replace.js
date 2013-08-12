@@ -1,4 +1,24 @@
 var replace = {
+    init: function(obj) {
+
+        switch (obj.data('type')) {
+            case 'text':
+                replace.text(obj);
+                break;
+            case 'list':
+                replace.list(obj);
+                break;
+            case 'image':
+                replace.image(obj);
+                break;
+            case 'gallery':
+                replace.gallery(obj);
+                break;
+            case 'video':
+                replace.video(obj);
+                break;
+        }
+    },
     gallery: function(obj) {
 
         var data = {};
@@ -35,7 +55,6 @@ var replace = {
         });
         $(document).trigger('slider_gallery_update', obj);
         reload.all();
-        return data;
     },
     image: function(obj) {
         var main = $('*[data-key=' + obj.data('key') + ']');
@@ -177,5 +196,28 @@ var replace = {
                 var a = $('<a>').html(v.title).attr({'href': v.route.toLowerCase()}).appendTo(li);
             });
         }
+    },
+    list: function(obj) {
+        var thead = obj.find('thead').length;
+        obj.empty();
+        
+        var list = $('.cadmin_panel #editedTable');
+        if (thead > 0) {
+            var thead = $('<thead>').appendTo(obj);
+            var trhead = list.find('tr:first');
+            var tr = $('<tr>').appendTo(thead);
+            $.each(trhead.find('td'), function() {
+                var td = $('<td>').appendTo(tr).html($(this).text());
+            });
+        }
+
+        var tbody = $('<tbody>').appendTo(obj);
+        $.each(list.find('tbody').find('tr'), function() {
+            var tr = $('<tr>').appendTo(tbody);
+            $.each($(this).find('td'), function() {
+                var td = $('<td>').appendTo(tr).html($(this).text());
+            });
+
+        });
     }
 };

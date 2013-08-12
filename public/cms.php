@@ -49,29 +49,38 @@ class CMS {
         $imageView = $this->_cadmin->getViewImage();
         $videoView = $this->_cadmin->getViewVideo();
         $textView = $this->_cadmin->getViewTexts();
-        $listView = null;
-
+        $listView = $this->_cadmin->getViewLists();
         if (!(isset($listView['templatelist_' . $id]))) {
             $templatelist = array(
                 'key' => 'templatelist_' . $id,
                 'md5' => '',
                 'table' => array(
-                        0 => array(0 => '<b>miejsce</b>',
-                            1 => 'szczecin'),
-                        1 => array(0 => '<b>dlugość pobytu</b>',
-                            1 => '3 dni'),
-                        2 => array(0 => '<b>typ dojazdu</b>',
-                            1 => 'samolot'),
-                        3 => array(0 => '<b>data wyjazdu</b>',
-                            1 => 'jutro'),
-                        4 => array(0 => '<b>data powrotu</b>',
-                            1 => '2050'),
-                        5 => array(0 => '<b>wyżywienie</b>',
-                            1 => 'All inclusive')
-                    )
+                    0 => array(0 => 'miejsce',
+                        1 => 'szczecin'),
+                    1 => array(0 => 'dlugość pobytu',
+                        1 => '3 dni'),
+                    2 => array(0 => 'typ dojazdu',
+                        1 => 'samolot'),
+                    3 => array(0 => 'data wyjazdu',
+                        1 => 'jutro'),
+                    4 => array(0 => 'data powrotu',
+                        1 => '2050'),
+                    5 => array(0 => 'wyżywienie',
+                        1 => 'All inclusive')
+                )
             );
         } else {
-            
+            if (is_array($listView['templatelist_' . $id]['value'])) {
+                $table = $listView['templatelist_' . $id]['value'];
+            } else {
+                $table = unserialize($listView['templatelist_' . $id]['value']);
+            }
+
+            $templatelist = array(
+                'key' => 'templatelist_' . $id,
+                'md5' => $listView['templatelist_' . $id]['md5'],
+                'table' => $table['table']
+            );
         }
 //        echo '<pre>';
 //        var_dump($templatelist);

@@ -19,24 +19,26 @@
                     <a  href="javascript:window.print();" class="print"></a>
 
                     <span class="code">kod oferty: <div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatecode.md5}' data-key='{$templatecode.key}'>{$templatecode.value}</div></span>
-
-                    <table class="editable dictionary "  data-type='list' data-cell="2" data-rows="6" data-md5='' data-key=''>
-                    {foreach from=$templatelist.table item=table}
-                        <tr>
-                            {foreach from=$table item=td}
-                                <td>{$td}</td>
-                            {/foreach}
-                        </tr>
-                    {/foreach}
+                    <br />
+                    <table class="editable dictionary "  data-type='list' data-cell="2" data-rows="6" data-md5='{$templatelist.md5}' data-key='{$templatelist.key}'>
+                        {foreach from=$templatelist.table item=table}
+                            <tr>
+                                {foreach from=$table item=td}
+                                    <td>{$td}</td>
+                                {/foreach}
+                            </tr>
+                        {/foreach}
                     </table>
+                    <br />
+                    <br />
 
-{*                    <ul class="dictionary ">
-                        <li><b>miejsce:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu0.md5}' data-key='{$templatemenu0.key}'>{$templatemenu0.value}</div></li>
-                        <li><b>długość pobytu:</b><div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatemenu1.md5}' data-key='{$templatemenu1.key}'>{$templatemenu1.value}</div></li>
-                        <li><b>typ dojazdu:</b><div class="editable" data-textarea='yes' data-type='text' data-md5='{$templatemenu2.md5}' data-key='{$templatemenu2.key}'>{$templatemenu2.value}</div></li>
-                        <li><b>data wyjazdu:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu3.md5}' data-key='{$templatemenu3.key}'>{$templatemenu3.value}</div></li>
-                        <li><b>data powrotu:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu4.md5}' data-key='{$templatemenu4.key}'>{$templatemenu4.value}</div></li>
-                        <li><b>wyżywienie:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu5.md5}' data-key='{$templatemenu5.key}'>{$templatemenu5.value}</div></li>
+                    {*                    <ul class="dictionary ">
+                    <li><b>miejsce:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu0.md5}' data-key='{$templatemenu0.key}'>{$templatemenu0.value}</div></li>
+                    <li><b>długość pobytu:</b><div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatemenu1.md5}' data-key='{$templatemenu1.key}'>{$templatemenu1.value}</div></li>
+                    <li><b>typ dojazdu:</b><div class="editable" data-textarea='yes' data-type='text' data-md5='{$templatemenu2.md5}' data-key='{$templatemenu2.key}'>{$templatemenu2.value}</div></li>
+                    <li><b>data wyjazdu:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu3.md5}' data-key='{$templatemenu3.key}'>{$templatemenu3.value}</div></li>
+                    <li><b>data powrotu:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu4.md5}' data-key='{$templatemenu4.key}'>{$templatemenu4.value}</div></li>
+                    <li><b>wyżywienie:</b><div class="editable" data-textarea='yes'  data-type='text' data-md5='{$templatemenu5.md5}' data-key='{$templatemenu5.key}'>{$templatemenu5.value}</div></li>
                     </ul>  *}
 
                     <div class="price">

@@ -3,149 +3,99 @@ var save = {
 
         switch (obj.data('type')) {
             case 'text':
-                if (!(obj.data('textarea') == 'yes')) {
+                if (!(obj.data('textarea') === 'yes')) {
                     var data = tinyMCE.activeEditor.getContent();
                 }
                 else {
                     var data = $('#editedtext').val();
                 }
-
-                replace.text(obj);
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/save",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': data,
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.saved);
-                                }
-
-                            }
-                        });
-
+                break;
+            case 'list':
+                var list = $('.cadmin_panel #editedTable');
+                var data = {};
+                var i = 0;
+                data['table'] = {};
+                $.each(list.find('tr'), function() {
+                    var a = 0;
+                    data['table'][i] = {};
+                    data['table'][i][a] = {};
+                    $.each($(this).find('td'), function() {
+                        data['table'][i][a] = $(this).text();
+                        a++;
+                    });
+                    i++;
+                });
                 break;
             case 'image':
-                replace.image(obj);
                 if (obj.data('style') === 'background') {
                     var bg = obj.css('background-image');
                     bg = bg.replace('url(', '').replace(')', '');
-                    bg = bg.substring(0, bg.length - 1)
+                    bg = bg.substring(0, bg.length - 1);
                     var link = bg.substring(bg.indexOf("/files"));
                 }
                 else {
                     var link = obj.attr('src');
                 }
                 link = url.getId(link);
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/save",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': link[0],
-                                'x': obj.data('imagex'),
-                                'y': obj.data('imagey'),
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.saved);
-                                }
-
-                            }
-                        });
-
+                var data = link[0];
                 break;
             case 'gallery':
-                var data = replace.gallery(obj);
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/save",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': data,
-                                'x': obj.data('imagex'),
-                                'y': obj.data('imagey'),
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.saved);
-                                }
-
-                            }
+                var data = {};
+                var ul = $('#sortable1').children();
+                var i = 0;
+                ul.each(function() {
+                    var obj = cadmin.getObject();
+                    var newUrl = url.modify($(this).children('img').attr('src'), obj.data('imagex'), obj.data('imagey'));
+                    data[i] = {};
+                    data[i]['image'] = parseInt(url.getId(newUrl));
+                    if (obj.data('opt') === "yes") {
+                        data[i]['text'] = '';
+                        $(this).children('img').children('div').children('p').each(function() {
+                            data[i]['text'] = data[i]['text'] + '<p>' + $(this).html() + '</p>';
                         });
-
+                        data[i]['link'] = $(this).children('img').children('div').children('a').attr('href');
+                        data[i]['desc'] = $(this).children('img').children('div').children('a').text();
+                    }
+                    i++;
+                });
                 break;
             case 'video':
                 var data = {};
                 var div = $('.videoinput');
                 var i = 0;
                 div.each(function() {
-                    data[i] = {}
+                    data[i] = {};
                     data[i]['link'] = $(this).val();
                     data[i]['desc'] = $(this).siblings('.videodesc').val();
                     i++;
                 });
-                replace.video(obj);
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/save",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': data,
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.saved);
-                                }
-
-                            }
-                        });
-                break;
-            case 'history':
-                this.historycontent = content;
-                break;
-            case 'help':
-                this.helpcontent = content;
-                break;
-            case 'import':
-                this.importcontent = content;
-                break;
-            case 'export':
-                this.exportcontent = content;
                 break;
         }
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "/cadmin/save",
+                    data: {
+                        'type': obj.data('type'),
+                        'key': obj.data('key'),
+                        'data': data,
+                        'md5': obj.data('md5')
+                    },
+                    cache: false,
+                    success: function(data)
+                    {
+                        var answer = JSON.parse(data);
+                        if (answer === "success")
+                        {
+                            draw.popupWindow(language.saved);
+                            replace.init(obj);
+                        }
 
-
+                    },
+                    error: function() {
+                        draw.popupWindow(language.error);
+                    }
+                });
     },
     publish: function(obj) {
 
@@ -157,158 +107,102 @@ var save = {
                 else {
                     var data = $('#editedtext').val();
                 }
-                replace.text(obj)
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/publish",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': data,
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.published);
-                                }
-                                if (answer === "changes")
-                                {
-                                    draw.popupWindow(language.someonechange);
-                                }
-
-                            }
-                        });
+                break;
+            case 'list':
+                var list = $('.cadmin_panel #editedTable');
+                var listArray = {};
+                var i = 0;
+                listArray['table'] = {};
+                $.each(list.find('tr'), function() {
+                    var a = 0;
+                    listArray['table'][i] = {};
+                    listArray['table'][i][a] = {};
+                    $.each($(this).find('td'), function() {
+                        listArray['table'][i][a] = $(this).text();
+                        a++;
+                    });
+                    i++;
+                    data = listArray;
+                });
                 break;
             case 'image':
-                replace.image(obj)
                 if (obj.data('style') === 'background') {
                     var bg = obj.css('background-image');
                     bg = bg.replace('url(', '').replace(')', '');
-                    bg = bg.substring(0, bg.length - 1)
+                    bg = bg.substring(0, bg.length - 1);
                     var link = bg.substring(bg.indexOf("/files"));
                 }
                 else {
                     var link = obj.attr('src');
                 }
                 link = url.getId(link);
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/publish",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': link[0],
-                                'x': obj.data('imagex'),
-                                'y': obj.data('imagey'),
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.published);
-                                }
-                                if (answer === "changes")
-                                {
-                                    draw.popupWindow(language.someonechange);
-                                }
-
-                            }
-                        });
-
-
-
+                var data = link[0];
                 break;
             case 'gallery':
-                var data = replace.gallery(obj);
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/publish",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': data,
-                                'x': obj.data('imagex'),
-                                'y': obj.data('imagey'),
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.published);
-                                }
-                                if (answer === "changes")
-                                {
-                                    draw.popupWindow(language.someonechange);
-                                }
-
-                            }
+                var data = {};
+                var ul = $('#sortable1').children();
+                var i = 0;
+                ul.each(function() {
+                    var obj = cadmin.getObject();
+                    var newUrl = url.modify($(this).children('img').attr('src'), obj.data('imagex'), obj.data('imagey'));
+                    data[i] = {};
+                    data[i]['image'] = parseInt(url.getId(newUrl));
+                    if (obj.data('opt') === "yes") {
+                        data[i]['text'] = '';
+                        $(this).children('img').children('div').children('p').each(function() {
+                            data[i]['text'] = data[i]['text'] + '<p>' + $(this).html() + '</p>';
                         });
-
+                        data[i]['link'] = $(this).children('img').children('div').children('a').attr('href');
+                        data[i]['desc'] = $(this).children('img').children('div').children('a').text();
+                    }
+                    i++;
+                });
                 break;
             case 'video':
                 var data = {};
                 var div = $('.videoinput');
                 var i = 0;
                 div.each(function() {
-                    data[i] = {}
+                    data[i] = {};
                     data[i]['link'] = $(this).val();
                     data[i]['desc'] = $(this).siblings('.videodesc').val();
                     i++;
                 });
                 replace.video(obj);
-
-                $.ajax
-                        ({
-                            type: "POST",
-                            url: "/cadmin/publish",
-                            data: {
-                                'type': obj.data('type'),
-                                'key': obj.data('key'),
-                                'data': data,
-                                'md5': obj.data('md5')
-                            },
-                            cache: false,
-                            success: function(data)
-                            {
-                                var answer = JSON.parse(data);
-                                if (answer === "success")
-                                {
-                                    draw.popupWindow(language.published);
-                                }
-                                if (answer === "changes")
-                                {
-                                    draw.popupWindow(language.someonechange);
-                                }
-
-                            }
-                        });
-                break;
-            case 'history':
-                this.historycontent = content;
-                break;
-            case 'help':
-                this.helpcontent = content;
-                break;
-            case 'import':
-                this.importcontent = content;
-                break;
-            case 'export':
-                this.exportcontent = content;
                 break;
         }
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "/cadmin/publish",
+                    data: {
+                        'type': obj.data('type'),
+                        'key': obj.data('key'),
+                        'data': data,
+                        'md5': obj.data('md5')
+                    },
+                    cache: false,
+                    success: function(data)
+                    {
+
+                        var answer = JSON.parse(data);
+                        if (answer === "success")
+                        {
+                            replace.init(obj);
+                            draw.popupWindow(language.published);
+                        }
+                        if (answer === "changes")
+                        {
+                            replace.init(obj);
+                            draw.popupWindow(language.someonechange);
+                        }
+
+                    },
+                    error: function() {
+                        draw.popupWindow(language.error);
+                    }
+                });
+
 
 
     },
@@ -317,10 +211,9 @@ var save = {
         $.ajax
                 ({
                     type: "POST",
-                    url: "/cadmin/destroy",
-                    data: {
+                    url: "/cadmin/destroy", data: {
                         'type': obj.data('type'),
-                        'key': obj.data('key'),
+                        'key': obj.data('key')
                     },
                     cache: false,
                     success: function(data)

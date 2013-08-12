@@ -130,7 +130,25 @@ var settings = {
 
                             $.each(this, function(key, val) {
                                 var li = $('<li>').appendTo(ol);
-                                var spantime = $('<span>').attr({'class': 'summarylist'}).html(val.type + ':').appendTo(li);
+                                var translate = '';
+                                switch (val.type) {
+                                    case 'text':
+                                        translate = language.text;
+                                        break;
+                                    case 'image':
+                                        translate = language.image;
+                                        break;
+                                    case 'gallery':
+                                        translate = language.gallery;
+                                        break;
+                                    case 'video':
+                                        translate = language.video;
+                                        break;
+                                    case 'list':
+                                        translate = language.list;
+                                        break;
+                                }
+                                var spantime = $('<span>').attr({'class': 'summarylist'}).html(translate + ':').appendTo(li);
                                 var arevert = $('<a>').attr({'class': 'revert2 li', 'href': '#'}).appendTo(li);
                                 var apreview = $('<a>').attr({'class': 'preview li', 'href': '#'}).appendTo(li);
                                 var preview = $('<div>').attr({'class': 'preview'}).appendTo(li);

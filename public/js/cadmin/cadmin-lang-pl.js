@@ -6,11 +6,11 @@ var language = {
     cms: 'Cadmin - System zarządzania treścią',
     adminpanel: 'Panel Administracyjny',
     texteditor: 'Edytor tekstu',
+    listeditor: 'Edytor listy',
     cancelchanges: 'anuluj zmiany',
     save: 'Zapisz',
     public: 'Publikuj',
     imageeditor: 'Edytor obrazów',
-    texteditor: 'Edytor tekstów',
     browse: 'Przeglądaj',
     filemanager: 'Otwórz Menadżera plików',
     galleryeditor: 'Edytor Galerii',
@@ -29,7 +29,7 @@ var language = {
     author: ' autor: ',
     revert: 'przywróć',
     preview: 'podgląd',
-    nohistory: 'brak hisotorii zmian',
+    nohistory: 'brak historii zmian',
     help: 'Pomoc',
     menutext: 'Edytor tekstu',
     menutextsmall: 'edytuj tekst',
@@ -85,9 +85,17 @@ var language = {
     editbackground: 'ZMIEŃ TŁO',
     template: 'Szablon',
     position: 'Pozycja',
-    def : 'Domyślny'
-    
-    
+    def: 'Domyślny',
+    addrow: 'Dodaj rząd',
+    removerow: 'Usuń rząd',
+    addcolumn: 'Dodaj columne',
+    removecolumn: 'Usuń columne',
+    limit: 'Osiągnięto limit',
+    error: 'Błąd zapisu!',
+    video: 'Wideo',
+    image: 'Obraz',
+    text: 'Tekst',
+    list: 'Lista'
 
 
 };
