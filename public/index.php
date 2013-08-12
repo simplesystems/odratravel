@@ -13,7 +13,7 @@ $smarty->assign('menuItems', $menu);
 $site = isset($_GET["site"]) ? $_GET["site"] : '';
 switch ($site) {
     case'Kontakt.html':
-        include './kontakt.php';
+        $smarty->display('kontakt.tpl');
         break;
     default:
         

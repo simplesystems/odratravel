@@ -62,10 +62,10 @@ var draw = {
         button_save_text.html(language.save);
         button_public.html(language.public);
         textarea.html(textarea.html() + obj.html());
-        var a = $('<button>').html(language.addrow).attr('class', 'listButton addRow').appendTo(textdiv);
-        var a = $('<button>').html(language.removerow).attr('class', 'listButton removeRow').appendTo(textdiv);
-        var a = $('<button>').html(language.addcolumn).attr('class', 'listButton addColumn').appendTo(textdiv);
-        var a = $('<button>').html(language.removecolumn).attr('class', 'listButton removeColumn').appendTo(textdiv);
+        //var a = $('<button>').html(language.addrow).attr('class', 'listButton addRow').appendTo(textdiv);
+        //var a = $('<button>').html(language.removerow).attr('class', 'listButton removeRow').appendTo(textdiv);
+        //var a = $('<button>').html(language.addcolumn).attr('class', 'listButton addColumn').appendTo(textdiv);
+        //var a = $('<button>').html(language.removecolumn).attr('class', 'listButton removeColumn').appendTo(textdiv);
         return cadmin_text_edit;
     },
     image: function(obj) {

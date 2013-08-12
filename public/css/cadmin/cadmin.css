@@ -236,6 +236,7 @@ div.editimage2 {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 .cadmin_panel div.cadmin_sum{width: 100%;overflow-y: auto;float:left}
 .cadmin_panel div.cadmin_tree{float:left}
 .cadmin_panel div.pageedit{float:left}
+/*other*/
 .cadmin_panel textarea{width: 100%;height: 200px}
 .cadmin_panel .popup{padding: 30px 50px ;font-weight: bold;font-size: 30px;z-index: 999999;position: absolute; left: 45% ;top: 300px;background:#fff;border-color:#d3d3d3 #d3d3d3 #d3d3d3 #d3d3d3;border-style:solid;border-width:1px }
 .cadmin_panel .fileContainer{width: 100%}
@@ -255,5 +256,9 @@ div.editimage2 {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 .cadmin_panel #editedTable .cellEditing {padding: 0;}
 .cadmin_panel #editedTable .cellEditing input[type=text]{width:100%; border:0;background-color:rgb(255,253,210)}
 .cadmin_panel .listButton{cursor: pointer;padding: 5px;color: #646464}
+.cadmin_panel .tdEditorRow div {width: 33%;float: left;text-align: center}
+.cadmin_panel .tdEditorRow{width: 10px !important}
+
+
 
 
