@@ -1,8 +1,6 @@
 /nbproject/private/
 #smarty cache
 cache/*
-template_c/*
-public/template_c/*
-/public/files/image/
-/public/tmp/
-/public/cadmin/cache/
+#/public/files/
+#/public/tmp/
+#/public/cadmin/cache/
