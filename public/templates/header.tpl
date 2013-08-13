@@ -24,6 +24,7 @@
         {/if}
         <link rel="stylesheet" href="{$__jsDir}fancybox/jquery.fancybox-1.3.1.css">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://cichowicz.home.pl/odratravel/odra.css">
         <script src="{$__jsDir}vendor/modernizr-2.6.2.min.js"></script>
 
     </head>
@@ -57,7 +58,7 @@
                             <li><a href="/strona/wycieczki_lotnicze">Wycieczki <br/>lotnicze</a></li>
                             <li><a href="/strona/wynamem_autokarow">Wynajem <br/>autokarów</a></li>
                             <li><a href="/kontakt.html">Kontakt</a></li> 
-                        {/if}
+                            {/if}
                     </ul>
                 </nav>
             </header>
