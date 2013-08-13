@@ -1668,7 +1668,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 }
 
 .login-header {
-    background: url("../img/top-bg.jpg") repeat-x;
+/*    background: url("../img/top-bg.jpg") repeat-x;*/
     border-width: 0;
     height: 60px;
     text-align: center;
