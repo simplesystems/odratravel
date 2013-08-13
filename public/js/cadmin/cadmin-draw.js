@@ -62,10 +62,10 @@ var draw = {
         button_save_text.html(language.save);
         button_public.html(language.public);
         textarea.html(textarea.html() + obj.html());
-        var a = $('<button>').html(language.addrow).attr('class', 'listButton addRow').appendTo(textdiv);
-        var a = $('<button>').html(language.removerow).attr('class', 'listButton removeRow').appendTo(textdiv);
-        var a = $('<button>').html(language.addcolumn).attr('class', 'listButton addColumn').appendTo(textdiv);
-        var a = $('<button>').html(language.removecolumn).attr('class', 'listButton removeColumn').appendTo(textdiv);
+        //var a = $('<button>').html(language.addrow).attr('class', 'listButton addRow').appendTo(textdiv);
+        //var a = $('<button>').html(language.removerow).attr('class', 'listButton removeRow').appendTo(textdiv);
+        //var a = $('<button>').html(language.addcolumn).attr('class', 'listButton addColumn').appendTo(textdiv);
+        //var a = $('<button>').html(language.removecolumn).attr('class', 'listButton removeColumn').appendTo(textdiv);
         return cadmin_text_edit;
     },
     image: function(obj) {
@@ -274,6 +274,28 @@ var draw = {
                         var wrapper = $('<div>').attr({'class': 'historywrapper'}).appendTo(preview);
                         wrapper.html(val.cadmin_value);
                         break;
+                    case 'list':
+                        var wrapper = $('<div>').attr({'class': 'historywrapper'}).appendTo(preview);
+                        var table = $('<table>').appendTo(wrapper);
+
+                        if (val.cadmin_value.thead) {
+                            var thead = $('<thead>').appendTo(table);
+                            $.each(val.cadmin_value.thead, function(k, v) {
+                                var tr = $('<tr>').appendTo(thead);
+                                $.each(v, function(a, b) {
+                                    var td = $('<td>').html(b).appendTo(tr);
+                                });
+                            });
+                        }
+                            var tbody = $('<tbody>').appendTo(table);
+                            $.each(val.cadmin_value.table, function(k, v) {
+                                var tr = $('<tr>').appendTo(tbody);
+                                $.each(v, function(a, b) {
+                                    var td = $('<td>').html(b).appendTo(tr);
+                                });
+                            });
+
+                        break;
                     case 'image':
                         var wrapper = $('<div>').attr({'class': 'historywrapper'}).appendTo(preview);
                         var x = obj.data('imagex');
@@ -331,24 +353,6 @@ var draw = {
         //abort.html(language.cancelchanges);
         return cadmin_help;
     },
-//    import: function() {
-//        var cadmin_import = $('<div>').attr({'class': 'cadmin_import'});
-//        var cadmin_boxheader = $('<div>').attr({'class': 'cadmin_boxheader'}).appendTo(cadmin_import);
-//        var h3 = $('<h3>').appendTo(cadmin_boxheader);
-//        var abort = $('<a>').attr({'href': 'cancel', 'class': 'delete_change link'}).appendTo(cadmin_boxheader);
-//        h3.html('Import');
-//        abort.html('cancel changes');
-//        return cadmin_import;
-//    },
-//    export: function() {
-//        var cadmin_export = $('<div>').attr({'class': 'cadmin_export'});
-//        var cadmin_boxheader = $('<div>').attr({'class': 'cadmin_boxheader'}).appendTo(cadmin_export);
-//        var h3 = $('<h3>').appendTo(cadmin_boxheader);
-//        var abort = $('<a>').attr({'href': 'cancel', 'class': 'delete_change link'}).appendTo(cadmin_boxheader);
-//        h3.html('Export');
-//        abort.html('cancel changes');
-//        return cadmin_export;
-//    },
     menu: function(type) {
 
         var ul = $('<ul>');
@@ -398,12 +402,6 @@ var draw = {
         var li4a = $('<a>').attr({'href': 'history', 'class': 'menu history'}).appendTo(li4);
         var li4span = $('<span>').html(language.menuhistory).appendTo(li4a);
         var li4small = $('<small>').html(language.menuhistorysmall).appendTo(li4a);
-//        var li5a = $('<a>').attr({'href': 'import', 'class': 'menu import'}).appendTo(li5);
-//        var li5span = $('<span>').html('Import').appendTo(li5a);
-//        var li5small = $('<small>').html('import settings').appendTo(li5a);
-//        var li6a = $('<a>').attr({'href': 'export', 'class': 'menu export'}).appendTo(li6);
-//        var li6span = $('<span>').html('Export').appendTo(li6a);
-//        var li6small = $('<small>').html('export settings').appendTo(li6a);
         var li7a = $('<a>').attr({'href': 'help', 'class': 'menu help'}).appendTo(li7);
         var li7span = $('<span>').html(language.menuhelp).appendTo(li7a);
         var li7small = $('<small>').html(language.menuhelpsmall).appendTo(li7a);

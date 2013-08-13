@@ -199,7 +199,7 @@ class Database {
         $data = '';
         $i = 0;
         foreach ($columns as $col) {
-            $data .= '' . $col . '="' . $val[$i] . '",';
+            $data .= '' . $col . "='" . $val[$i] . "',";
             $i++;
         }
         $data = substr_replace($data, "", -1);

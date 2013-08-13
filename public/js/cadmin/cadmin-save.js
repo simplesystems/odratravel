@@ -15,16 +15,38 @@ var save = {
                 var data = {};
                 var i = 0;
                 data['table'] = {};
-                $.each(list.find('tr'), function() {
+                $.each(list.find('tr:not(.editorRow)'), function() {
                     var a = 0;
                     data['table'][i] = {};
                     data['table'][i][a] = {};
-                    $.each($(this).find('td'), function() {
+                    $.each($(this).find('td:not(.tdEditorRow)'), function() {
                         data['table'][i][a] = $(this).text();
                         a++;
                     });
                     i++;
                 });
+
+                var check = null;
+                $.each(list.find('.editorRow').find('input'), function() {
+                    if ($(this).val() !== '') {
+                        check = 'yes';
+                    }
+                });
+                if (check === 'yes') {
+                    var i = 0;
+                    data['thead'] = {};
+                    $.each(list.find('.editorRow'), function() {
+                        var a = 0;
+                        data['thead'][i] = {};
+                        data['thead'][i][a] = {};
+                        $.each($(this).find('.tdEditorRow'), function() {
+                            data['thead'][i][a] = $(this).find('input').val();
+                            a++;
+                        });
+                        i++;
+                    });
+                }
+
                 break;
             case 'image':
                 if (obj.data('style') === 'background') {
@@ -109,21 +131,43 @@ var save = {
                 }
                 break;
             case 'list':
-                var list = $('.cadmin_panel #editedTable');
-                var listArray = {};
+                        var list = $('.cadmin_panel #editedTable');
+                var data = {};
                 var i = 0;
-                listArray['table'] = {};
-                $.each(list.find('tr'), function() {
+                data['table'] = {};
+                $.each(list.find('tr:not(.editorRow)'), function() {
                     var a = 0;
-                    listArray['table'][i] = {};
-                    listArray['table'][i][a] = {};
-                    $.each($(this).find('td'), function() {
-                        listArray['table'][i][a] = $(this).text();
+                    data['table'][i] = {};
+                    data['table'][i][a] = {};
+                    $.each($(this).find('td:not(.tdEditorRow)'), function() {
+                        data['table'][i][a] = $(this).text();
                         a++;
                     });
                     i++;
-                    data = listArray;
                 });
+
+                var check = null;
+                $.each(list.find('.editorRow').find('input'), function() {
+                    if ($(this).val() !== '') {
+                        check = 'yes';
+                    }
+                });
+                if (check === 'yes') {
+                    var i = 0;
+                    data['thead'] = {};
+                    $.each(list.find('.editorRow'), function() {
+                        var a = 0;
+                        data['thead'][i] = {};
+                        data['thead'][i][a] = {};
+                        $.each($(this).find('.tdEditorRow'), function() {
+                            data['thead'][i][a] = $(this).find('input').val();
+                            a++;
+                        });
+                        i++;
+                    });
+                }
+
+
                 break;
             case 'image':
                 if (obj.data('style') === 'background') {

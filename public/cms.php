@@ -34,6 +34,11 @@ class CMS {
 
     public function getSettings() {
         $site = isset($_GET["site"]) ? $_GET["site"] : '';
+
+        if ($site === 'kontakt') {
+            $this->_smarty->display('kontakt.tpl');
+            die();
+        }
         $s = $this->_db->findPageByRoute('/strona/' . $site);
         if (!($s)) {
             $this->_smarty->display('error.tpl');
@@ -81,6 +86,9 @@ class CMS {
                 'md5' => $listView['templatelist_' . $id]['md5'],
                 'table' => $table['table']
             );
+            if (isset($table['thead'])) {
+                $templatelist['thead'] = $table['thead'];
+            }
         }
 //        echo '<pre>';
 //        var_dump($templatelist);

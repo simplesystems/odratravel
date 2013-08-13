@@ -119,7 +119,8 @@
                 <form action="newsletter.php" action="get"> 
                     <div>
                         <p>Wpisz swój e-mail aby otrzymywać informacje o promocjach</p>
-                        <input type="text" name="email" placeholder="Podaj adres e-mail"/>
+                                                {$ep3gateNewsletter}
+{*                        <input type="text" name="email" placeholder="Podaj adres e-mail"/>*}
                     </div>
                     <button class="add btn" type="submit" value="1">Zapisz się</button> lub   
                     <button class="remove btn_link" type="submit" value="2">wypisz się</button>

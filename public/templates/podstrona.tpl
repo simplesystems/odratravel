@@ -21,13 +21,27 @@
                     <span class="code">kod oferty: <div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatecode.md5}' data-key='{$templatecode.key}'>{$templatecode.value}</div></span>
                     <br />
                     <table class="editable dictionary "  data-type='list' data-cell="2" data-rows="6" data-md5='{$templatelist.md5}' data-key='{$templatelist.key}'>
-                        {foreach from=$templatelist.table item=table}
-                            <tr>
-                                {foreach from=$table item=td}
-                                    <td>{$td}</td>
+                        {if isset($templatelist.thead)}
+                            <thead>
+                                {foreach from=$templatelist.thead item=table}
+                                    <tr>
+                                        {foreach from=$table item=td}
+                                            <td>{$td}</td>
+                                        {/foreach}
+                                    </tr>
                                 {/foreach}
-                            </tr>
-                        {/foreach}
+
+                            </thead>
+                        {/if}                            
+                        <tbody>
+                            {foreach from=$templatelist.table item=table}
+                                <tr>
+                                    {foreach from=$table item=td}
+                                        <td>{$td}</td>
+                                    {/foreach}
+                                </tr>
+                            {/foreach}
+                        </tbody>
                     </table>
                     <br />
                     <br />
@@ -178,7 +192,8 @@
                 <form action="newsletter.php" action="get"> 
                     <div>
                         <p>Wpisz swój e-mail aby otrzymywać informacje o promocjach</p>
-                        <input type="text" name="email" placeholder="Podaj adres e-mail"/>
+                        {$ep3gateNewsletter}
+                        {*                        <input type="text" name="email" placeholder="Podaj adres e-mail"/>*}
                     </div>
                     <button class="add btn" type="submit" value="1">Zapisz się</button> lub   
                     <button class="remove btn_link" type="submit" value="2">wypisz się</button>

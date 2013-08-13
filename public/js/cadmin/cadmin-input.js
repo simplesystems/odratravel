@@ -173,6 +173,9 @@ var input = {
                 case 'image':
                     replace.historyImage(div);
                     break;
+                case 'list':
+                    replace.historyList(div);
+                    break;
                 case 'gallery':
                     replace.historyGallery(div);
                     break;
