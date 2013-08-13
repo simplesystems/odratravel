@@ -9,7 +9,7 @@ define('imgDir', '/img/');
 define('cfgDir', '../config/');
 
 require(SMARTY_DIR . 'Smarty.class.php');
-include '../libs/cadmin/cadmin.php';
+include '../libs/Cadmin/cadmin.php';
 
 $smarty = new Smarty;
 $smarty->setConfigDir(cfgDir);
