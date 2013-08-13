@@ -1,6 +1,6 @@
 /nbproject/private/
 #smarty cache
 cache/*
-#/public/files/
-#/public/tmp/
-#/public/cadmin/cache/
+/public/files/
+/public/tmp/
+/public/cadmin/cache/
