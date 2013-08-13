@@ -6,7 +6,7 @@ body .cadmin_panel ,.cadmin_panel div,.cadmin_panel dl,.cadmin_panel dt,.cadmin_
 .cadmin_panel address,.cadmin_panel caption,.cadmin_panel cite,.cadmin_panel code,.cadmin_panel dfn,.cadmin_panel em,.cadmin_panel strong,.cadmin_panel th,.cadmin_panel var {font-style:normal;font-weight:normal}
 .cadmin_panel ol,.cadmin_panel ul {list-style:none;padding:0px}
 .cadmin_panel caption,.cadmin_panel th {text-align:left}
-.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6 {font-size:100%;color: #646464;}
+.cadmin_panel h1,.cadmin_panel h2,.cadmin_panel h3,.cadmin_panel h4,.cadmin_panel h5,.cadmin_panel h6 {font-size:100%;color: #646464;margin:0;padding:0}
 .cadmin_panel q:before,.cadmin_panel q:after {content:''}
 .cadmin_panel abbr,.cadmin_panel acronym {border:0}
 
@@ -257,7 +257,10 @@ div.editimage2 {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 .cadmin_panel #editedTable .cellEditing input[type=text]{width:100%; border:0;background-color:rgb(255,253,210)}
 .cadmin_panel .listButton{cursor: pointer;padding: 5px;color: #646464}
 .cadmin_panel .tdEditorRow div {width: 33%;float: left;text-align: center}
-.cadmin_panel .tdEditorRow{width: 10px !important}
+.cadmin_panel .tdEditorRow .divThead {width: 100%;text-align: center}
+.cadmin_panel .tdEditorRow{width: 33px !important}
+.cadmin_panel .historywrapper table{border : solid 1px}
+.cadmin_panel .historywrapper table td{border : solid 1px}
 
 
 

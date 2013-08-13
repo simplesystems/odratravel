@@ -82,6 +82,35 @@ var replace = {
         $('*[data-key=' + obj.data('key') + ']').html(data);
         $(document).trigger('text_content_update', obj);
     },
+    list: function(obj) {
+        obj.empty();
+        var list = $('.cadmin_panel #editedTable');
+        var check = null;
+
+        $.each(list.find('.editorRow').find('.tdEditorRow:not(td[data-pos="edit"])').find('input'), function() {
+            if ($(this).val() !== '') {
+                check = 'yes';
+            }
+        });
+        if (check === 'yes') {
+            $.each(list.find('.editorRow'), function() {
+                var thead = $('<thead>').appendTo(obj);
+                var tr = $('<tr>').appendTo(thead);
+                $.each($(this).find('.tdEditorRow:not(td[data-pos="edit"])'), function() {
+                    var td = $('<td>').appendTo(tr).html($(this).find('input').val());
+                });
+            });
+        }
+
+        var tbody = $('<tbody>').appendTo(obj);
+        $.each(list.find('tbody').find('tr:not(.editorRow)'), function() {
+            var tr = $('<tr>').appendTo(tbody);
+            $.each($(this).find('td:not(.tdEditorRow)'), function() {
+                var td = $('<td>').appendTo(tr).html($(this).text());
+            });
+
+        });
+    },
     video: function(obj) {
         var div = $('.linkdiv div');
         var ul = $('*[data-key=' + obj.data('key') + '] ul').empty();
@@ -140,6 +169,11 @@ var replace = {
         $('div[data-key=' + obj.data('key') + ']').html(data);
 
     },
+    historyList: function(div) {
+        var obj = cadmin.getObject();
+        var data = div.children('.historywrapper').html();
+        $('table[data-key=' + obj.data('key') + ']').html(data);
+    },
     historyVideo: function(div) {
         var ol = div.children('.historywrapper');
         var obj = cadmin.getObject();
@@ -197,27 +231,4 @@ var replace = {
             });
         }
     },
-    list: function(obj) {
-        var thead = obj.find('thead').length;
-        obj.empty();
-        
-        var list = $('.cadmin_panel #editedTable');
-        if (thead > 0) {
-            var thead = $('<thead>').appendTo(obj);
-            var trhead = list.find('tr:first');
-            var tr = $('<tr>').appendTo(thead);
-            $.each(trhead.find('td'), function() {
-                var td = $('<td>').appendTo(tr).html($(this).text());
-            });
-        }
-
-        var tbody = $('<tbody>').appendTo(obj);
-        $.each(list.find('tbody').find('tr'), function() {
-            var tr = $('<tr>').appendTo(tbody);
-            $.each($(this).find('td'), function() {
-                var td = $('<td>').appendTo(tr).html($(this).text());
-            });
-
-        });
-    }
 };

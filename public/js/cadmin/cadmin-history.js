@@ -38,8 +38,30 @@ var history = {
             case 'text':
                 var wrapper = $('<div>').attr({'class': 'historywrapper'}).appendTo(div);
                 wrapper.html(data.history[0].cadmin_value);
-                replace.historyText(div)
+                replace.historyText(div);
                 break;
+            case 'list':
+
+                var wrapper = $('<div>').attr({'class': 'historywrapper'}).appendTo(div);
+                var table = $('<table>').appendTo(wrapper);
+
+                if (data.history[0].cadmin_value.thead) {
+                    var thead = $('<thead>').appendTo(table);
+                    $.each(data.history[0].cadmin_value.thead, function(k, v) {
+                        var tr = $('<tr>').appendTo(thead);
+                        $.each(v, function(a, b) {
+                            var td = $('<td>').html(b).appendTo(tr);
+                        });
+                    });
+                }
+                var tbody = $('<tbody>').appendTo(table);
+                $.each(data.history[0].cadmin_value.table, function(k, v) {
+                    var tr = $('<tr>').appendTo(table);
+                    $.each(v, function(a, b) {
+                        var td = $('<td>').html(b).appendTo(tr).css({'border': 'solid 1px'});
+                    });
+                });
+                replace.historyList(div);
             case 'image':
                 var wrapper = $('<div>').attr({'class': 'historywrapper'}).appendTo(div);
                 var x = obj.data('imagex');
@@ -83,7 +105,7 @@ var history = {
         }
 
         $('.cadmin_content').remove();
-        cadmin.start(obj, 1)
+        cadmin.start(obj, 1);
     }
 
 
