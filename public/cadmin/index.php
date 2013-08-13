@@ -24,7 +24,34 @@ class cadminMain {
     }
 
     public function __call($name, $arguments) {
-        die("Function {$name} doesn't exists");
+        if (empty($name)) {
+            header('Location: login.html');
+        } else {
+            header("HTTP/1.0 404 Not Found");
+            die("Function {$name} doesn't exists");
+        }
+    }
+
+    public function dologin() {
+        $credentials = include '../../configs/credentials.php';
+
+        if (isset($credentials[$_POST['username']]) && $credentials[$_POST['username']] == md5($_POST['password'])) {
+
+            if (!headers_sent()) {
+                session_start();
+            }
+            $_SESSION['cadmin'] = 1;
+            $_SESSION['usernmae'] = $_POST['username'];
+            header('Location: /');
+        } else {
+            header('Location: login.html');
+        }
+    }
+
+    public function logout() {
+        unset($_SESSION['cadmin']);
+        session_destroy();
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     public function check() {
@@ -91,7 +118,7 @@ class cadminMain {
                 'cadmin_value' => $post['data'],
                 'cadmin_md5' => md5($post['data']),
                 'cadmin_date' => time(),
-                'cadmin_author' => 'user')); // USER HERE ****************************************  
+                'cadmin_author' => $_SESSION['usernmae'])); // USER HERE ****************************************  
 
             $text = $database->findByKey('cadmin_text', $post['key']);
             if (empty($text)) {
@@ -110,7 +137,7 @@ class cadminMain {
                 'cadmin_value' => serialize($post['data']),
                 'cadmin_md5' => md5(serialize($post['data'])),
                 'cadmin_date' => time(),
-                'cadmin_author' => 'user'));
+                'cadmin_author' => $_SESSION['usernmae']));
 
             $text = $database->findByKey('cadmin_list', $post['key']);
             if (empty($text)) {
@@ -129,7 +156,7 @@ class cadminMain {
                 'cadmin_value' => serialize($post['data']),
                 'cadmin_md5' => md5(serialize($post['data'])),
                 'cadmin_date' => time(),
-                'cadmin_author' => 'user'));
+                'cadmin_author' => $_SESSION['usernmae']));
 
             $gallery = $database->findByKey('cadmin_image', $post['key']);
             $database->deleteByKey('cadmin_image', $post['key']);
@@ -159,7 +186,7 @@ class cadminMain {
                 'cadmin_value' => $post['data'],
                 'cadmin_md5' => md5($post['data']),
                 'cadmin_date' => time(),
-                'cadmin_author' => 'user'));
+                'cadmin_author' => $_SESSION['usernmae']));
 
             $image = $database->findByKey('cadmin_image', $post['key']);
             if (empty($image)) {
@@ -183,7 +210,7 @@ class cadminMain {
                 'cadmin_value' => serialize($post['data']),
                 'cadmin_md5' => md5($post['data']),
                 'cadmin_date' => time(),
-                'cadmin_author' => 'user'));
+                'cadmin_author' => $_SESSION['usernmae']));
 
             $video = $database->findByKey('cadmin_video', $post['key']);
             $database->deleteByKey('cadmin_video', $post['key']);

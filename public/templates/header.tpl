@@ -17,9 +17,11 @@
         {$configcss}
         {$headerjs}
         <link rel="stylesheet" href="{$__cssDir}jquery.bxslider.css">
-        {foreach from=$cadminCss item=css}
-            <link rel="stylesheet" href="{$__cssDir}{$css}">
-        {/foreach}
+        {if isset($cadminCss)}
+            {foreach from=$cadminCss item=css}
+                <link rel="stylesheet" href="{$__cssDir}{$css}">
+            {/foreach}
+        {/if}
         <link rel="stylesheet" href="{$__jsDir}fancybox/jquery.fancybox-1.3.1.css">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="{$__jsDir}vendor/modernizr-2.6.2.min.js"></script>
@@ -49,22 +51,13 @@
                             {foreach from=$menuItems.top item=foo}
                                 <li><a href="{$foo.route}">{$foo.title}</a></li>
                                 {/foreach}
-
-                        {else}
+                            {else}
                             <li><a href="/strona/o_firmie">O firmie</a></li>
                             <li><a href="/strona/wycieczki_autokarowe">Wycieczki <br/>autokarowe</a></li>
                             <li><a href="/strona/wycieczki_lotnicze">Wycieczki <br/>lotnicze</a></li>
                             <li><a href="/strona/wynamem_autokarow">Wynajem <br/>autokarów</a></li>
                             <li><a href="/kontakt.html">Kontakt</a></li> 
-                            {/if}
-
-
-
-
-
-                    </ul>
-
-
+                        {/if}
                     </ul>
                 </nav>
             </header>

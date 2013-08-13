@@ -1,7 +1,7 @@
 var language = {
     youarein: 'Jesteś w',
     settings: 'Ustawienia',
-    dashboard: 'Panel',
+    dashboard: 'Wyjdź',
     webadminpanel: '&nbsp Panelu zarządzania stroną',
     cms: 'Cadmin - System zarządzania treścią',
     adminpanel: 'Panel Administracyjny',

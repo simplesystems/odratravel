@@ -1,4 +1,5 @@
 <?php
+
 @session_start();
 define('SMARTY_DIR', '../libs/smarty/');
 define('tplDir', '../public/templates/');
@@ -22,7 +23,8 @@ $smarty->cache_lifetime = 120;
 $smarty->assign('__imgDir', imgDir);
 $smarty->assign('__cssDir', cssDir);
 $smarty->assign('__jsDir', jsDir);
-
 $cadmin = new Cadmin();
-$smarty->assign('cadminCss', $cadmin->loadCss());
-$smarty->assign('cadminJs', $cadmin->loadJs());
+if (isset($_SESSION['cadmin']) && $_SESSION['cadmin']) {
+    $smarty->assign('cadminCss', $cadmin->loadCss());
+    $smarty->assign('cadminJs', $cadmin->loadJs());
+}
