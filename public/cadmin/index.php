@@ -41,7 +41,7 @@ class cadminMain {
                 session_start();
             }
             $_SESSION['cadmin'] = 1;
-            $_SESSION['usernmae'] = $_POST['username'];
+            $_SESSION['username'] = $_POST['username'];
             header('Location: /');
         } else {
             header('Location: login.html');
@@ -103,7 +103,7 @@ class cadminMain {
     }
 
     public function publish() {
-
+      //  $_SESSION['username'] = 'admin';
         if (empty($_POST)) {
             print json_encode('No data!');
             die();
@@ -118,7 +118,7 @@ class cadminMain {
                 'cadmin_value' => $post['data'],
                 'cadmin_md5' => md5($post['data']),
                 'cadmin_date' => time(),
-                'cadmin_author' => $_SESSION['usernmae'])); // USER HERE ****************************************  
+                'cadmin_author' => $_SESSION['username'])); // USER HERE ****************************************  
 
             $text = $database->findByKey('cadmin_text', $post['key']);
             if (empty($text)) {
@@ -137,7 +137,7 @@ class cadminMain {
                 'cadmin_value' => serialize($post['data']),
                 'cadmin_md5' => md5(serialize($post['data'])),
                 'cadmin_date' => time(),
-                'cadmin_author' => $_SESSION['usernmae']));
+                'cadmin_author' => $_SESSION['username']));
 
             $text = $database->findByKey('cadmin_list', $post['key']);
             if (empty($text)) {
@@ -156,7 +156,7 @@ class cadminMain {
                 'cadmin_value' => serialize($post['data']),
                 'cadmin_md5' => md5(serialize($post['data'])),
                 'cadmin_date' => time(),
-                'cadmin_author' => $_SESSION['usernmae']));
+                'cadmin_author' => $_SESSION['username']));
 
             $gallery = $database->findByKey('cadmin_image', $post['key']);
             $database->deleteByKey('cadmin_image', $post['key']);
@@ -181,12 +181,15 @@ class cadminMain {
             }
         }
         if ($post['type'] === 'image') {
+            if(is_array($post['data'])){
+                $post['data'] = serialize($post['data']);
+            }
             $database->insert('cadmin_history', array(
                 'cadmin_key' => $post['key'],
                 'cadmin_value' => $post['data'],
                 'cadmin_md5' => md5($post['data']),
                 'cadmin_date' => time(),
-                'cadmin_author' => $_SESSION['usernmae']));
+                'cadmin_author' => $_SESSION['username']));
 
             $image = $database->findByKey('cadmin_image', $post['key']);
             if (empty($image)) {
@@ -210,7 +213,7 @@ class cadminMain {
                 'cadmin_value' => serialize($post['data']),
                 'cadmin_md5' => md5($post['data']),
                 'cadmin_date' => time(),
-                'cadmin_author' => $_SESSION['usernmae']));
+                'cadmin_author' => $_SESSION['username']));
 
             $video = $database->findByKey('cadmin_video', $post['key']);
             $database->deleteByKey('cadmin_video', $post['key']);
@@ -757,7 +760,12 @@ class cadminMain {
                     'template' => $page['template'],
                     'route' => $page['route'],
                     'menu' => $page['menu'],
-                    'pos' => $page['pos']);
+                    'pos' => $page['pos'],
+                    'lang_1' => $page['lang_1'],
+                    'lang_2' => $page['lang_2'],
+                    'lang_3' => $page['lang_3'],
+                    'img' => $page['img'],
+                    'imghover' => $page['imghover']);
             }
             $_SESSION['pages'] = $data;
         }
@@ -818,7 +826,12 @@ class cadminMain {
                         'title' => $result['title'],
                         'template' => $result['template'],
                         'type' => $result['type'],
-                        'menu' => $result['menu']);
+                        'menu' => $result['menu'],
+                        'lang_1' => $result['lang_1'],
+                        'lang_2' => $result['lang_2'],
+                        'lang_3' => $result['lang_3'],
+                        'img' => $result['img'],
+                        'imghover' => $result['imghover']);
                 }
                 print json_encode($data);
                 die();
@@ -828,6 +841,18 @@ class cadminMain {
                 die();
             case 'page_menu';
                 $result = $this->jsTreeSetPageMenu($_POST);
+                print json_encode('success');
+                die();
+            case 'page_lang';
+                $result = $this->jsTreeSetPageMenu($_POST);
+                print json_encode('success');
+                die();
+            case 'page_img';
+                $result = $this->jsTreeSetPageImg($_POST);
+                print json_encode('success');
+                die();
+            case 'page_imghover';
+                $result = $this->jsTreeSetPageImgHover($_POST);
                 print json_encode('success');
                 die();
         }
@@ -872,7 +897,13 @@ class cadminMain {
             'route' => $route . '/' . str_replace(" ", "_", strtolower($post['title'])),
             'menu' => 'none',
             'pos' => null,
-            'new' => true);
+            'new' => true,
+            'lang_1' => null,
+            'lang_2' => null,
+            'lang_3' => null,
+            'img' => 44,
+            'imghover' => 45
+        );
 
 
         return $id;
@@ -929,8 +960,19 @@ class cadminMain {
     public function jsTreeSetPageMenu($post) {
 
         $this->jsTreeSession();
-        $_SESSION['pages'][$post['id']]['menu'] = $post['template'];
-        $_SESSION['pages'][$post['id']]['pos'] = 99;
+        $_SESSION['pages'][$post['id']][$post['field']] = $post['template'];
+    }
+
+    public function jsTreeSetPageImg($post) {
+
+        $this->jsTreeSession();
+        $_SESSION['pages'][$post['id']]['img'] = $post['template'];
+    }
+
+    public function jsTreeSetPageImgHover($post) {
+
+        $this->jsTreeSession();
+        $_SESSION['pages'][$post['id']]['imghover'] = $post['template'];
     }
 
     public function jsTreeCancel() {
@@ -958,6 +1000,11 @@ class cadminMain {
                     'route' => $page['route'],
                     'menu' => $page['menu'],
                     'pos' => $page['pos'],
+                    'lang_1' => $page['lang_1'],
+                    'lang_2' => $page['lang_2'],
+                    'lang_3' => $page['lang_3'],
+                    'img' => $page['img'],
+                    'imghover' => $page['imghover']
                 ));
                 $changes[] = array('id' => $lastId,
                     'parent_id' => $page['id']);
@@ -972,7 +1019,12 @@ class cadminMain {
                 'template' => $page['template'],
                 'type' => $page['type'],
                 'menu' => $page['menu'],
-                'pos' => $page['pos']), $page['id']);
+                'pos' => $page['pos'],
+                'lang_1' => $page['lang_1'],
+                'lang_2' => $page['lang_2'],
+                'lang_3' => $page['lang_3'],
+                'img' => $page['img'],
+                'imghover' => $page['imghover']), $page['id']);
             unset($_SESSION['pages'][$page['id']]);
         }
 

@@ -2,8 +2,17 @@ slider = '';
 slider2 = '';
 
 $(document).ready(function() {
+    $('table#navmenu td[width="6px"]').remove();
     var stars = $('.stars').children('div').text();
     $('.stars').children('div').html(stars.replace(/\*/g, '<img src="/img/star.png">'));
+    var path = window.location.pathname;
+    path = path.split('/');
+
+    if (path[1] == 'menu') {
+        $('img[data-route="/menu/' + path[2] + '"]').parent().parent().trigger('click');
+    }
+
+
 });
 $(document).bind('text_content_update', function(obj) {
     var stars = $('.stars').children('div').text();
@@ -24,7 +33,7 @@ $(document).bind('slider_gallery_update', function() {
         newUrl2[5] = 326;
         newUrl2[6] = 217;
         newUrl2 = newUrl2.join('/');
-        
+
         var newUrl3 = newUrl.split('/');
         newUrl3[5] = 640;
         newUrl3[6] = 480;
@@ -67,7 +76,7 @@ $('#sidemenu > li:not(.active) a').not('.active').hover(
         function() {
             curr_obj = $(this).find('img');
             oldSrc = curr_obj.attr('src');
-            curr_obj.attr('src', oldSrc.replace('/img/', '/img/a_'));
+            curr_obj.attr('src', curr_obj.data('hover'));
         },
         function() {
 
@@ -76,12 +85,25 @@ $('#sidemenu > li:not(.active) a').not('.active').hover(
 )
 
 
-$('#sidemenu a').click(function() {
-    if ($(this).next().is('ul')) {
-        $(this).next().slideToggle()
+$('#sidemenu a').unbind('click').click(function() {
+
+//$.each($(this).parent().parent().find('li'), function() {
+//        $(this).removeClass('active');
+//        $(this).children('ul:visible').slideUp();
+//
+//    });
+    $(this).parent().parent().find('li').removeClass('active');
+    $(this).parent().parent().find('ul:visible').hide();
+
+    $(this).parent().addClass('active');
+    if ($(this).children('ul:hidden')) {
+        $(this).slideDown();
         return false;
     }
-})
+
+
+
+});
 
 
 

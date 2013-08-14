@@ -31,7 +31,7 @@ var cadmin = {
                 var content = draw.text(obj);
                 var menu = draw.menu(this.type);
                 content.appendTo('.cadmin_leftcol_sub');
-                if(obj.data('reload') === 'yes'){
+                if (obj.data('reload') === 'yes') {
                     reload.text(obj);
                 }
                 break;
@@ -39,11 +39,16 @@ var cadmin = {
                 var content = draw.list(obj);
                 var menu = draw.menu(this.type);
                 content.appendTo('.cadmin_leftcol_sub');
-                 break;
+                break;
             case 'image':
                 var content = draw.image(obj);
                 var menu = draw.menu(this.type);
                 content.appendTo('.cadmin_leftcol_sub');
+                if (obj.data('optional') === 'yes') {
+                    $.getJSON("/cadmin/getPages", function(data) {
+                        draw.imageHref(data);
+                    });
+                }
 
                 break;
             case 'gallery':
@@ -153,7 +158,11 @@ var cadmin = {
         }
 
 
+    },
+    setObject: function(obj) {
+        this.Object = obj;
     }
+
 
 };
 

@@ -3,11 +3,19 @@
     <footer class="wrapper">
         <ul class="footer1" id="menu-info">
             <li>
-                <h2>O nas</h2>
+                <h2>{$LANG_ABOUT}</h2>
             </li>
             {if isset($menuItems.info)}
                 {foreach from=$menuItems.info item=foo}
-                    <li><a href="{$foo.route}">{$foo.title}</a></li>
+                    {if $lang === 1}
+                        <li><a href="{$foo.route}">{$foo.lang_1}</a></li>
+                        {/if}
+                        {if $lang === 2}
+                        <li><a href="{$foo.route}">{$foo.lang_2}</a></li>
+                        {/if}
+                        {if $lang === 3}
+                        <li><a href="{$foo.route}">{$foo.lang_3}</a></li>
+                        {/if}
                     {/foreach}
 
             {else}
@@ -24,11 +32,19 @@
         </ul>
         <ul class="footer2" id="menu-help">
             <li>
-                <h2>Pomoc</h2>
+                <h2>{$LANG_HELP}</h2>
             </li>
             {if isset($menuItems.help)}
                 {foreach from=$menuItems.help item=foo}
-                    <li><a href="{$foo.route}">{$foo.title}</a></li>
+                    {if $lang === 1}
+                        <li><a href="{$foo.route}">{$foo.lang_1}</a></li>
+                        {/if}
+                        {if $lang === 2}
+                        <li><a href="{$foo.route}">{$foo.lang_2}</a></li>
+                        {/if}
+                        {if $lang === 3}
+                        <li><a href="{$foo.route}">{$foo.lang_3}</a></li>
+                        {/if}
                     {/foreach}
 
             {else}
@@ -45,7 +61,7 @@
         </ul>
         <ul class="footer3">
             <li>
-                <h2>Dane naszej firmy</h2>
+                <h2>{$LANG_INFO}</h2>
             </li>
             <li>
                 <a href="/link">Odra Travel sp. z o.o.</a>
@@ -85,8 +101,7 @@
         <img src="/img/payment.png" alt="płatności">
 
         <p>
-            Strona korzysta z plików cookie w celu realizacji usług zgodnie z polityką prywatności. Możesz określić warunki przechowywania lub dostępu do cookie w Twojej przeglądarce.
-            Oferta zamieszczona na stronie nie stanowi oferty handlowej w rozumieniu art. 66 Kodeksu Cywilnego oraz innych właściwych przepisów prawnych.
+            {$LANG_COOKIES}
         </p>
     </footer>
 </div>

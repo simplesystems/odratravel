@@ -53,7 +53,7 @@ var jsTreeCustom = {
             "types": {
                 // I set both options to -2, as I do not need depth and children count checking
                 // Those two checks may slow jstree a lot, so use only when needed
-                "max_depth": 5,
+                "max_depth": 4,
                 "max_children": -2,
                 // I want only `drive` nodes to be root nodes 
                 // This will prevent moving or creating any other type as a root node
@@ -82,7 +82,7 @@ var jsTreeCustom = {
                         "move_node": false,
                         "delete_node": false,
                         "remove": false,
-                        "rename_node": false,
+                        "rename_node": false
                     },
                     "main": {
                         // can have files and folders inside, but NOT other `drive` nodes
@@ -228,4 +228,4 @@ var jsTreeCustom = {
             });
         });
     }
-}
+};

@@ -39,8 +39,8 @@ var pluploadcustom = {
                     size['x'] = x;
                     size['y'] = y;
                 }
-                
-                var path = url.newUrl(ifile.id , size['x'],size['y']);
+
+                var path = url.newUrl(ifile.id, size['x'], size['y']);
                 $('#container').attr({'src': path, 'data-md5': ifile.md5});
 
             }
@@ -89,7 +89,7 @@ var pluploadcustom = {
         });
         uploader.init();
         uploader.bind('FilesAdded', function(up, files) {
-        uploader.start();
+            uploader.start();
         });
         uploader.bind('FileUploaded', function(up, file, info) {
 
@@ -109,7 +109,7 @@ var pluploadcustom = {
             if (file.x >= x && file.y >= y) {
 
                 var size = url.calculate(x, y, 200, 200);
-                var path = url.newUrl(file.id , size['x'],size['y']);
+                var path = url.newUrl(file.id, size['x'], size['y']);
                 var imagesrc = $('<img>').attr({'src': path, 'data-pos': '0', 'data-md5': file.md5}).appendTo(li);
 
 
@@ -139,5 +139,38 @@ var pluploadcustom = {
 //                   
 
 
+    },
+    file: function() {
+        var uploader = new plupload.Uploader({
+            runtimes: 'gears,html5,flash,silverlight,browserplus',
+            browse_button: 'pickfiles',
+            container: 'container',
+            max_file_size: '10mb',
+            url: 'cadmin/upload',
+            flash_swf_url: '/plupload/js/plupload.flash.swf',
+            silverlight_xap_url: '/plupload/js/plupload.silverlight.xap',
+            filters: [
+                {title: "Image files", extensions: "jpg,gif,png"},
+                {title: "Zip files", extensions: "zip"}
+            ],
+            resize: {width: 320, height: 240, quality: 90}
+        });
+
+        uploader.bind('Init', function(up, params) {
+        });
+
+        uploader.init();
+
+        uploader.bind('FilesAdded', function(up, files) {
+            uploader.start();
+            up.refresh(); // Reposition Flash/Silverlight
+        });
+
+        uploader.bind('FileUploaded', function(up, file) {
+            var obj = cadmin.getObject();
+            fileManager.loadFiles(obj.data('imagex'), obj.data('imagey'), 'all', 1, 6);
+
+        });
+
     }
-};
+}

@@ -85,6 +85,11 @@ var draw = {
         var h3 = $('<h3>').appendTo(cadmin_boxheader);
         var abort = $('<a>').attr({'href': 'cancel', 'class': 'delete_change link'}).appendTo(cadmin_boxheader);
         //var divText = $('<div>').attr({'id': 'uploadedtext'}).appendTo(cadmin_add);
+        if (obj.data('optional') == 'yes') {
+            var span = $('<span>').html('link:').appendTo(attachments);
+            var input = $('<input>').attr({'type': 'text', 'class': 'imagehref'}).appendTo(attachments);
+            input.val(obj.parent().attr('href'));
+        }
         h3.html(language.imageeditor);
         abort.html(language.cancelchanges);
         button_add.html(language.browse);
@@ -287,13 +292,13 @@ var draw = {
                                 });
                             });
                         }
-                            var tbody = $('<tbody>').appendTo(table);
-                            $.each(val.cadmin_value.table, function(k, v) {
-                                var tr = $('<tr>').appendTo(tbody);
-                                $.each(v, function(a, b) {
-                                    var td = $('<td>').html(b).appendTo(tr);
-                                });
+                        var tbody = $('<tbody>').appendTo(table);
+                        $.each(val.cadmin_value.table, function(k, v) {
+                            var tr = $('<tr>').appendTo(tbody);
+                            $.each(v, function(a, b) {
+                                var td = $('<td>').html(b).appendTo(tr);
                             });
+                        });
 
                         break;
                     case 'image':
@@ -615,4 +620,13 @@ var draw = {
         return cadmin_settings;
 
     },
+    imageHref: function(data) {
+        var input = $('<select>').insertBefore('.cadmin_upload');
+        $.each(data, function(k, v) {
+            var option = $('<option>').attr('value', v.value).html(v.title).appendTo(input);
+        });
+        input.change(function() {
+            $('.imagehref').val($(this).val());
+        });
+    }
 };

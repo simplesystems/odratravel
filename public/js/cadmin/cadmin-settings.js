@@ -208,7 +208,6 @@ var settings = {
     },
     cancel: function(obj) {
         settings.revert(obj);
-
         save.destroySession(obj);
         obj.parent().remove();
     },
@@ -226,7 +225,7 @@ var settings = {
                 });
     },
     restore: function(data, obj) {
-        if (data != "success") {
+        if (data !== "success") {
             switch (obj.data('type')) {
                 case 'text':
                     $('*[data-key=' + obj.data('key') + ']').html(data.history[0].cadmin_value);
@@ -269,7 +268,7 @@ var settings = {
     pagesTree: function() {
         jsTreeCustom.init();
     },
-    pagesGet: function(id, temp) {
+    pagesGet: function(id, temp, translate, position, files) {
         $.ajax
                 ({
                     url: "/cadmin/jsTree?operation=get_pages&id=" + id,
@@ -277,11 +276,11 @@ var settings = {
                     {
 
                         data = JSON.parse(data.trim());
-                        settings.pagesDraw(data, temp);
+                        settings.pagesDraw(data, temp, translate, position, files);
                     }
                 });
     },
-    pagesDraw: function(data, temp) {
+    pagesDraw: function(data, temp, translate, position, files) {
         $('.pageedit').empty();
         $('.pageedit2').empty();
         if (temp === true) {
@@ -291,7 +290,6 @@ var settings = {
                 var input2 = $('<input>').attr({'class': 'pageradio', 'id': data.id, 'type': 'radio', 'name': 'template', 'value': v}).appendTo('.pageedit');
                 var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit');
             });
-
             $('input:radio[name=template]').each(function() {
                 if ($(this).val() === data.template) {
                     $(this).attr('checked', true);
@@ -301,12 +299,35 @@ var settings = {
                 }
             });
         }
-
-        var span = $('<span>').html(' ' + language.position + ':<br />').appendTo('.pageedit2');
-        $.each(positions, function(k, v) {
-            var input2 = $('<input>').attr({'class': 'pageradio2', 'id': data.id, 'type': 'radio', 'name': 'menu', 'value': v}).appendTo('.pageedit2');
-            var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit2');
-        });
+        if (position === true) {
+            var span = $('<span>').html(' ' + language.position + ':<br />').appendTo('.pageedit2');
+            $.each(positions, function(k, v) {
+                var input2 = $('<input>').attr({'class': 'pageradio2', 'id': data.id, 'type': 'radio', 'name': 'menu', 'value': v}).appendTo('.pageedit2');
+                var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit2');
+            });
+        }
+        if (translate === true) {
+            var div = $('<div>').appendTo('.pageedit2');
+            $.each(langs, function(k, v) {
+                var span = $('<span>').html(k + ':').appendTo(div);
+                var input2 = $('<input>').attr({'class': 'inputLang', 'id': data.id, 'name': 'lang_' + v, 'type': 'text'}).appendTo(div).val(data['lang_' + v]);
+            });
+        }
+        if (files === true) {
+            var div = $('<div>').appendTo('.pageedit2');
+            var span = $('<span>').html('Podgląd:').appendTo(div);
+            var div2 = $('<div>').attr({'class': 'previewDiv'}).appendTo(div);
+            var img = $('<img>').attr({'id': data.id, 'src': '/files/image/resized/' + data.img + '/40/28/image.png', 'data-preview': 'yes', 'data-imagex': '40', 'data-imagey': '28', 'data-type': 'image', 'data-hover': '1'}).appendTo(div2);
+            var img2 = $('<img>').attr({'id': data.id, 'src': '/files/image/resized/' + data.imghover + '/40/28/image.png', 'data-preview': 'yes', 'data-imagex': '40', 'data-imagey': '28', 'data-type': 'image', 'data-hover': '2'}).appendTo(div2);
+            img.unbind('click').bind('click', function() {
+                cadmin.setObject($(this));
+                fileManager.init();
+            });
+            img2.unbind('click').bind('click', function() {
+                cadmin.setObject($(this));
+                fileManager.init();
+            });
+        }
 
         $('input:radio[name=menu]').each(function() {
             if ($(this).val() === data.menu) {
@@ -315,9 +336,9 @@ var settings = {
             if (data.menu === null && $(this).val() === 'none') {
                 $(this).attr('checked', true);
             }
+
         });
         input.SettingsTrack();
-
     },
     pagesSet: function(data) {
         $.ajax
@@ -345,6 +366,58 @@ var settings = {
                         'operation': 'page_menu',
                         'id': data.attr('id'),
                         'template': data.val()
+                    },
+                    cache: false,
+                    success: function(data)
+                    {
+
+                    }
+                });
+    },
+    pagesSet3: function(data) {
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "/cadmin/jsTree",
+                    data: {
+                        'operation': 'page_lang',
+                        'id': data.attr('id'),
+                        'field': data.attr('name'),
+                        'template': data.val()
+                    },
+                    cache: false,
+                    success: function(data)
+                    {
+
+                    }
+                });
+    },
+    pagesSet4: function(data, id) {
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "/cadmin/jsTree",
+                    data: {
+                        'operation': 'page_img',
+                        'template': parseInt(data),
+                        'id': id
+                    },
+                    cache: false,
+                    success: function(data)
+                    {
+
+                    }
+                });
+    },
+    pagesSet5: function(data, id) {
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "/cadmin/jsTree",
+                    data: {
+                        'operation': 'page_imghover',
+                        'template': parseInt(data),
+                        'id': id
                     },
                     cache: false,
                     success: function(data)

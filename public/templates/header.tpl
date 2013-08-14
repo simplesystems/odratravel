@@ -37,9 +37,9 @@
             <header class="wrapper clearfix">
                 <h1 class="title"><a href="/"><img src="/img/logo.png" alt="logo"></a></h1>
                 <div id="language">
-                    <a href="/pol"><img src="/img/pol.png" alt="polski"></a>
-                    <a href="/eng"><img src="/img/eng.png" alt="angielski"></a>
-                    <a href="/de"><img src="/img/de.png" alt="niemiecki"></a>
+                    <a href="?lang=pl"><img src="/img/pol.png" alt="polski"></a>
+                    <a href="?lang=eng"><img src="/img/eng.png" alt="angielski"></a>
+                    <a href="?lang=de"><img src="/img/de.png" alt="niemiecki"></a>
                 </div>    
                 <div id="top_contact">
 
@@ -50,9 +50,17 @@
                     <ul id="menu-top">
                         {if isset($menuItems.top)}
                             {foreach from=$menuItems.top item=foo}
-                                <li><a href="{$foo.route}">{$foo.title}</a></li>
-                                {/foreach}
-                            {else}
+                                {if $lang === 1}
+                                    <li><a href="{$foo.route}">{$foo.lang_1}</a></li>
+                                    {/if}
+                                    {if $lang === 2}
+                                    <li><a href="{$foo.route}">{$foo.lang_2}</a></li>
+                                    {/if}
+                                    {if $lang === 3}
+                                    <li><a href="{$foo.route}">{$foo.lang_3}</a></li>
+                                    {/if}
+                            {/foreach}
+                        {else}
                             <li><a href="/strona/o_firmie">O firmie</a></li>
                             <li><a href="/strona/wycieczki_autokarowe">Wycieczki <br/>autokarowe</a></li>
                             <li><a href="/strona/wycieczki_lotnicze">Wycieczki <br/>lotnicze</a></li>

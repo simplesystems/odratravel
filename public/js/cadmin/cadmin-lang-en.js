@@ -95,7 +95,10 @@ var language = {
     video: 'Video',
     image: 'Image',
     text: 'Text',
-    list: 'List'
+    list: 'List',
+    FMadd: 'Add',
+    FMcancel: 'Cancel',
+    FMbrowse: 'Browse'
 
 };
 

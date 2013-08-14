@@ -59,7 +59,13 @@ var save = {
                     var link = obj.attr('src');
                 }
                 link = url.getId(link);
-                var data = link[0];
+                if (obj.data('optional') === 'yes') {
+                    var data = new Array(link[0], $('.imagehref').val());
+                } else {
+                    var data = link[0];
+                }
+
+
                 break;
             case 'gallery':
                 var data = {};
@@ -131,7 +137,7 @@ var save = {
                 }
                 break;
             case 'list':
-                        var list = $('.cadmin_panel #editedTable');
+                var list = $('.cadmin_panel #editedTable');
                 var data = {};
                 var i = 0;
                 data['table'] = {};
@@ -180,7 +186,11 @@ var save = {
                     var link = obj.attr('src');
                 }
                 link = url.getId(link);
-                var data = link[0];
+                if (obj.data('optional') === 'yes') {
+                    var data = new Array(link[0], $('.imagehref').val());
+                } else {
+                    var data = link[0];
+                }
                 break;
             case 'gallery':
                 var data = {};

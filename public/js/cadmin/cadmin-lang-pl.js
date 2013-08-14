@@ -95,7 +95,10 @@ var language = {
     video: 'Wideo',
     image: 'Obraz',
     text: 'Tekst',
-    list: 'Lista'
+    list: 'Lista',
+    FMadd: 'Dodaj',
+    FMcancel: 'Anuluj',
+    FMbrowse: 'Przeglądaj'
 
 
 };

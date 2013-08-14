@@ -78,6 +78,44 @@ class Cadmin {
         return $database->getMenu();
     }
 
+    public function getPages() {
+        $database = $this->getDatabase();
+        $pages = $database->fetchAll('cadmin_pages');
+        $pageData = array();
+        foreach ($pages as $page) {
+            $explo = explode('/', $page['route']);
+            if (isset($explo[1])) {
+                if ($explo[1] == 'menu') {
+                    if (isset($explo[2])) {
+                        if (!(isset($explo[3]))) {
+                            $pageData[$explo[2]]['lang'] = $page['lang_' . $_SESSION['lang']];
+                            $pageData[$explo[2]]['img'] = $page['img'];
+                            $pageData[$explo[2]]['imghover'] = $page['imghover'];
+                            $pageData[$explo[2]]['route'] = $page['route'];
+                        }
+                    }
+                }
+            }
+        };
+        foreach ($pages as $page) {
+            $explo = explode('/', $page['route']);
+            if (isset($explo[1])) {
+                if (isset($explo[2])) {
+                    if (isset($explo[3])) {
+                        if (!(isset($explo[4]))) {
+                            $pageData[$explo[2]]['elem'][] = array(
+                                'route' => $page['route'],
+                                'disp' => $page['lang_' . $_SESSION['lang']],
+                                'id' => $page['id']
+                            );
+                        }
+                    }
+                }
+            }
+        };
+        return $pageData;
+    }
+
     public function getViewImage() {
         $imageView = array();
         $database = $this->getDatabase();
@@ -119,8 +157,12 @@ class Cadmin {
                 }
             } elseif (isset($_SESSION['image'][$image['cadmin_key']]['key'])) {
                 if (!(isset($imageView[$image['cadmin_key']]))) {
+                    if (@unserialize($_SESSION['image'][$image['cadmin_key']]['data'])) {
+                        $path = unserialize($_SESSION['image'][$image['cadmin_key']]['data']);
+                    } else {
+                        $path = '/files/image/resized/' . $_SESSION['image'][$image['cadmin_key']]['data'] . $size . 'image.png';
+                    }
 
-                    $path = '/files/image/resized/' . $_SESSION['image'][$image['cadmin_key']]['data'] . $size . 'image.png';
                     $imageView[$image['cadmin_key']][] = array(
                         'key' => $_SESSION['image'][$image['cadmin_key']]['key'],
                         'src' => $path,
@@ -128,7 +170,11 @@ class Cadmin {
                         'pos' => 1);
                 }
             } else {
-                $path = '/files/image/resized/' . $image['cadmin_value'] . $size . 'image.jpg';
+                if (@unserialize($image['cadmin_value'])) {
+                    $path = unserialize($image['cadmin_value']);
+                } else {
+                    $path = '/files/image/resized/' . $image['cadmin_value'] . $size . 'image.jpg';
+                }
                 $link = '';
                 $desc = '';
                 $text = '';
@@ -148,7 +194,7 @@ class Cadmin {
                     'text' => $text);
             }
         }
-        
+
         if (isset($_SESSION['image'])) {
             foreach ($_SESSION['image'] as $img) {
                 if (!(array_key_exists($img['key'], $imageView))) {
@@ -197,7 +243,11 @@ class Cadmin {
                 }
             }
         }
-
+//        if (isset($imageView['index_banner'])) {
+//            $src = $imageView['index_banner'][0]['src'];
+//            var_dump($src);
+//            //die();
+//        }
 
 
         return $imageView;
@@ -269,6 +319,7 @@ class Cadmin {
 
         return $textView;
     }
+
     public function getViewLists() {
 
 

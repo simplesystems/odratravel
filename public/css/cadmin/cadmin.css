@@ -261,7 +261,7 @@ div.editimage2 {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 .cadmin_panel .tdEditorRow{width: 33px !important}
 .cadmin_panel .historywrapper table{border : solid 1px}
 .cadmin_panel .historywrapper table td{border : solid 1px}
-
+.cadmin_panel .previewDiv {background: linear-gradient(to bottom, #4BB7FF 0%, #1CA2FB 100%) repeat scroll 0 0 transparent;padding:10px}
 
 
 

@@ -17,6 +17,7 @@ var fileManager = {
     },
     loadFiles: function(x, y, tag, page, max) {
 
+
         var url = '/cadmin/view/' + page + '/' + tag + '/' + x + '/' + y + '/' + max;
         $.ajax
                 ({
@@ -107,20 +108,24 @@ var fileManager = {
             var buttons = $('<div>').attr({'class': 'buttoncontainer'}).appendTo('.cadmin_manager');
             var cadmin_buttons = $('<div>').attr({'class': 'cadmin_buttons_manager'}).appendTo(buttons);
             if (obj.data('type') == 'gallery') {
-                var button_save = $('<a>').attr({'class': 'button fileManagerAdd customButton', 'href': '#'}).html('Add').appendTo(cadmin_buttons);
+                var button_save = $('<a>').attr({'class': 'button fileManagerAdd customButton', 'href': '#'}).html(language.FMadd).appendTo(cadmin_buttons);
             }
 
-            var button_exit = $('<a>').attr({'class': 'button fileManagerCancel customButton', 'href': '#'}).html('Cancel').appendTo(cadmin_buttons);
+            var button_exit = $('<a>').attr({'class': 'button fileManagerCancel customButton', 'href': '#'}).html(language.FMcancel).appendTo(cadmin_buttons);
+            var button_browse = $('<a>').attr({'id': 'pickfiles', 'class': 'button customButton browse_files', 'href': '#'}).html(language.FMbrowse).appendTo(cadmin_buttons);
+            var button_browse = $('<div>').attr({'id': 'container'}).html('').appendTo(cadmin_buttons);
             this.addFilters();
 
             this.addMaxList();
 
 
         }
+
         input.trackButtons();
         input.trackKeys();
         input.trackFilter();
         scale.setSizes();
+        pluploadcustom.file();
     },
     addPaginator: function() {
         var div = $('<ul>').attr({'id': 'pagination-digg'}).appendTo('.cadmin_manager');
@@ -341,6 +346,15 @@ var fileManager = {
             size = url.calculate(x, y, 500, 500);
         }
         var newUrl = url.modify(img.attr('src'), size['x'], size['y']);
+        if (obj.data('preview') === 'yes') {
+            obj.attr({'src': newUrl});
+            var id = url.getId(newUrl);
+            if (obj.data('hover') == 1) {
+                settings.pagesSet4(id, obj.attr('id'));
+            } else {
+                settings.pagesSet5(id, obj.attr('id'));
+            }
+        }
         $('#container').attr({'src': newUrl});
         $('.cadmin_manager').remove();
 

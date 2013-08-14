@@ -364,6 +364,15 @@ var input = {
             e.stopPropagation();
             settings.pagesSet2($(this));
         });
+        $('.inputLang').change(function() {
+            settings.pagesSet3($(this));
+        });
+        $('.inputLang').keypress(function(event) {
+            if (event.keyCode == 13) {
+                settings.pagesSet3($(this));
+            }
+
+        });
 
     },
     jsTreeInput: function() {
@@ -393,18 +402,22 @@ var input = {
             $('.pageedit').empty();
             $('.pageedit2').empty();
             if (REF_NODE.inst.get_json()[0].attr.rel === 'default') {
-//                 console.log(REF_NODE.rslt.obj.parents("li")[0].rel);
-//                 console.log(REF_NODE.inst.get_path('#' + REF_NODE.rslt.obj.attr('id'),true));
+                // console.log(REF_NODE.rslt.obj.parents("li")[0].rel);
+                //console.log(REF_NODE.inst.get_path('#' + REF_NODE.rslt.obj.attr('id'),true));
                 //console.log(REF_NODE.inst.get_path(REF_NODE.rslt.obj)[1]);
-                if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[1] === 'Recipes') {
-                    settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), false);
+                if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[1] === 'menu') {
+                    if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[3] !== undefined) {
+                        settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true, true, false, false);
+                    } else {
+                        settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true, true, false, true);
+                    }
                 }
                 else {
-                    settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true);
+                    settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true, true, true, false);
                 }
-                           }
+            }
             if (REF_NODE.inst.get_json()[0].attr.rel === 'main') {
-                settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), false);
+                settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), false, true, true, false);
             }
             var a = $.jstree._focused().get_selected();
 
