@@ -23,24 +23,25 @@
             <div id="main_search">
 
                 {*  menu wyszukiwania              *}
-                {$ep3gateMenu}
+                {nocache}{$ep3gateMenu}
+                {/nocache}
                 {*  zawartosc wyszukiwarki             *}
-                {$ep3gateContent}
+                {nocache}{$ep3gateContent}{/nocache}
                 {*  stopka (musi byc na koncu bo zawiera skrypty)*}
-                {$ep3gateFooter}
+                {nocache}{$ep3gateFooter}{/nocache}
             </div>
 
             <div id="quick_search">
                 <form action="search.php">
                     {* wyszukiwarka AutoPoszukiwacz  *}
-                    {$ep3gateAutoSuggest}
+                    {nocache}{$ep3gateAutoSuggest}{/nocache}
                 </form>    
             </div>
 
 
             <ul class="offer">
                 {* Boxy z promocjami *}
-                {$ep3gatePromoBox}
+                {nocache}{$ep3gatePromoBox}{/nocache}
             </ul>    
 
             <div class="main_banner">
@@ -92,19 +93,19 @@
 
 
             <address>
-                <h2>Kontakt</h2>
+                <h2>{$LANG_CONTACT}</h2>
                 <div>   
                     <p class="tel">+48 <b>91 421 05 30</b></p>
                     <a class="email" href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a>
                     <p class="info"> od 9 do 16:00</p>   
                 </div> 
-                <a class="btn">Napisz do nas</a>
+                <a class="btn">{$LANG_WRITE}</a>
 
             </address>
 
             <div class="map">
-                <h2>Jak do nas dojechać?</h2>
-                <img src="img/map.png" alt="mapa">
+                <h2>{$LANG_HOW}</h2>
+                <img src="/img/map.png" alt="mapa">
             </div>
 
 
@@ -112,16 +113,15 @@
                 <h2>Newsletter</h2>
                 <form action="newsletter.php" action="get"> 
                     <div>
-                        <p>Wpisz swój e-mail aby otrzymywać informacje o promocjach</p>
+                        <p>{$LANG_NEWS}</p>
                         {$ep3gateNewsletter}
-                        {*<input type="text" name="email" placeholder="Podaj adres e-mail"/>*}
+                        {*                        <input type="text" name="email" placeholder="Podaj adres e-mail"/>*}
                     </div>
-               {*     <button class="add btn" type="submit" value="1">Zapisz się</button> lub   
-                    <button class="remove btn_link" type="submit" value="2">wypisz się</button>*}
+                    {*                    <button class="add btn" type="submit" value="1">{$LANG_SIGNIN}</button> {$LANG_OR}   
+                    <button class="remove btn_link" type="submit" value="2">{$LANG_SIGNOUT}</button>*}
                 </form>    
             </div>   
         </aside>   
     </div> <!-- #main -->
 </div> <!-- #main-container -->
-
 {include file="footer.tpl"}
