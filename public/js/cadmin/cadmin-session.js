@@ -17,7 +17,7 @@ var session = {
         switch (selected) {
             case 'text':
                 if (!(obj.data('textarea') == 'yes')) {
-                    $('textarea').html(tinyMCE.activeEditor.getContent());
+                    $('.cadmin_panel textarea').html(tinyMCE.activeEditor.getContent());
                     tinyMCE.activeEditor.remove();
                 }
                 this.textcontent = content;

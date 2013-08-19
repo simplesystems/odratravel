@@ -3,7 +3,7 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . '/../libs/Cadmin/database.php';
 //login here
 session_start();
-$_SESSION['cadmin'] = 1;
+//$_SESSION['cadmin'] = 1;
 
 if (!(isset($_GET['cadmin']))) {
     $_GET['cadmin'] = ''; /// REDIRECT HERE 

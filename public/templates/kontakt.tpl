@@ -10,22 +10,14 @@
 
             <h3>{$LANG_CONTACT}</h3>
 
-            <div class="description clearfix cms">
-                <b>B.T. Odra Travel</b><br />
-                ul. Piłsudskiego 34<br />
-                70-423 Szczecin<br />
-                <br />
-                Tel.: +48 91 421 05 30<br />
-                Fax: +48 91 421 13 55<br />
-                E-Mail: <a href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a><br />
-            </div>
+            <div class="description2 clearfix cms editable"  data-type='text' data-md5='{$kontaktdata.md5}' data-key='{$kontaktdata.key}'>{$kontaktdata.value}</div>
 
 
             <h3>{$LANG_FORM_CONTACT}</h3>
 
             <div class="description clearfix cms">
 
-                <form name="htmlform" method="post" action="html_form_send.php">
+                <form name="htmlform" method="post" action="#">
 
                     <div class="form_line">
                         <div class="form_col1">
@@ -68,6 +60,16 @@
                             <input type="submit" value="{$LANG_SEND}" class="btn">   
                         </div>
                     </div>
+                    {if isset($sent)}
+                        {if $sent === 'yes'}
+                            {$LANG_SENT}
+                        {/if}
+                        {if $sent === 'no'}
+                            {$LANG_FORM_ERROR}
+                        {/if}
+
+                    {/if}
+
 
                 </form>
 
@@ -79,7 +81,7 @@
             </div>
 
         </div>
-          {include file="menu.tpl"} 
+        {include file="menu.tpl"} 
     </div> <!-- #main -->
 </div> <!-- #main-container -->
 {include file="footer.tpl"}

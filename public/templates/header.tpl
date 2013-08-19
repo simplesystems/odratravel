@@ -42,9 +42,8 @@
                     <a href="?lang=de"><img src="/img/de.png" alt="niemiecki"></a>
                 </div>    
                 <div id="top_contact">
-
-                    <span>+48 91 421 05 30</span>
-                    <a href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a>
+                    <div class="editable"  data-type='text' data-md5='{$headerphone.md5}' data-key='{$headerphone.key}'>{$headerphone.value}
+                    </div>
                 </div>
                 <nav>
                     <ul id="menu-top">
@@ -59,8 +58,8 @@
                                     {if $lang === 3}
                                     <li><a href="{$foo.route}">{$foo.lang_3}</a></li>
                                     {/if}
-                            {/foreach}
-                        {else}
+                                {/foreach}
+                            {else}
                             <li><a href="/strona/o_firmie">O firmie</a></li>
                             <li><a href="/strona/wycieczki_autokarowe">Wycieczki <br/>autokarowe</a></li>
                             <li><a href="/strona/wycieczki_lotnicze">Wycieczki <br/>lotnicze</a></li>

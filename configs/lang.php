@@ -17,6 +17,8 @@ if ($_SESSION['lang'] === 1) {
     $smarty->assign('LANG_SIGNIN', 'Zapisz się');
     $smarty->assign('LANG_SIGNOUT', 'Wypisz się');
     $smarty->assign('LANG_OR', 'lub');
+    $smarty->assign('LANG_SENT', 'wysłano');
+    $smarty->assign('LANG_FORM_ERROR', 'Proszę uzupełnić dane!');
     $smarty->assign('LANG_COOKIES', 'Strona korzysta z plików cookie w celu realizacji usług zgodnie z polityką prywatności. Możesz określić warunki przechowywania lub dostępu do cookie w Twojej przeglądarce. Oferta zamieszczona na stronie nie stanowi oferty handlowej w rozumieniu art. 66 Kodeksu Cywilnego oraz innych właściwych przepisów prawnych. ');
 } if ($_SESSION['lang'] === 2) {
     $smarty->assign('LANG_CONTACT', 'Contakt');
@@ -25,7 +27,7 @@ if ($_SESSION['lang'] === 1) {
     $smarty->assign('LANG_NEWS', 'Enter your`s email to get notifications');
     $smarty->assign('LANG_ABOUT', 'About us');
     $smarty->assign('LANG_HELP', 'Help');
-    $smarty->assign('LANG_INFO', 'Our company informations');
+    $smarty->assign('LANG_INFO', 'Our company info');
     $smarty->assign('LANG_WRITE', 'Write to us');
     $smarty->assign('LANG_NAME', 'Imię i nazwisko');
     $smarty->assign('LANG_EMAIL', 'Adres email');
@@ -35,6 +37,8 @@ if ($_SESSION['lang'] === 1) {
     $smarty->assign('LANG_SIGNIN', 'Zapisz się');
     $smarty->assign('LANG_SIGNOUT', 'Wypisz się');
     $smarty->assign('LANG_OR', 'lub');
+    $smarty->assign('LANG_SENT', 'wysłano');
+    $smarty->assign('LANG_FORM_ERROR', 'Proszę uzupełnić dane!');
     $smarty->assign('LANG_COOKIES', 'Cookie warning ');
 } if ($_SESSION['lang'] === 3) {
     $smarty->assign('LANG_CONTACT', 'Kontakt G');
@@ -53,6 +57,8 @@ if ($_SESSION['lang'] === 1) {
     $smarty->assign('LANG_SIGNIN', 'Zapisz się');
     $smarty->assign('LANG_SIGNOUT', 'Wypisz się');
     $smarty->assign('LANG_OR', 'lub');
+    $smarty->assign('LANG_SENT', 'wysłano');
+    $smarty->assign('LANG_FORM_ERROR', 'Proszę uzupełnić dane!');
     $smarty->assign('LANG_COOKIES', 'Strona korzysta z plików cookie w celu realizacji usług zgodnie z polityką prywatności. Możesz określić warunki przechowywania lub dostępu do cookie w Twojej przeglądarce. Oferta zamieszczona na stronie nie stanowi oferty handlowej w rozumieniu art. 66 Kodeksu Cywilnego oraz innych właściwych przepisów prawnych. ');
 }
 ?>

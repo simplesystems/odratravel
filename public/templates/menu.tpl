@@ -1,7 +1,7 @@
 <aside id="left">
     <ul id="sidemenu">
         {foreach from=$menu_left item=menu}
-            <li><a href="##"><span><img src="/files/image/resized/{$menu.img}/40/28/image.png" data-hover="/files/image/resized/{$menu.imghover}/40/28/image.png"  data-route="{$menu.route}"/></span><b>{$menu.lang}</b></a>
+            <li><a href="{$menu.route}"><span><img src="/files/image/resized/{$menu.img}/40/28/image.png" data-hover="/files/image/resized/{$menu.imghover}/40/28/image.png"  data-route="{$menu.route}"/></span><b>{$menu.lang}</b></a>
                         {if isset($menu.elem)}
                     <ul>
                         {foreach from=$menu.elem item=m}
@@ -16,18 +16,17 @@
 
     <address>
         <h2>{$LANG_CONTACT}</h2>
-        <div>   
-            <p class="tel">+48 <b>91 421 05 30</b></p>
-            <a class="email" href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a>
-            <p class="info"> od 9 do 16:00</p>   
-        </div> 
-        <a class="btn">{$LANG_WRITE}</a>
+
+        <div class="editable"  data-type='text' data-md5='{$menuphone.md5}' data-key='{$menuphone.key}'>{$menuphone.value}
+        </div>
+
+        <a class="btn" href="/strona/kontakt">{$LANG_WRITE}</a>
 
     </address>
 
     <div class="map">
         <h2>{$LANG_HOW}</h2>
-        <img src="/img/map.png" alt="mapa">
+        <img class="editable" data-imagex="224" data-imagey="185" data-type='image' data-md5='{$menu_map.md5}' data-key='{$menu_map.key}' src="{$menu_map.src}"></img>
     </div>
 
 
