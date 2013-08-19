@@ -10,7 +10,7 @@
 
             <form class="product_wrapper">
                 <div class="product_info">
-                    <h1> <div class="editable"  data-textarea='yes' data-type='text' data-md5='{$headerphone.md5}' data-key='{$headerphone.key}'>{$headerphone.value}</div></h1>
+                    <h1> <div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatetitle.md5}' data-key='{$templatetitle.key}'>{$templatetitle.value}</div></h1>
 
                     <div class="stars">
                         <div class="editable" data-reload="yes"  data-textarea='yes' data-type='text' data-md5='{$templatestars.md5}' data-key='{$templatestars.key}'>{$templatestars.value}</div>
