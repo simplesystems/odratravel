@@ -7,6 +7,7 @@ define('jsDir', '/js/');
 define('cssDir', '/css/');
 define('imgDir', '/img/');
 define('cfgDir', '../config/');
+define('email', 'mmagdziak@simple-systems.pl');
 
 require(SMARTY_DIR . 'Smarty.class.php');
 include '../libs/Cadmin/cadmin.php';

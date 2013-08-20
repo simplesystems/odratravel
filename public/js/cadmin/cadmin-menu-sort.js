@@ -7,7 +7,7 @@ $(document).ready(function() {
             var i = 0;
             ul.children().each(function() {
 
-                list[i] = $(this).children('a').html();
+                list[i] = $(this).children('a').attr('href');
                 i++;
             });
             $.ajax
@@ -16,7 +16,7 @@ $(document).ready(function() {
                         url: "/cadmin/menuList",
                         data: {
                             'data': list,
-                            'menu':'top'
+                            'menu': 'top'
                         },
                         cache: false,
                         success: function(data)
@@ -32,7 +32,7 @@ $(document).ready(function() {
             var i = 0;
             ul.children().each(function() {
 
-                list[i] = $(this).children('a').html();
+                list[i] = $(this).children('a').attr('href');
                 i++;
             });
             $.ajax
@@ -41,7 +41,7 @@ $(document).ready(function() {
                         url: "/cadmin/menuList",
                         data: {
                             'data': list,
-                            'menu':'front'
+                            'menu': 'front'
                         },
                         cache: false,
                         success: function(data)
@@ -51,14 +51,14 @@ $(document).ready(function() {
         }}).disableSelection();
     $("#menu-info").sortable({
         placeholder: "ui-state-highlight",
-        items: "li:not(.disabled)",
+        items: "li:not(.disabled):not(.h2)",
         update: function(event, ui) {
             var ul = $('#menu-info');
             var list = {};
             var i = 0;
             ul.children().each(function() {
 
-                list[i] = $(this).children('a').html();
+                list[i] = $(this).children('a').attr('href');
                 i++;
             });
             $.ajax
@@ -67,7 +67,7 @@ $(document).ready(function() {
                         url: "/cadmin/menuList",
                         data: {
                             'data': list,
-                            'menu':'info'
+                            'menu': 'info'
                         },
                         cache: false,
                         success: function(data)
@@ -77,24 +77,23 @@ $(document).ready(function() {
         }}).disableSelection();
     $("#menu-help").sortable({
         placeholder: "ui-state-highlight",
-        items: "li:not(.disabled)",
+        items: "li:not(.disabled):not(.h2)",
         update: function(event, ui) {
             var ul = $('#menu-help');
             var list = {};
             var i = 0;
             ul.children().each(function() {
 
-                list[i] = $(this).children('a').html();
+                list[i] = $(this).children('a').attr('href');
                 i++;
             });
-            console.log(list);
             $.ajax
                     ({
                         type: "POST",
                         url: "/cadmin/menuList",
                         data: {
                             'data': list,
-                            'menu':'help'
+                            'menu': 'help'
                         },
                         cache: false,
                         success: function(data)

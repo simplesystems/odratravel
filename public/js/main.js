@@ -72,6 +72,7 @@ slider2 = $('#bxslider_p').bxSlider({
     clones: false
 });
 curr_obj = '';
+oldSrc = '';
 $('#sidemenu > li:not(.active) a').not('.active').hover(
         function() {
             curr_obj = $(this).find('img');
@@ -79,28 +80,24 @@ $('#sidemenu > li:not(.active) a').not('.active').hover(
             curr_obj.attr('src', curr_obj.data('hover'));
         },
         function() {
-
             $(this).find('img').attr('src', oldSrc);
         }
-)
+);
 
 
-$('#sidemenu a').unbind('click').click(function() {
+$('#sidemenu a').unbind('click').click(function(e) {
 
-//$.each($(this).parent().parent().find('li'), function() {
-//        $(this).removeClass('active');
-//        $(this).children('ul:visible').slideUp();
-//
-//    });
-    $(this).parent().parent().find('li').removeClass('active');
-    $(this).parent().parent().find('ul:visible').hide();
+    if ($(this).next('ul').length > 0) {
+        e.preventDefault();
 
-    $(this).parent().addClass('active');
-    if ($(this).children('ul:hidden')) {
-        $(this).slideDown();
-        return false;
+
+        $.each($(this).parent().parent().find('li'), function() {
+            $(this).removeClass('active');
+            $(this).find('ul:visible').slideUp();
+        });
+        $(this).next('ul').slideToggle();
+        $(this).parent().addClass('active');
     }
-
 
 
 });
@@ -116,4 +113,4 @@ $('#bxslider_p a').click(function() {
     $('div.medium_photo_wrapper a').attr('href', $(this).attr('href'));
     $('div.medium_photo_wrapper img').attr('src', $(this).attr('data-medium-image'));
     return false;
-})
+});

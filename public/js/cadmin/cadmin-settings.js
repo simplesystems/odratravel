@@ -297,6 +297,9 @@ var settings = {
                 if (data.template === null && $(this).val() === 'default') {
                     $(this).attr('checked', true);
                 }
+                if (data.template === '' && $(this).val() === 'default') {
+                    $(this).attr('checked', true);
+                }
             });
         }
         if (position === true) {

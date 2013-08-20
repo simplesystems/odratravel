@@ -2,7 +2,7 @@
 <div class="footer-container">
     <footer class="wrapper">
         <ul class="footer1" id="menu-info">
-            <li>
+            <li class='h2'>
                 <h2>{$LANG_ABOUT}</h2>
             </li>
             {if isset($menuItems.info)}
@@ -31,7 +31,7 @@
             {/if}
         </ul>
         <ul class="footer2" id="menu-help">
-            <li>
+            <li class='h2'>
                 <h2>{$LANG_HELP}</h2>
             </li>
             {if isset($menuItems.help)}
@@ -60,40 +60,38 @@
             {/if}
         </ul>
         <ul class="footer3">
-            <li>
+            <li class='h2'>
                 <h2>{$LANG_INFO}</h2>
             </li>
             <li>
-                <a href="/link">Odra Travel sp. z o.o.</a>
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{0}.md5}' data-key='{$footermenu.{0}.key}'>{$footermenu.{0}.value}
             </li>
             <li>
-                <a href="/link">ul Piłsudskiego 34</a>
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{1}.md5}' data-key='{$footermenu.{1}.key}'>{$footermenu.{1}.value}
             </li>
             <li>
-                <a href="/link">70-423 Szczecin</a>
-            </li>    
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{2}.md5}' data-key='{$footermenu.{2}.key}'>{$footermenu.{2}.value}
         </ul>  
 
         <ul class="footer4">
             <li>
-                <span>tel.: +48 91 421 05 30</span>
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{3}.md5}' data-key='{$footermenu.{3}.key}'>{$footermenu.{3}.value}
             </li>
             <li>
-                <span>fax: +48 91 421 13 55</span>
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{4}.md5}' data-key='{$footermenu.{4}.key}'>{$footermenu.{4}.value}
             </li>
             <li>
-                <a href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a>
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{5}.md5}' data-key='{$footermenu.{5}.key}'>{$footermenu.{5}.value}
             </li>   
 
         </ul>  
 
         <ul class="footer5">
-
             <li>
-                <span>NIP: 8522152351</span>
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{6}.md5}' data-key='{$footermenu.{6}.key}'>{$footermenu.{6}.value}
             </li>
             <li>
-                <span>pn.-pt. w godz. 9-17:00</span>
+                <div class="editable"  data-type='text' data-md5='{$footermenu.{7}.md5}' data-key='{$footermenu.{7}.key}'>{$footermenu.{7}.value}
             </li>
 
         </ul> 

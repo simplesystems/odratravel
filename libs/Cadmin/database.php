@@ -91,7 +91,7 @@ class Database {
                 $i = 1;
                 foreach ($post['data'] as $m) {
                     try {
-                        $sql = "SELECT * FROM cadmin_pages WHERE title='$m' AND menu='top' ORDER BY cadmin_pages.pos";
+                        $sql = "SELECT * FROM cadmin_pages WHERE route='$m' AND menu='top' ORDER BY cadmin_pages.pos";
                     } catch (PDOException $e) {
                         echo $e->getMessage();
                     }
@@ -106,11 +106,30 @@ class Database {
                     }
                 }
                 break;
-            case 'bottom':
+            case 'help':
                 $i = 1;
                 foreach ($post['data'] as $m) {
                     try {
-                        $sql = "SELECT * FROM cadmin_pages WHERE title='$m' AND menu='bottom' ORDER BY cadmin_pages.pos";
+                        $sql = "SELECT * FROM cadmin_pages WHERE route='$m' AND menu='help' ORDER BY cadmin_pages.pos";
+                    } catch (PDOException $e) {
+                        echo $e->getMessage();
+                    }
+                    $sth = $pdo->prepare($sql);
+                    $sth->execute();
+                    $menu = $sth->fetchAll();
+
+                    if (!empty($menu)) {
+                        $this->updateById('cadmin_pages', array(
+                            'pos' => $i), $menu[0]['id']);
+                        $i++;
+                    }
+                    unset($menu);
+                }
+            case 'info':
+                $i = 1;
+                foreach ($post['data'] as $m) {
+                    try {
+                        $sql = "SELECT * FROM cadmin_pages WHERE route='$m' AND menu='info' ORDER BY cadmin_pages.pos";
                     } catch (PDOException $e) {
                         echo $e->getMessage();
                     }

@@ -10,23 +10,13 @@ if (isset($_GET['lang'])) {
         case('pl'):
             $_SESSION['lang'] = 1;
             break;
-    }
-}
-if (isset($_GET['lang'])) {
-    switch ($_GET['lang']) {
         case('eng'):
             $_SESSION['lang'] = 2;
             break;
-    }
-}
-if (isset($_GET['lang'])) {
-    switch ($_GET['lang']) {
         case('de'):
             $_SESSION['lang'] = 3;
             break;
     }
-}
-if (isset($_SESSION['lang'])) {
     $lang = $_SESSION['lang'];
 } else {
     $lang = 1;
@@ -36,6 +26,9 @@ include '../configs/lang.php';
 $cms = new CMS($smarty, $cadmin, $lang);
 $cms->init();
 $temp = $cms->getSettings();
+if ($_POST) {
+    $cms->send($_POST);
+}
 $cms->display($temp);
 
 class CMS {
@@ -65,10 +58,7 @@ class CMS {
     public function getSettings() {
 
         $site = isset($_GET["site"]) ? $_GET["site"] : '';
-        if ($site === 'kontakt') {
-            $this->_smarty->display('kontakt.tpl');
-            die();
-        }
+
         $s = $this->_db->findPageByRoute('/strona/' . $site);
         if (!($s)) {
             $s = $this->_db->findPageByRoute('/menu/' . $site);
@@ -83,12 +73,112 @@ class CMS {
         if ($template == '') {
             $template = 'default';
         }
+        if ($site === 'kontakt') {
+            $template = 'kontakt';
+        }
         $this->_smarty->assign('id', $id);
 
         $imageView = $this->_cadmin->getViewImage();
         $videoView = $this->_cadmin->getViewVideo();
         $textView = $this->_cadmin->getViewTexts();
         $listView = $this->_cadmin->getViewLists();
+
+
+        if (!(isset($textView['headerphone_' . $lang]))) {
+            $headerphone = array(
+                'key' => 'headerphone_' . $lang,
+                'md5' => '',
+                'value' => '<p><strong>+48 91 421 05 30</strong></p><p><a href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a></p>'
+            );
+        } else {
+            $headerphone = $textView['headerphone_' . $lang];
+        }
+        if (!(isset($textView['kontaktdata_' . $lang]))) {
+            $kontaktdata = array(
+                'key' => 'kontaktdata_' . $lang,
+                'md5' => '',
+                'value' => '<p><b>B.T. Odra Travel</b></p><p>ul. Piłsudskiego 34</p><p>70-423 Szczecin</p><br /><p>Tel.: +48 91 421 05 30</p><p>Fax: +48 91 421 13 55</p><p>E-Mail: <a href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a></p>'
+            );
+        } else {
+            $kontaktdata = $textView['kontaktdata_' . $lang];
+        }
+        if (!(isset($textView['menuphone_' . $lang]))) {
+            $menuphone = array(
+                'key' => 'menuphone_' . $lang,
+                'md5' => '',
+                'value' => '<p>+48 <b>91 421 05 30</b></p><p><a href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a></p><p class="info"> od 9 do 16:00</p>   '
+            );
+        } else {
+            $menuphone = $textView['menuphone_' . $lang];
+        }
+
+        for ($i = 0; $i <= 7; $i++) {
+            if (!(isset($textView['footermenu_' . $i . '_' . $lang]))) {
+
+                switch ($i) {
+                    case 0:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p>Odra Travel sp. z o.o.</p> '
+                        );
+                        break;
+                    case 1:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p>ul Piłsudskiego 34</p> '
+                        );
+                        break;
+                    case 2:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p>70-423 Szczecin</p> '
+                        );
+                        break;
+                    case 3:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p>tel.: +48 91 421 05 30</p> '
+                        );
+                        break;
+                    case 4:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p>fax: +48 91 421 13 55</p> '
+                        );
+                        break;
+                    case 5:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p><a href="mailto:odratravel@odratravel.pl">odratravel@odratravel.pl</a></p> '
+                        );
+                        break;
+                    case 6:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p>NIP: 8522152351</p> '
+                        );
+                        break;
+                    case 7:
+                        $footermenu[$i] = array(
+                            'key' => 'footermenu_' . $i . '_' . $lang,
+                            'md5' => '',
+                            'value' => '<p>pn.-pt. w godz. 9-17:00</p> '
+                        );
+                        break;
+                }
+            } else {
+                $footermenu[$i] = $textView['footermenu_' . $i . '_' . $lang];
+            }
+        }
+
+
 
 
 
@@ -332,6 +422,10 @@ class CMS {
         $this->_smarty->assign('templategallery', $templategallery);
         $this->_smarty->assign('templatestars', $templatestars);
         $this->_smarty->assign('templatelist', $templatelist);
+        $this->_smarty->assign('headerphone', $headerphone);
+        $this->_smarty->assign('menuphone', $menuphone);
+        $this->_smarty->assign('footermenu', $footermenu);
+        $this->_smarty->assign('kontaktdata', $kontaktdata);
 
         for ($i = 0; $i <= 6; $i++) {
             $this->_smarty->assign('templatetext' . $i, $templatetext[$i]);
@@ -344,6 +438,17 @@ class CMS {
 
     public function display($template) {
         $this->_smarty->display($template . '.tpl');
+    }
+
+    public function send($post) {
+
+        if ($post['name'] === '' || $post['email'] === '' || $post['comments'] === '') {
+            $this->_smarty->assign('sent', 'no');
+        } else {
+            $this->_smarty->assign('sent', 'yes');
+            $message = 'Wiadomość od:' . $post['email'] . '. <br /> ' . $post['comments'] . '.<br /> . Od:' . $post['name'] . '<br />' . 'telefon:' . $post['telephone'];
+            mail(email, 'Wiadomośc z serwisu OdraTravel', $message);
+        }
     }
 
 }
