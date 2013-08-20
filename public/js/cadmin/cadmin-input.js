@@ -381,9 +381,6 @@ var input = {
                 case "add_default":
                     $(".cadmin_tree").jstree("create", null, "last", {"attr": {"rel": this.id.toString().replace("add_", "")}});
                     break;
-//                case "search":
-//                    $(".cadmin_tree").jstree("search", document.getElementById("text").value);
-//                    break;
                 case "undo":
                     if (rollback) {
                         $.jstree.rollback(rollback);
@@ -397,14 +394,26 @@ var input = {
         });
 
         $(".cadmin_tree").bind("select_node.jstree", function(NODE, REF_NODE) {
-            //console.log(REF_NODE.inst.get_json()[0]);
-            //console.log(REF_NODE.inst.get_json()[0].data);
             $('.pageedit').empty();
             $('.pageedit2').empty();
+            if (REF_NODE.inst.get_json()[0].attr.rel === 'index') {
+                $('#mmenu').hide();
+            }
+            if (REF_NODE.inst.get_json()[0].attr.rel === 'drive') {
+                $('#mmenu').show();
+                $('#mmenu #rename').hide();
+                $('#mmenu #remove').hide();
+            }
             if (REF_NODE.inst.get_json()[0].attr.rel === 'default') {
-                // console.log(REF_NODE.rslt.obj.parents("li")[0].rel);
-                //console.log(REF_NODE.inst.get_path('#' + REF_NODE.rslt.obj.attr('id'),true));
-                //console.log(REF_NODE.inst.get_path(REF_NODE.rslt.obj)[1]);
+                $('#mmenu').show();
+                $('#mmenu #rename').show();
+                $('#mmenu #remove').show();
+            }
+            if (REF_NODE.inst.get_json()[0].attr.rel === 'main') {
+                $('#mmenu').hide();
+            }
+
+            if (REF_NODE.inst.get_json()[0].attr.rel === 'default') {
                 if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[1] === 'menu') {
                     if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[3] !== undefined) {
                         settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true, true, false, false);

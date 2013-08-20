@@ -610,9 +610,9 @@ var draw = {
         button_save_text.html(language.public);
         button_cancel_text.html(language.cancel);
         //sum.html('Wait, session is loading...');
-        var div = $('<div>').attr({'id': 'mmenu'}).appendTo(textdiv)
-        var div2 = $('<div>').attr({'class': 'pageedit'}).appendTo(textdiv)
-        var div3 = $('<div>').attr({'class': 'pageedit2'}).appendTo(textdiv)
+        var div = $('<div>').attr({'id': 'mmenu'}).appendTo(textdiv).hide();
+        var div2 = $('<div>').attr({'class': 'pageedit'}).appendTo(textdiv);
+        var div3 = $('<div>').attr({'class': 'pageedit2'}).appendTo(textdiv);
         var input = $('<input>').attr({'id': 'add_default', 'type': 'button'}).css('display', 'block').css('float', 'left').val(language.addpage).appendTo(div);
         var input = $('<input>').attr({'id': 'rename', 'type': 'button'}).css('display', 'block').css('float', 'left').val(language.renamepage).appendTo(div);
         var input = $('<input>').attr({'id': 'remove', 'type': 'button'}).css('display', 'block').css('float', 'left').val(language.removepage).appendTo(div);
