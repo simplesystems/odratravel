@@ -72,7 +72,17 @@ slider2 = $('#bxslider_p').bxSlider({
     maxSlides: 10,
     slideWidth: 85,
     slideMargin: 10,
-    clones: false
+    clones: false,
+    onSliderLoad: function() {
+        $('#bxslider_p a:first').addClass('active');
+        $('#bxslider_p a').click(function() {
+            $('#bxslider_p a.active').removeClass('active');
+            $(this).addClass('active');
+            $('div.medium_photo_wrapper a').attr('href', $(this).attr('href'));
+            $('div.medium_photo_wrapper img').attr('src', $(this).attr('data-medium-image'));
+            return false;
+        });
+    }
 });
 curr_obj = '';
 oldSrc = '';
@@ -105,13 +115,4 @@ $('#sidemenu a').unbind('click').click(function(e) {
 
 });
 
-
 $("a.gallery").fancybox();
-$('#bxslider_p a:first').addClass('active');
-$('#bxslider_p a').click(function() {
-    $('#bxslider_p a.active').removeClass('active');
-    $(this).addClass('active');
-    $('div.medium_photo_wrapper a').attr('href', $(this).attr('href'));
-    $('div.medium_photo_wrapper img').attr('src', $(this).attr('data-medium-image'));
-    return false;
-});

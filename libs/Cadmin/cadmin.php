@@ -260,12 +260,6 @@ class Cadmin {
                 }
             }
         }
-//        if (isset($imageView['index_banner'])) {
-//            $src = $imageView['index_banner'][0]['src'];
-//            var_dump($src);
-//            //die();
-//        }
-
 
         return $imageView;
     }

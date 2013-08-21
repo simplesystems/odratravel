@@ -18,7 +18,7 @@
 
                     <a  href="javascript:window.print();" class="print"></a>
 
-                    <span class="code">kod oferty: <div class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatecode.md5}' data-key='{$templatecode.key}'>{$templatecode.value}</div></span>
+                    <span class="code">kod oferty: <span class="editable"  data-textarea='yes' data-type='text' data-md5='{$templatecode.md5}' data-key='{$templatecode.key}'>{$templatecode.value}</span></span>
                     <br />
                     <table class="editable dictionary "  data-type='list' data-cell="2" data-rows="6" data-md5='{$templatelist.md5}' data-key='{$templatelist.key}'>
                         {if isset($templatelist.thead)}
@@ -56,23 +56,24 @@
             <div class="product_galery">
                 <div class="medium_photo_wrapper">
                     <a href="/pictures/gallery/gallery_l_1.jpg" class="gallery">
-                        <img src="/pictures/gallery/gallery_m_1.jpg" alt="alt" /> 
+                        <img src="/pictures/gallery/gallery_m_1.jpg" alt="{$templatetitle.value}" /> 
                     </a>
                 </div>
 
-                <div class="editable galleryslider"  data-tag="galeria" data-imagex="200" data-max="10" data-imagey="100" data-type='gallery' data-md5='{$templategallery.md5}' data-key='{$templategallery.key}'>
+                <div class="galleryslider" id="galleryHolder" data-tag="galeria" data-imagex="200" data-max="10" data-imagey="100" data-type='gallery' data-md5='{$templategallery.md5}' data-key='{$templategallery.key}'>
                     <div class="bxslider">
                         <ul class="bxslider" id="bxslider_p">
                             {foreach from=$templategallery.value item=imgsrc}
                                 <li>
                                     <a href="{$imgsrc.src3}" data-medium-image="{$imgsrc.src2}">
-                                        <img src="{$imgsrc.src}" alt="alt" />
+                                        <img src="{$imgsrc.src}" alt="{$templatetitle.value}" />
                                     </a>
                                 </li>
                             {/foreach}
                         </ul>
                     </div>
                 </div>
+                <div><a href="#" class="editableMock" data-obj="galleryHolder">edytuj galerię</a></div>
             </div>
         </form> 
         <div class="description clearfix">

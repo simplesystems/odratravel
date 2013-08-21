@@ -3,19 +3,24 @@ var SPACE_KEY = 32;
 var BACKSPACE_KEY = 8;
 var input = {
     MouseStart: function() {
-        $(".editable").unbind('click').mouseenter(function() {
+        $(".editable").unbind('mouseenter').mouseenter(function() {
             $(this).addClass('cpadminover');
         });
-        $(".editable").unbind('click').mouseleave(function() {
+        $(".editable").unbind('mouseleave').mouseleave(function() {
             $(this).removeClass('cpadminover');
         });
         $(".editable").unbind('click').click(function(e) {
             e.preventDefault();
             e.stopPropagation();
             cadmin.start($(this), 1000);
-//            var top = $('html').scrollTop();
-//            $('.cadmin_top').css('margin-top',top);
         });
+
+        $(".editableMock").unbind('click').click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            cadmin.start($('#' + $(this).data('obj')), 1000);
+        });
+
         $(".videobtn").unbind('click').click(function(e) {
             e.preventDefault();
             e.stopPropagation();
