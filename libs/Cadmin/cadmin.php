@@ -57,7 +57,7 @@ class Cadmin {
             $row['route'] = $item['route'];
             $row['name'] = $item["lang_{$_SESSION['lang']}"];
             $price = $sql->findByKey('cadmin_text', "templateprice_{$item['id']}_{$_SESSION['lang']}");
-            $row['price'] = floatval($price[0]['cadmin_value']);
+            $row['price'] = isset($price[0]['cadmin_value']) ? floatval($price[0]['cadmin_value']) : 0;
             array_push($ret, $row);
         }
         return $ret;
