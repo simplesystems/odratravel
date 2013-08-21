@@ -1,7 +1,7 @@
 <?php
 
 @session_start();
-define('SMARTY_DIR', '../libs/smarty/');
+define('SMARTY_DIR', '../libs/Smarty/');
 define('tplDir', '../public/templates/');
 define('jsDir', '/js/');
 define('cssDir', '/css/');
