@@ -106,12 +106,13 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{$__jsDir}vendor/jquery-1.9.1.min.js"><\/script>')</script>
-
-{if isset($cadminJs)}
-    {foreach from=$cadminJs item=js}
-        <script src="{$__jsDir}{$js}"></script>
-    {/foreach}
-{/if}
+{nocache}
+    {if isset($cadminJs)}
+        {foreach from=$cadminJs item=js}
+            <script src="{$__jsDir}{$js}"></script>
+        {/foreach}
+    {/if}
+{/nocache}
 <script src="{$__jsDir}jquery.bxslider.min.js"></script>
 <script src="{$__jsDir}jquery.fitvids.js"></script>
 <script src="{$__jsDir}jquery.easing.1.3.js"></script>
