@@ -48,7 +48,7 @@
 
                     <div class="price">
                         <del><div class="editable" id="old_price" data-type='text'data-textarea='yes'  data-md5='{$templatepricedel.md5}' data-key='{$templatepricedel.key}'>{$templatepricedel.value}</div></del>
-                    {if $smarty.session.cadmin}<a id="old_price_trigger" href="#">zmień starą cenę</a>{/if}
+                    {if isset($smarty.session.cadmin) && $smarty.session.cadmin}<a id="old_price_trigger" href="#">zmień starą cenę</a>{/if}
                     <div class="value"><small>cena:</small><span class="editable" style="clear: both;" data-textarea='yes'  data-type='text' data-md5='{$templateprice.md5}' data-key='{$templateprice.key}'>{$templateprice.value}</span></div>
                 </div> 
                 <button class="btn" type="submit">zarezerwuj</button>
@@ -73,7 +73,9 @@
                         </ul>
                     </div>
                 </div>
-                <div><a href="#" class="editableMock" data-obj="galleryHolder">edytuj galerię</a></div>
+                {if isset($smarty.session.cadmin) && $smarty.session.cadmin}
+                    <div><a href="#" class="editableMock" data-obj="galleryHolder">edytuj galerię</a></div>
+                {/if}
             </div>
         </form> 
         <div class="description clearfix">
