@@ -11,8 +11,10 @@ $(document).ready(function() {
     if (path[1] == 'menu') {
         $('img[data-route="/menu/' + path[2] + '"]').parent().parent().trigger('click');
     }
-
-
+    $('#custom_promobox').prependTo($('#promoboxes')).show();
+    $('#old_price_trigger').click(function() {
+        $('#old_price').trigger('click');
+    });
 });
 $(document).bind('text_content_update', function(obj) {
     var stars = $('.stars').children('div').text();
@@ -50,6 +52,7 @@ $(document).bind('slider_gallery_update', function() {
         slideMargin: 10,
         clones: false
     });
+
 });
 $(document).bind('text_content_update', function() {
 
@@ -101,8 +104,6 @@ $('#sidemenu a').unbind('click').click(function(e) {
 
 
 });
-
-
 
 
 $("a.gallery").fancybox();

@@ -1,16 +1,20 @@
 templates = {
     'Domyślny': 'default',
-    'Podstrona': 'podstrona'
+    'Oferta': 'podstrona'
 };
 positions = {
     'Nie w menu': 'none',
     'Górne': 'top',
-//    'Front': 'front',
     'Dolne O nas': 'info',
     'Dolne Pomoc': 'help'
 };
+front_page = {
+    'Nie': 'none',
+    'Tak': 'front'
+}
+
 langs = {
-    'Polski' : 1,
-    'Angielski' : 2,
-    'Niemiecki' : 3
+    'Polski': 1,
+    'Angielski': 2,
+    'Niemiecki': 3
 };

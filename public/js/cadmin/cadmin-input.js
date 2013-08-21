@@ -396,16 +396,19 @@ var input = {
         $(".cadmin_tree").bind("select_node.jstree", function(NODE, REF_NODE) {
             $('.pageedit').empty();
             $('.pageedit2').empty();
+
             if (REF_NODE.inst.get_json()[0].attr.rel === 'index') {
                 $('#mmenu').hide();
             }
             if (REF_NODE.inst.get_json()[0].attr.rel === 'drive') {
                 $('#mmenu').show();
+                $('#mmenu #add_default').show();
                 $('#mmenu #rename').hide();
                 $('#mmenu #remove').hide();
             }
             if (REF_NODE.inst.get_json()[0].attr.rel === 'default') {
                 $('#mmenu').show();
+                $('#mmenu #add_default').show();
                 $('#mmenu #rename').show();
                 $('#mmenu #remove').show();
             }
@@ -413,20 +416,38 @@ var input = {
                 $('#mmenu').hide();
             }
 
+            if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[3] == REF_NODE.inst.get_json()[0].data) {
+                $('#mmenu #add_default').hide();
+            }
+
             if (REF_NODE.inst.get_json()[0].attr.rel === 'default') {
                 if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[1] === 'menu') {
                     if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[3] !== undefined) {
-                        settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true, true, false, false);
+                        settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), {
+                            'temp': true,
+                            'translate': true,
+                            'showOnFrontPage': true
+                        });
                     } else {
-                        settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true, true, false, true);
+                        settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), {
+                            'temp': true,
+                            'translate': true,
+                            'files': true
+                        });
                     }
-                }
-                else {
-                    settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), true, true, true, false);
+                } else {
+                    settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), {
+                        'temp': true,
+                        'translate': true,
+                        'position': true
+                    });
                 }
             }
             if (REF_NODE.inst.get_json()[0].attr.rel === 'main') {
-                settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), false, true, true, false);
+                settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), {
+                    'translate': true,
+                    'position': true
+                });
             }
             var a = $.jstree._focused().get_selected();
 

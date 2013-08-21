@@ -41,6 +41,25 @@
 
 <ul class="offer">
     {* Boxy z promocjami *}
+    <div style="width:200px;font-size:12px;display: none;" class="ep3promobox ep3pb17636" id="custom_promobox">
+        <div style="border:1px solid #568194;">
+            <div style=" background-color:#568194;" class="ep3boxvertical">
+                <div style="padding:4px; font-weight:bold; text-align:center;word-wrap:break-word; color:#ffffff; font-size:14px;background-color:#568194;">Nasze wycieczki</div>
+                <img alt="" style="width:100%; border-top:1px solid #568194; border-bottom:1px solid #568194;" src="pictures/offer1.png"><table width="100%" cellspacing="0" cellpadding="0">
+                    <tbody>
+                        {section name=offers loop=$front_page_offers}
+                            <tr onmouseout="this.className = 'ep3boxoffeven1'" onmouseover="this.className = 'ep3boxover1'" class="ep3boxoffeven1" style="clear:both;">
+                                <td style="padding:4px;"><span style="color:#657f00;">{$front_page_offers[offers].name}</span></td>
+                                <td style="padding:4px; text-align:right;"><a href="{$front_page_offers[offers].route}" style="color:#fe6918;">od&nbsp;<b style="font-size:16px;">{$front_page_offers[offers].price}</b>&nbsp;PLN</a></td>
+                            </tr>
+                        {/section}
+                    </tbody>
+                </table>
+                <div style="" class="placeholderDiv">&nbsp;</div>
+                <div style="width:100%; padding:4px 0; position:absolute; bottom:0;">&nbsp;</div>
+            </div>
+        </div>
+    </div>
 {nocache}{$ep3gatePromoBox}{/nocache}
 </ul>    
 

@@ -18,7 +18,7 @@ $smarty->setTemplateDir(tplDir);
 $smarty->setCompileDir('../cache/templates_c');
 $smarty->setCacheDir('../cache');
 if (substr_count(filter_input(INPUT_SERVER, 'HTTP_HOST'), 'local')) {
-    $smarty->debugging = true;
+    $smarty->debugging = false;
     $smarty->caching = false;
 } else {
     $smarty->debugging = false;

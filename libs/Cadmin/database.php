@@ -6,6 +6,10 @@ class Database {
 
     private static $instance = FALSE;
 
+    /**
+     * 
+     * @return PDO
+     */
     private function getInstance() {
         if (!self::$instance) {
             self::$instance = self::connect();
@@ -88,63 +92,42 @@ class Database {
         $pdo = $this->getInstance();
         switch ($post['menu']) {
             case 'top':
-                $i = 1;
-                foreach ($post['data'] as $m) {
-                    try {
-                        $sql = "SELECT * FROM cadmin_pages WHERE route='$m' AND menu='top' ORDER BY cadmin_pages.pos";
-                    } catch (PDOException $e) {
-                        echo $e->getMessage();
-                    }
-                    $sth = $pdo->prepare($sql);
-                    $sth->execute();
-                    $menu = $sth->fetchAll();
-
-                    if (!empty($menu)) {
-                        $this->updateById('cadmin_pages', array(
-                            'pos' => $i), $menu[0]['id']);
-                        $i++;
-                    }
-                }
-                break;
             case 'help':
-                $i = 1;
-                foreach ($post['data'] as $m) {
-                    try {
-                        $sql = "SELECT * FROM cadmin_pages WHERE route='$m' AND menu='help' ORDER BY cadmin_pages.pos";
-                    } catch (PDOException $e) {
-                        echo $e->getMessage();
-                    }
-                    $sth = $pdo->prepare($sql);
-                    $sth->execute();
-                    $menu = $sth->fetchAll();
-
-                    if (!empty($menu)) {
-                        $this->updateById('cadmin_pages', array(
-                            'pos' => $i), $menu[0]['id']);
-                        $i++;
-                    }
-                    unset($menu);
-                }
             case 'info':
                 $i = 1;
                 foreach ($post['data'] as $m) {
                     try {
-                        $sql = "SELECT * FROM cadmin_pages WHERE route='$m' AND menu='info' ORDER BY cadmin_pages.pos";
+                        $sql = "SELECT * FROM cadmin_pages WHERE route=:m AND menu=:menu ORDER BY cadmin_pages.pos";
+                        $sth = $pdo->prepare($sql);
+                        $sth->bindValue(':m', $m);
+                        $sth->bindValue(':menu', $post['menu']);
+                        $sth->execute();
+                        $menu = $sth->fetchAll();
+                        if (!empty($menu)) {
+                            $this->updateById('cadmin_pages', array(
+                                'pos' => $i), $menu[0]['id']);
+                            $i++;
+                        }
                     } catch (PDOException $e) {
-                        echo $e->getMessage();
+                        error_log($e->getMessage());
                     }
-                    $sth = $pdo->prepare($sql);
-                    $sth->execute();
-                    $menu = $sth->fetchAll();
-
-                    if (!empty($menu)) {
-                        $this->updateById('cadmin_pages', array(
-                            'pos' => $i), $menu[0]['id']);
-                        $i++;
-                    }
-                    unset($menu);
                 }
+                break;
         }
+    }
+
+    public function getMenuByPosition($position) {
+        try {
+            $pdo = $this->getInstance();
+            $q = $pdo->prepare("SELECT cp.id, cp.title, cp.route, cp.lang_1, cp.lang_2, cp.lang_3 FROM cadmin_pages cp WHERE menu=:position ORDER BY cp.pos");
+            $q->bindValue(':position', $position);
+            $q->execute();
+            $data = $q->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            $data = array();
+            error_log($e->getMessage());
+        }
+        return $data;
     }
 
     public function fetchAll($DbTableName) {
@@ -168,7 +151,7 @@ class Database {
         }
         $sth = $pdo->prepare($sql);
         $sth->execute();
-        return $sth->fetchAll();
+        return $sth->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getHistory($key = null) {
@@ -196,7 +179,7 @@ class Database {
         }
         $sth = $pdo->prepare($sql);
         $sth->execute();
-         return $sth->fetchAll();
+        return $sth->fetchAll();
     }
 
     public function findById($DbTableName, $key) {

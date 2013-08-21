@@ -85,6 +85,7 @@ var language = {
     editbackground: 'ZMIEŃ TŁO',
     template: 'Szablon',
     position: 'Pozycja',
+    showonfrontpage: 'Pokaż na stronie głównej',
     def: 'Domyślny',
     addrow: 'Dodaj rząd',
     removerow: 'Usuń rząd',

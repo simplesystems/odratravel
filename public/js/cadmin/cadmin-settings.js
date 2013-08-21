@@ -280,10 +280,14 @@ var settings = {
                     }
                 });
     },
-    pagesDraw: function(data, temp, translate, position, files) {
+    //pagesDraw: function(data, temp, translate, position, files) {
+    pagesDraw: function(data, attr) {
+        if (attr === undefined) {
+            attr = {};
+        }
         $('.pageedit').empty();
         $('.pageedit2').empty();
-        if (temp === true) {
+        if (attr.temp === true) {
 
             span = $('<span>').html(' ' + language.template + ':<br />').appendTo('.pageedit');
             $.each(templates, function(k, v) {
@@ -302,21 +306,28 @@ var settings = {
                 }
             });
         }
-        if (position === true) {
+        if (attr.position === true) {
             var span = $('<span>').html(' ' + language.position + ':<br />').appendTo('.pageedit2');
             $.each(positions, function(k, v) {
                 var input2 = $('<input>').attr({'class': 'pageradio2', 'id': data.id, 'type': 'radio', 'name': 'menu', 'value': v}).appendTo('.pageedit2');
                 var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit2');
             });
         }
-        if (translate === true) {
+        if (attr.showOnFrontPage === true) {
+            var span = $('<span>').html(' ' + language.showonfrontpage + ':<br />').appendTo('.pageedit2');
+            $.each(front_page, function(k, v) {
+                var input2 = $('<input>').attr({'class': 'pageradio2', 'id': data.id, 'type': 'radio', 'name': 'menu', 'value': v}).appendTo('.pageedit2');
+                var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit2');
+            });
+        }
+        if (attr.translate === true) {
             var div = $('<div>').appendTo('.pageedit2');
             $.each(langs, function(k, v) {
                 var span = $('<span>').html(k + ':').appendTo(div);
                 var input2 = $('<input>').attr({'class': 'inputLang', 'id': data.id, 'name': 'lang_' + v, 'type': 'text'}).appendTo(div).val(data['lang_' + v]);
             });
         }
-        if (files === true) {
+        if (attr.files === true) {
             var div = $('<div>').appendTo('.pageedit2');
             var span = $('<span>').html('Podgląd:').appendTo(div);
             var div2 = $('<div>').attr({'class': 'previewDiv'}).appendTo(div);

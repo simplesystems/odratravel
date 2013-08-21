@@ -5,7 +5,7 @@ include '../libs/Cadmin/database.php';
 require_once '../libs/Gate/ep3gate.class.php';
 include '../configs/ep3.php';
 
-
+/* @var $cadmin Cadmin */
 
 if (isset($_GET['lang'])) {
     switch ($_GET['lang']) {
@@ -206,4 +206,5 @@ $smarty->assign('headerphone', $headerphone);
 $smarty->assign('menuphone', $menuphone);
 $smarty->assign('footermenu', $footermenu);
 $smarty->assign('menu_map', $menu_map);
+$smarty->assign('front_page_offers', $cadmin->getFrontPageOffers());
 $smarty->display('index.tpl');

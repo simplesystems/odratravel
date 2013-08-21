@@ -46,6 +46,23 @@ class Cadmin {
         return $js;
     }
 
+    public function getFrontPageOffers() {
+        $ret = array();
+        $sql = $this->getDatabase();
+        /* @var $sql Database */
+        $items = $sql->getMenuByPosition('front');
+        foreach ($items as $item) {
+            $row = array();
+            $row['id'] = $item['id'];
+            $row['route'] = $item['route'];
+            $row['name'] = $item["lang_{$_SESSION['lang']}"];
+            $price = $sql->findByKey('cadmin_text', "templateprice_{$item['id']}_{$_SESSION['lang']}");
+            $row['price'] = floatval($price[0]['cadmin_value']);
+            array_push($ret, $row);
+        }
+        return $ret;
+    }
+
     public function loadCss() {
         $css = array();
         $css[] = 'cadmin/jquery.ui.plupload.css';

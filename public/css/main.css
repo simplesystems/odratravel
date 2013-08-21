@@ -878,6 +878,7 @@ nav {
 
 }
 table.dictionary{
+    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -886,13 +887,17 @@ table.dictionary{
     padding: 15px 0;
 }
 table.dictionary tr{
-    padding: 5px;
     background: #f9f9f9;
+}
+
+table.dictionary tr td {
+    padding: 5px;
 }
 
 table.dictionary tr:nth-child(odd) {
     background: #ebebeb;
 }
+
 table.dictionary tr td:first-child{
     display: inline-block;
     width: 150px;
@@ -900,6 +905,11 @@ table.dictionary tr td:first-child{
     color: #6a6a6a;
     font-weight: normal;
     text-align: right;
+}
+
+table.dictionary tr td:nth-child(odd):not(:first-child), table.dictionary tr td:nth-child(even):not(:first-child){
+    text-align: left;
+    width: 100%;
 }
 
 ul.dictionary{
