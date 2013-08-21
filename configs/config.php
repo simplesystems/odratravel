@@ -17,11 +17,10 @@ $smarty->setConfigDir(cfgDir);
 $smarty->setTemplateDir(tplDir);
 $smarty->setCompileDir('../cache/templates_c');
 $smarty->setCacheDir('../cache');
-if (substr_count(filter_input(INPUT_SERVER, 'HTTP_HOST'), 'local')) {
-    $smarty->debugging = false;
+$smarty->debugging = false;
+if (substr_count(filter_input(INPUT_SERVER, 'HTTP_HOST'), 'local') || (isset($_SESSION['cadmin']) && $_SESSION['cadmin'])) {
     $smarty->caching = false;
 } else {
-    $smarty->debugging = false;
     $smarty->caching = true;
 }
 $smarty->cache_lifetime = 120;
