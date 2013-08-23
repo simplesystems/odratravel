@@ -11,7 +11,7 @@ var tinymcecustom = {
         tinymce.init({
             selector: "#editedtext",
             theme: "modern",
-            width: 718,
+            width: 700,
             height: 250,
             menubar: false,
             toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",

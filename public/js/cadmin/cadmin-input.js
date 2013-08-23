@@ -381,7 +381,7 @@ var input = {
 
     },
     jsTreeInput: function() {
-        $("#mmenu input").unbind('click').bind('click', function(e) {
+        $("#mmenu a").unbind('click').bind('click', function(e) {
             switch (this.id) {
                 case "add_default":
                     $(".cadmin_tree").jstree("create", null, "last", {"attr": {"rel": this.id.toString().replace("add_", "")}});
@@ -399,8 +399,8 @@ var input = {
         });
 
         $(".cadmin_tree").bind("select_node.jstree", function(NODE, REF_NODE) {
-            $('.pageedit').empty();
-            $('.pageedit2').empty();
+            $('.pageedit').hide();
+            $('.pageedit2').hide();
 
             if (REF_NODE.inst.get_json()[0].attr.rel === 'index') {
                 $('#mmenu').hide();
@@ -421,13 +421,13 @@ var input = {
                 $('#mmenu').hide();
             }
 
-            if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[3] == REF_NODE.inst.get_json()[0].data) {
+            if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[MAX_DEPTH - 1] == REF_NODE.inst.get_json()[0].data) {
                 $('#mmenu #add_default').hide();
             }
 
             if (REF_NODE.inst.get_json()[0].attr.rel === 'default') {
                 if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[1] === 'menu') {
-                    if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[3] !== undefined) {
+                    if (REF_NODE.inst.get_path(REF_NODE.rslt.obj)[MAX_DEPTH - 1] !== undefined) {
                         settings.pagesGet(REF_NODE.inst.get_json()[0].attr.id.replace("node_", ""), {
                             'temp': true,
                             'translate': true,

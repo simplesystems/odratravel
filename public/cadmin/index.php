@@ -959,7 +959,7 @@ class cadminMain {
 
     public function jsTreeSetPageMenu($post) {
         $this->jsTreeSession();
-        $_SESSION['pages'][$post['id']]['menu'] = $post['template'];
+        $_SESSION['pages'][$post['id']][$post['field']] = $post['template'];
     }
 
     public function jsTreeSetPageImg($post) {

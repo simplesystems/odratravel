@@ -288,8 +288,7 @@ var settings = {
         $('.pageedit').empty();
         $('.pageedit2').empty();
         if (attr.temp === true) {
-
-            span = $('<span>').html(' ' + language.template + ':<br />').appendTo('.pageedit');
+            $('<span>').html(' ' + language.template + ':<br />').appendTo('.pageedit');
             $.each(templates, function(k, v) {
                 var input2 = $('<input>').attr({'class': 'pageradio', 'id': data.id, 'type': 'radio', 'name': 'template', 'value': v}).appendTo('.pageedit');
                 var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit');
@@ -305,6 +304,7 @@ var settings = {
                     $(this).attr('checked', true);
                 }
             });
+            $('.pageedit').show();
         }
         if (attr.position === true) {
             var span = $('<span>').html(' ' + language.position + ':<br />').appendTo('.pageedit2');
@@ -312,6 +312,7 @@ var settings = {
                 var input2 = $('<input>').attr({'class': 'pageradio2', 'id': data.id, 'type': 'radio', 'name': 'menu', 'value': v}).appendTo('.pageedit2');
                 var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit2');
             });
+            $('.pageedit2').show();
         }
         if (attr.showOnFrontPage === true) {
             var span = $('<span>').html(' ' + language.showonfrontpage + ':<br />').appendTo('.pageedit2');
@@ -319,13 +320,15 @@ var settings = {
                 var input2 = $('<input>').attr({'class': 'pageradio2', 'id': data.id, 'type': 'radio', 'name': 'menu', 'value': v}).appendTo('.pageedit2');
                 var span = $('<span>').html(' ' + k + '<br />').appendTo('.pageedit2');
             });
+            $('.pageedit2').show();
         }
         if (attr.translate === true) {
-            var div = $('<div>').appendTo('.pageedit2');
+            var div = $('<div>').attr('id', 'translate').appendTo('.pageedit2');
             $.each(langs, function(k, v) {
                 var span = $('<span>').html(k + ':').appendTo(div);
                 var input2 = $('<input>').attr({'class': 'inputLang', 'id': data.id, 'name': 'lang_' + v, 'type': 'text'}).appendTo(div).val(data['lang_' + v]);
             });
+            $('.pageedit2').show();
         }
         if (attr.files === true) {
             var div = $('<div>').appendTo('.pageedit2');
@@ -341,6 +344,7 @@ var settings = {
                 cadmin.setObject($(this));
                 fileManager.init();
             });
+            $('.pageedit2').show();
         }
 
         $('input:radio[name=menu]').each(function() {
@@ -362,6 +366,7 @@ var settings = {
                     data: {
                         'operation': 'page_template',
                         'id': data.attr('id'),
+                        'field': data.attr('name'),
                         'template': data.val()
                     },
                     cache: false,
@@ -379,6 +384,7 @@ var settings = {
                     data: {
                         'operation': 'page_menu',
                         'id': data.attr('id'),
+                        'field': data.attr('name'),
                         'template': data.val()
                     },
                     cache: false,

@@ -609,14 +609,14 @@ var draw = {
         h3.html(language.pages);
         button_save_text.html(language.public);
         button_cancel_text.html(language.cancel);
-        //sum.html('Wait, session is loading...');
-        var div = $('<div>').attr({'id': 'mmenu'}).appendTo(textdiv).hide();
-        var div2 = $('<div>').attr({'class': 'pageedit'}).appendTo(textdiv);
-        var div3 = $('<div>').attr({'class': 'pageedit2'}).appendTo(textdiv);
-        var input = $('<input>').attr({'id': 'add_default', 'type': 'button'}).css('display', 'block').css('float', 'left').val(language.addpage).appendTo(div);
-        var input = $('<input>').attr({'id': 'rename', 'type': 'button'}).css('display', 'block').css('float', 'left').val(language.renamepage).appendTo(div);
-        var input = $('<input>').attr({'id': 'remove', 'type': 'button'}).css('display', 'block').css('float', 'left').val(language.removepage).appendTo(div);
-        //var input = $('<input>').attr({'id': 'undo', 'type': 'button'}).css('display', 'block').css('float', 'left').val('Undo last').appendTo(div);
+
+        var divx = $('<div>').attr({'id': 'rcontent'}).appendTo(textdiv);
+        var div = $('<div>').attr({'id': 'mmenu'}).appendTo(divx).hide();
+        $('<div>').attr({'class': 'pageedit'}).appendTo(divx);
+        $('<div>').attr({'class': 'pageedit2'}).appendTo(divx);
+        $('<a>').attr({'id': 'add_default'}).addClass('button').addClass('customButton').addClass('customButton2').text(language.addpage).appendTo(div);
+        $('<a>').attr({'id': 'rename'}).addClass('button').addClass('customButton').addClass('customButton2').text(language.renamepage).appendTo(div);
+        $('<a>').attr({'id': 'remove'}).addClass('button').addClass('customButton').addClass('customButton2').text(language.removepage).appendTo(div);
         return cadmin_settings;
 
     },

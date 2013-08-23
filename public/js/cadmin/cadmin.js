@@ -12,6 +12,11 @@ var cadmin = {
         scale.calculate();
         input.MouseStart();
 
+        $(document).click(function(event) {
+            if ($(event.target).parents().index($('.cadmin_content_settings')) === -1 && $(event.target).parents().index($('.cadmin_content')) === -1) {
+                $('a.menu.exit').trigger('click');
+            }
+        });
     },
     start: function(obj, fadeTime) {
 
@@ -22,10 +27,7 @@ var cadmin = {
         this.type = obj.data('type');
         this.key = obj.data('key');
         main.appendTo('.cadmin_panel');
-        main.fadeIn(fadeTime, function() {
-            //// Animation complete
-        });
-
+        main.fadeIn(fadeTime);
         switch (this.type) {
             case 'text':
                 var content = draw.text(obj);

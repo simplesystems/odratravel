@@ -130,7 +130,7 @@ class Cadmin {
                 }
             }
         };
-        return $pageData;
+        return $pageData;        
     }
 
     public function getViewImage() {

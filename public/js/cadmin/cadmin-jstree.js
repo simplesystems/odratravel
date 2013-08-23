@@ -1,11 +1,13 @@
 var rollback = '';
-var MAX_DEPTH = 4;
+var MAX_DEPTH = 5;
 var jsTreeCustom = {
     init: function() {
-        $(".cadmin_tree")
-                .unbind().bind("before.jstree", function(e, data) {
+        $(".cadmin_tree").unbind().bind("before.jstree", function(e, data) {
             $("#alog").append(data.func + "<br />");
-        }).jstree({
+        }).bind("loaded.jstree", function(event, data) {
+            $(".cadmin_tree").jstree("open_all");
+        });
+        $(".cadmin_tree").jstree({
             // List of active plugins
             "plugins": [
                 "themes", "json_data", "ui", "crrm", "cookies", "dnd", "search", "types", "hotkeys", "contextmenu", "unique"
@@ -126,12 +128,12 @@ var jsTreeCustom = {
             },
             // the core plugin - not many options here
             "core": {
+                'load_open': true,
                 // just open those two nodes up
                 // as this is an AJAX enabled tree, both will be downloaded from the server
                 //"initially_open": ["node_2"]
             }
-        })
-                .bind("create.jstree", function(e, data) {
+        }).bind("create.jstree", function(e, data) {
             $.post(
                     "/cadmin/jsTree",
                     {
@@ -140,8 +142,7 @@ var jsTreeCustom = {
                         "position": data.rslt.position,
                         "title": data.rslt.name,
                         "type": data.rslt.obj.attr("rel")
-                    },
-            function(r) {
+                    }, function(r) {
                 rollback = data.rlbk;
                 r = JSON.parse(r);
                 if (r.status) {
@@ -153,8 +154,7 @@ var jsTreeCustom = {
                 }
             }
             );
-        })
-                .bind("remove.jstree", function(e, data) {
+        }).bind("remove.jstree", function(e, data) {
             data.rslt.obj.each(function() {
                 $.ajax({
                     async: false,
@@ -166,15 +166,10 @@ var jsTreeCustom = {
                     },
                     success: function(r) {
                         rollback = data.rlbk;
-//                        r = JSON.parse(r);
-//                        if (!r.status) {
-//                            data.inst.refresh();
-//                        }
                     }
                 });
             });
-        })
-                .bind("rename.jstree", function(e, data) {
+        }).bind("rename.jstree", function(e, data) {
             if (data.inst.get_json()[0].attr.rel === 'default') {
                 $.post(
                         "/cadmin/jsTree",
@@ -195,9 +190,7 @@ var jsTreeCustom = {
             else {
                 $.jstree.rollback(data.rlbk);
             }
-        })
-
-                .bind("move_node.jstree", function(e, data) {
+        }).bind("move_node.jstree", function(e, data) {
             data.rslt.o.each(function(i) {
                 $.ajax({
                     async: false,
@@ -214,15 +207,6 @@ var jsTreeCustom = {
                     success: function(r) {
                         rollback = data.rlbk;
                         r = JSON.parse(r);
-//                        if (!r.status) {
-//                            $.jstree.rollback(data.rlbk);
-//                        }
-//                        else {
-//                            $(data.rslt.oc).attr("id", "node_" + r.id);
-//                            if (data.rslt.cy && $(data.rslt.oc).children("UL").length) {
-//                                data.inst.refresh(data.inst._get_parent(data.rslt.oc));
-//                            }
-//                        }
                         $("#analyze").click();
                     }
                 });

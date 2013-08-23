@@ -131,6 +131,39 @@ div.cadmin_panel {width:100%;z-index:10000;position:fixed;left:0;top:0;font-fami
 .cadmin_panel a.customButton:hover {background: linear-gradient(to bottom,#3e3e3e 0%, #070707 100%)} /* W3C */
 .cadmin_panel a.customButton:hover {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3e3e3e', endColorstr='#070707',GradientType=0)} /* IE6-9 */
 
+
+.cadmin_panel a.customButton2 {float:left;border:2px solid #000;color:#fff;padding:4px; font-size: 8px; width: 70px; margin-bottom: 5px; cursor: pointer;}
+
+.cadmin_panel #mmenu, .cadmin_panel .pageedit, .cadmin_panel .pageedit2 {
+
+    display: block;
+    float: left;
+    border-right: 1px solid #DADADA;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.cadmin_panel #mmenu {
+    left: 100px;
+}
+
+.cadmin_panel #mmenu, .cadmin_panel .pageedit {
+    width: 100px;
+}
+
+.cadmin_panel #rcontent {
+    overflow: auto;
+}
+
+.cadmin_panel .cadmin_tree {
+    overflow: auto;
+    width: 250px;
+}
+
+.cadmin_panel #translate {
+    border-top: 1px solid #DADADA;
+    width: 160px;
+}
+
 .cadmin_panel div.cadmin_img p {margin-bottom:15px}
 .cadmin_panel div.cadmin_history ol {list-style-type:decimal;margin-left:25px;margin-right:25px}
 .cadmin_panel div.cadmin_history ol li {float:left;width:100%;border-bottom:1px solid #ebebeb;padding:12px 0}
@@ -242,8 +275,8 @@ div.editimage2 {float: left ;margin: 5px;border-radius: 5px; width: 160px}
 .cadmin_panel .fileContainer{width: 100%}
 .cadmin_panel .backgroundbtn{text-shadow: -1px 0 lightgray, 0 1px lightgray, 1px 0 lightgray, 0 -1px lightgray; cursor: pointer;padding-left: 50%;font-weight: bolder}
 .cadmin_panel .backgroundbtn:hover{color: red;cursor: pointer;padding-left: 50%;font-weight: bolder}
-.cadmin_panel .pageedit{width: 100px}
-.cadmin_panel .pageedit2{width: 100px; float:left}
+/*.cadmin_panel .pageedit{width: 100px}
+.cadmin_panel .pageedit2{width: 100px; float:left}*/
 .cadmin_panel #menu-top li{min-width: 15px}
 .cadmin_panel #menu-front li{min-width: 20px}
 .cadmin_panel #menu-info li{min-width: 20px}
