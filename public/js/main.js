@@ -16,6 +16,11 @@ $(document).ready(function() {
         $('#old_price').trigger('click');
     });
     $('#lessCriteriaLink').trigger('click');
+    if (ep3_current_step > 1) {
+        $('ul.offer').hide();
+    } else {
+        $('ul.offer').show();
+    }
 });
 $(document).bind('text_content_update', function(obj) {
     var stars = $('.stars').children('div').text();

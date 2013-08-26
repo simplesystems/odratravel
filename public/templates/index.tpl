@@ -23,19 +23,15 @@
             <div id="main_search">
 
                 {*  menu wyszukiwania              *}
-                {nocache}{$ep3gateMenu}
-                {/nocache}
-                {*  zawartosc wyszukiwarki             *}
-            {nocache}{$ep3gateContent}{/nocache}
-            {*  stopka (musi byc na koncu bo zawiera skrypty)*}
-        {nocache}{$ep3gateFooter}{/nocache}
-    </div>
-
-    <div id="quick_search">
-        <form action="search.php">
-            {* wyszukiwarka AutoPoszukiwacz  *}
-        {nocache}{$ep3gateAutoSuggest}{/nocache}
-    </form>    
+            {nocache}{$ep3gateMenu}{/nocache}
+            {*  zawartosc wyszukiwarki             *}
+        {nocache}{$ep3gateContent}{/nocache}
+        {*  stopka (musi byc na koncu bo zawiera skrypty)*}
+    {nocache}{$ep3gateFooter}{/nocache}
+</div>
+<div id="quick_search">
+    {* wyszukiwarka AutoPoszukiwacz  *}
+{nocache}{$ep3gateAutoSuggest}{/nocache}
 </div>
 
 
