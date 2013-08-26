@@ -26,7 +26,7 @@
 
     <div class="map">
         <h2>{$LANG_HOW}</h2>
-        <img class="editable" data-imagex="224" data-imagey="185" data-type='image' data-md5='{$menu_map.md5}' data-key='{$menu_map.key}' src="{$menu_map.src}"></img>
+        <iframe width="225" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://mapy.google.pl/maps?f=q&amp;source=s_q&amp;hl=pl&amp;geocode=&amp;q=Biuro+Podr%C3%B3%C5%BCy+Odra+Travel,+Marsza%C5%82ka+J%C3%B3zefa+Pi%C5%82sudskiego+34,+Szczecin&amp;aq=0&amp;oq=odra&amp;sll=53.429696,14.624624&amp;sspn=0.453295,1.327286&amp;ie=UTF8&amp;hq=Biuro+Podr%C3%B3%C5%BCy+Odra+Travel,&amp;hnear=Marsza%C5%82ka+J%C3%B3zefa+Pi%C5%82sudskiego+34,+Szczecin,+Wojew%C3%B3dztwo+zachodniopomorskie&amp;t=m&amp;ll=53.432753,14.548688&amp;spn=0.00767,0.009613&amp;z=15&amp;output=embed"></iframe>
     </div>
 
 
