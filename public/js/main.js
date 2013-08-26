@@ -15,6 +15,7 @@ $(document).ready(function() {
     $('#old_price_trigger').click(function() {
         $('#old_price').trigger('click');
     });
+    $('#lessCriteriaLink').trigger('click');
 });
 $(document).bind('text_content_update', function(obj) {
     var stars = $('.stars').children('div').text();
