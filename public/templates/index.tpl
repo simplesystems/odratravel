@@ -3,7 +3,7 @@
 
 <div class="banner-container">
 
-    <div class="editable"  data-tag="galeria" data-imagex="1400" data-max="10" data-imagey="411" data-type='gallery' data-md5='{$main_gallery.md5}' data-key='{$main_gallery.key}'>
+    <div class="editable"  data-tag="galeria" data-imagex="1400" data-max="10" data-imagey="311" data-type='gallery' data-md5='{$main_gallery.md5}' data-key='{$main_gallery.key}'>
         <div class="bxslider">
             <ul class="bxslider" id="bxslider">
                 {foreach from=$main_gallery.value item=imgsrc}
