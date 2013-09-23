@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 <div class="banner-container">
     <div class="bxslider" id="bxslider_static">
-        <img class="editable" data-imagey="411" data-imagex="1400" data-type='image' data-md5='{$templatebackground.md5}' data-key='{$templatebackground.key}' src="{$templatebackground.src}"></img>
+        <img class="editable" data-imagey="311" data-imagex="1400" data-type='image' data-md5='{$templatebackground.md5}' data-key='{$templatebackground.key}' src="{$templatebackground.src}"></img>
     </div>
 </div>
 <div class="main-container">

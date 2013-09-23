@@ -139,7 +139,7 @@ class Cadmin {
         $images = $database->fetchAll('cadmin_image');
         foreach ($images as $image) {
             if ($image['cadmin_key'] == 'main_gallery') {
-                $size = '/1400/411/';
+                $size = '/1400/311/';
             } elseif ($image['cadmin_key'] == 'hfghfg') {
                 $size = '/255/255/';
             } else {
@@ -234,7 +234,7 @@ class Cadmin {
                     foreach ($_SESSION['gallery'][$img['key']]['value'] as $src) {
 
                         if ($img['key'] === 'main_gallery') {
-                            $size = '/1400/411/';
+                            $size = '/1400/311/';
                         }
                         $path = '/files/image/resized/' . $src['image'] . $size . 'image.jpg';
                         if (isset($image['optional'])) {

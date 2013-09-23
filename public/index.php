@@ -177,7 +177,7 @@ if (isset($imageView['main_gallery'])) {
     );
     $gallery['value'][0] = array(
         'key' => 'main_gallery',
-        'src' => '/files/image/resized/42/1400/411/image.jpg',
+        'src' => '/files/image/resized/42/1400/311/image.jpg',
         'link' => '',
         'desc' => '',
         'text' => '',
@@ -185,7 +185,7 @@ if (isset($imageView['main_gallery'])) {
         'pos' => '1');
     $gallery['value'][1] = array(
         'key' => 'main_gallery',
-        'src' => '/files/image/resized/43/1400/411/image.jpg',
+        'src' => '/files/image/resized/43/1400/311/image.jpg',
         'link' => '',
         'desc' => '',
         'text' => '',
@@ -193,7 +193,7 @@ if (isset($imageView['main_gallery'])) {
         'pos' => '2');
     $gallery['value'][3] = array(
         'key' => 'main_gallery',
-        'src' => '/files/image/resized/42/1400/411/image.jpg',
+        'src' => '/files/image/resized/42/1400/311/image.jpg',
         'link' => '',
         'desc' => '',
         'text' => '',

@@ -238,12 +238,12 @@ class CMS {
             $templatebackground = array(
                 'key' => 'templatebackground_' . $id . '_' . $lang,
                 'md5' => '',
-                'src' => '/files/image/resized/42/1400/411/image.jpg'
+                'src' => '/files/image/resized/42/1400/311/image.jpg'
             );
         } else {
             $expl = explode('/', $imageView['templatebackground_' . $id . '_' . $lang][0]['src']);
             $expl[5] = '1400';
-            $expl[6] = '411';
+            $expl[6] = '311';
             $expl = implode('/', $expl);
             $imageView['templatebackground_' . $id . '_' . $lang][0]['src'] = $expl;
             $templatebackground = $imageView['templatebackground_' . $id . '_' . $lang][0];
