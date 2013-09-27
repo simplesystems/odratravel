@@ -13,7 +13,7 @@ var cadmin = {
         input.MouseStart();
 
         $(document).click(function(event) {
-            if ($(event.target).parents().index($('.cadmin_content_settings')) === -1 && $(event.target).parents().index($('.cadmin_content')) === -1) {
+            if ($(event.target).parents().index($('.cadmin_content_settings')) === -1 && $(event.target).parents().index($('.cadmin_content')) === -1 && (typeof $(event.target).attr('id') != 'undefined' && $(event.target).attr('id').substring(0, 3) != 'mce')) {
                 $('a.menu.exit').trigger('click');
             }
         });

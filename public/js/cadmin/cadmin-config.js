@@ -1,6 +1,7 @@
 templates = {
     'Domyślny': 'default',
-    'Oferta': 'podstrona'
+    'Oferta': 'podstrona',
+    'Pusta': 'blank'
 };
 positions = {
     'Nie w menu': 'none',
