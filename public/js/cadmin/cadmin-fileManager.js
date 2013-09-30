@@ -6,38 +6,57 @@ pagetag = '';
 pagemax = '';
 
 var fileManager = {
-    init: function() {
+    init: function(obj) {
         var content = draw.fileManager();
-        content.appendTo('.cadmin_panel');
+        var panel = $('<div>').addClass('cadmin_panel').attr('id', 'file_manager');
+        content.appendTo(panel);
+        panel.appendTo('body');
+
+        var index_highest = 0;
+        $("div").each(function() {
+            var index_current = parseInt($(this).css("zIndex"), 10);
+            if (index_current > index_highest) {
+                index_highest = index_current;
+            }
+        });
+        panel.css('z-index', index_highest + 1);
         // content.draggable({cursor: "move", handle: ".cadmin_boxheader_manager"});
         $('.fileContainer').html(language.loadingfiles);
-        var obj = cadmin.getObject();
+        var imagex, imagey;
+        if (typeof obj !== 'undefined') {
+            cadmin.setObject(obj);
+        }
+        obj = cadmin.getObject();
+        imagex = obj.data('imagex');
+        imagey = obj.data('imagey');
+
         //pass x y of image,tag and page number to fetch data
-        this.loadFiles(obj.data('imagex'), obj.data('imagey'), 'all', 1, 6);
+        this.loadFiles(imagex, imagey, 'all', 1, 6);
+        this.panel = panel;
+        return panel;
     },
+    panel: false,
     loadFiles: function(x, y, tag, page, max) {
 
 
         var url = '/cadmin/view/' + page + '/' + tag + '/' + x + '/' + y + '/' + max;
-        $.ajax
-                ({
-                    url: url,
-                    success: function(data)
-                    {
-                        {
-                            data = JSON.parse(data.trim());
-                            curpage = page;
-                            pagex = x;
-                            pagey = y;
-                            pagetag = tag;
-                            pagemax = max;
-                            //session.setImages(data);
-                            fileManager.start(data);
+        $.ajax({
+            url: url,
+            success: function(data) {
+                {
+                    data = JSON.parse(data.trim());
+                    curpage = page;
+                    pagex = x;
+                    pagey = y;
+                    pagetag = tag;
+                    pagemax = max;
+                    //session.setImages(data);
+                    fileManager.start(data);
 
-                        }
+                }
 
-                    }
-                });
+            }
+        });
 
     },
     start: function(data) {
@@ -64,13 +83,13 @@ var fileManager = {
                         imgrow.empty();
                     }
                     var imgbox = $('<div>').attr({'class': 'imgbox'}).appendTo(imgrow);
-                    var newUrl = value.value;
-                    if (obj.data('imagex') > 200 || obj.data('imagex') > 200) {
-                        var newUrl = url.newUrl(value.value, 200, 200);
-                    }
-                    else {
-                        var newUrl = url.newUrl(value.value, obj.data('imagex'), obj.data('imagex'));
-                    }
+                    // var newUrl = value.value;
+
+                    newUrl = url.newUrl(value.value, 200, 200);
+
+
+                    //   var newUrl = url.newUrl(value.value, obj.data('imagex'), obj.data('imagex'));
+
                     if (obj.data('imagex') > value.x || obj.data('imagey') > value.y) {
                         var img = $('<img>').attr({'class': 'filemanagerfiles toosmall', 'src': newUrl}).appendTo(imgbox);
                         var divsmall = $('<div>').attr({'class': 'filemanagertosmall'}).html(language.toosmall).appendTo(imgbox);
@@ -330,7 +349,10 @@ var fileManager = {
 
 
         });
-        $('.cadmin_manager').remove();
+        $('#file_manager').remove();
+    },
+    close: function() {
+        $('#file_manager').remove();
     },
     addImage: function(img) {
 
@@ -356,7 +378,7 @@ var fileManager = {
             }
         }
         $('#container').attr({'src': newUrl});
-        $('.cadmin_manager').remove();
+        $('#file_manager').remove();
 
 
 

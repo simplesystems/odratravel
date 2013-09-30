@@ -96,7 +96,7 @@ var input = {
         $('.close').unbind('click').bind('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            $('.cadmin_manager').remove();
+            $('#file_manager').remove();
             $('.cadmin_editor').remove();
         });
         $('.fileManagerAdd').unbind('click').bind('click', function(e) {
@@ -130,6 +130,9 @@ var input = {
             var obj = cadmin.getObject();
             if (obj.data('type') == 'image') {
                 fileManager.addImage($(this));
+            }
+            if (obj.data('type') == 'browser') {
+                fileManager.panel.trigger('selected_image', $(this).attr('src'));
             }
             input.trackButtons();
         });

@@ -9,6 +9,8 @@ var tinymcecustom = {
     //for texts
     editor2: function(obj, data) {
         tinymce.init({
+            remove_script_host: false,
+            convert_urls: false,
             selector: "#editedtext",
             theme: "modern",
             width: 700,
@@ -16,21 +18,27 @@ var tinymcecustom = {
             menubar: false,
             toolbar: "insertfile undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink | code | image",
             plugins: 'link code image',
-            file_browser_callback: function(field_name, url, type, win) {
-                tinymce.activeEditor.windowManager.open({
-                    title: 'File manager',
-                    body: [
-                        {type: 'textbox', name: 'title', label: 'Title'}
-                    ],
-                    onsubmit: function(e) {
-                        // Insert content when the window form is submitted
-                        editor.insertContent('Title: ' + e.data.title);
-                    }
+            file_browser_callback: function(field_name, url_origin, type, win) {
+                obj = cadmin.getObject();
+                obj.data('imagex', 200);
+                obj.data('imagey', 200);
+                obj.data('type', 'browser');
+
+                var fm = fileManager.init(obj);
+                fm.bind('selected_image', function(e, data) {
+                    $('#' + field_name).val(data);
+                    fileManager.close();
+                    var dimensions = $('label:contains(Dimensions)').parent().find('input');
+                    $(dimensions[0]).val(200);
+                    $(dimensions[1]).val(200);
+                    $(dimensions[0]).on('keyup', function() {
+                        $('#' + field_name).val(url.modify($('#' + field_name).val(), $(this).val(), $(dimensions[1]).val()));
+                    });
+                    $(dimensions[1]).on('keyup', function() {
+                        $('#' + field_name).val(url.modify($('#' + field_name).val(), $(dimensions[0]).val(), $(this).val()));
+                    });
                 });
-                console.log(field_name);
-                console.log(url);
-                console.log(type);
-                console.log(win);
+
             },
             link_list: data
         });
