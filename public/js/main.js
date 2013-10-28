@@ -67,14 +67,17 @@ $(document).bind('text_content_update', function() {
 });
 
 
-slider = $('#bxslider').bxSlider({
-    minSlides: 2,
-    maxSlides: 10,
-    mode: 'fade',
-    auto: true,
-    useCSS: false,
-    clones: false
-});
+if ($('#bxslider li').length > 1) {
+    slider = $('#bxslider').bxSlider({
+        minSlides: 2,
+        maxSlides: 10,
+        mode: 'fade',
+        auto: true,
+        useCSS: false,
+        clones: false
+    });
+}
+
 slider2 = $('#bxslider_p').bxSlider({
     minSlides: 3,
     maxSlides: 10,
