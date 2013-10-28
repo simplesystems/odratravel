@@ -68,8 +68,8 @@ $(document).bind('text_content_update', function() {
 
 
 slider = $('#bxslider').bxSlider({
-    minSlides: 1,
-    maxSlides: 1,
+    minSlides: 2,
+    maxSlides: 10,
     mode: 'fade',
     auto: true,
     useCSS: false,
